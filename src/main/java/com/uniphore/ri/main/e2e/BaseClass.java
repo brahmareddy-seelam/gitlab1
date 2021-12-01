@@ -32,12 +32,12 @@ public class BaseClass {
 	}
 	try {
 		prop.load(fis);
-		fis.close();
+	/*	fis.close();
 		FileOutputStream out = new FileOutputStream(System.getProperty("user.dir")+"/src/test/resources/properties/env.properties");
 		prop.setProperty("Backend", System.getProperty("backend"));
 		prop.setProperty("Keycloak", System.getProperty("keycloak"));
 		prop.store(out, null);
-		out.close();
+		out.close(); */
 		
 		port.load(portfis);
 	} catch (IOException e) {
