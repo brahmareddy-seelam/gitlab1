@@ -15,4 +15,4 @@ test-job:
     - auto-runner
   script:
     - mvn clean
-    - mvn test -Dcucumber.options="src/main/resources/features/e2e_call18.feature" -Dcucumber.filter.tags="@call18" -Dbackend="3.17.7.15" -Dkeycloak="3.17.40.22"
+    - mvn test
