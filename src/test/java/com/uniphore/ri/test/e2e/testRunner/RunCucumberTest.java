@@ -11,6 +11,7 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features={"src/main/resources/features/"},
 		glue={"stepDefinition"},
+		tags="@call18",
 		plugin= {"pretty","html:target/cucumber.html","json:target/cucumber.json"},
 		stepNotifications = true,
 		monochrome=true)
