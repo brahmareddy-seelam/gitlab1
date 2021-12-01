@@ -1,0 +1,20 @@
+{
+	"skipOnFirstRuleApplied": true,
+	"skipOnFirstNonTriggeredRule": true,
+	"priorityThreshold": 10,
+	"delimeter": ",",
+	"components": [
+		{
+			"name": "Enter name here",
+			"description": "Enter discription here",
+			"priority": 1,
+			"condition": "$.entity('Customer Option').containsAnyKeyPhrases ('equal monthly payment','twenty four months','thirty months').isTrue()",
+			"actions": [
+				"$.output=$.valueOf('Customer Option')"
+			]
+		}
+	],
+	"ruleName": "Customer Opted Rule",
+	"skipOnFirstFailedRule": false,
+	"type": "ENTITY"
+}

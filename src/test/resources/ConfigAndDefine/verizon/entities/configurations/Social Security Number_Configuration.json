@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Social Security Number",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "social security number",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "verify the last four digits",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

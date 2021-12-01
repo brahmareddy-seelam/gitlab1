@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Purchase Option 1",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "full retail value",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Agent",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

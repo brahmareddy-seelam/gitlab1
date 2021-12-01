@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Claim Amount",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "i paid",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "claim amount i paid",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

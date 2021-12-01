@@ -1,0 +1,9 @@
+{
+  "catalogReference": "Person",
+  "defaultValue": "NA",
+  "description": "Desc Customer Name",
+  "entityType": "PERSON",
+  "name": "Customer Name",
+  "saved": true,
+  "trained": true
+}

@@ -1,0 +1,24 @@
+{
+    "name": "Credit Card Exp Date",
+    "inputParams": [
+      {
+        "order": 0,
+        "keyPhrases": [
+          {
+            "keywordName": "expiration date",
+            "isNew": null,
+            "categoryId": 0
+          }
+        ],
+        "keyphraseMatchingChannel": "Customer",
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "suffix",
+        "turnPosition": "same",
+        "fuzzyMatch": false
+      }
+    ],
+    "outputParams": {
+      "keyPhrase": "",
+      "entityPosition": ""
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "name": "APITesting1008 Claim ID",
+    "inputParams": [
+      {
+        "order": 0,
+        "keyPhrases": [
+          {
+            "keywordName": "claim i d",
+            "isNew": null,
+            "categoryId": 0
+          },{
+            "keywordName": "may i please have your claim i d please",
+            "isNew": null,
+            "categoryId": 0
+          },
+          {
+            "keywordName": "Claim ID",
+            "isNew": null,
+            "categoryId": 0
+          },
+          {
+            "keywordName": "claims",
+            "isNew": null,
+            "categoryId": 0
+          }
+        ],
+        "keyphraseMatchingChannel": "Agent",
+        "entityExtractionChannel": "Agent",
+        "entityPosition": "suffix",
+        "turnPosition": "same",
+        "fuzzyMatch": true
+      }
+    ],
+    "outputParams": {
+      "keyPhrase": "",
+      "entityPosition": ""
+    }
+}

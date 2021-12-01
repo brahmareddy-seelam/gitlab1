@@ -1,0 +1,24 @@
+{
+    "callCategoryBeans": [
+      {
+        "bagOfKeywords": [
+          {
+            "categoryId": 0,
+            "isNew": true,
+            "keywordName": "Claim"
+          }
+        ],
+        "callCategoryPath": [
+          "insurance,claim"
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": [
+          "Agent"
+        ],
+        "level": 2,
+        "name": "claim"
+      }
+    ],
+    "saved": true,
+    "trained": false
+  }

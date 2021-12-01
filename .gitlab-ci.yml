@@ -1,0 +1,12 @@
+stages:
+  - test
+
+e2e-test:
+  stage: test
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'   # run only if triggered by a pipeline
+  script:
+    - mvn clean $UPSTREAM_CUSTOM_VARIABLE
+    - mvn test -Dcucumber.filter.tags="@call18" -Dbackend="3.17.7.15" -Dkeycloak="3.17.40.22" -Dcucumber.options="--plugin html:target/cucumber.html" $UPSTREAM_CUSTOM_VARIABLE
+
+

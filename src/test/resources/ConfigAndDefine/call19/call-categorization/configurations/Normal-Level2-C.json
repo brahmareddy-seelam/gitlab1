@@ -1,0 +1,24 @@
+{
+    "callCategoryBeans": [
+      {
+        "bagOfKeywords": [
+          {
+            "categoryId": 0,
+            "isNew": true,
+            "keywordName": "normal"
+          }
+        ],
+        "callCategoryPath": [
+          "Hotel Booking,Normal"
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": [
+          "Agent"
+        ],
+        "level": 2,
+        "name": "Normal"
+      }
+    ],
+    "saved": true,
+    "trained": false
+  }

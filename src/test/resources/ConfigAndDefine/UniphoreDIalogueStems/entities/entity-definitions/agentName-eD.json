@@ -1,0 +1,10 @@
+{
+	"name": "APITesting1008",
+	"description": "Desc APITesting1008",
+	"catalogReference": "Person",
+	"entityType": "PERSON",
+	"displayText": "APITesting1008",
+	"defaultText": "NA",
+	"trained": false,
+	"saved": true
+}

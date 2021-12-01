@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "TIME",
+    "defaultValue": "",
+    "description": "Departure Time",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Time",
+    "sourceType": "NLP",
+    "name": "Departure Time",
+    "referenceName": "Departure Time",
+    "entityTextIfFalse": null
+}

@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Flight Number",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "is the flight number",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Agent",
+        "entityPosition": "Prefix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

@@ -1,0 +1,20 @@
+{
+	"delimeter": ",",
+	"priorityThreshold": 10,
+	"skipOnFirstNonTriggeredRule": true,
+	"skipOnFirstRuleApplied": true,
+	"components": [
+		{
+			"actions": [
+				"$.output=$.value().orderByTimeAsc()"
+			],
+			"condition": "$.aiEntity('Person').isTrue()",
+			"description": "Enter discription here",
+			"name": "Enter name here",
+			"priority": 1
+		}
+	],
+	"ruleName": "Name Asc",
+	"skipOnFirstFailedRule": false,
+	"type": "ENTITY"
+}

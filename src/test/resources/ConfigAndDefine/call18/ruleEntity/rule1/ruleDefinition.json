@@ -1,0 +1,14 @@
+{
+	"name": "Claim Amount Rule",
+	"description": "Rule Claim Amount Rule",
+	"defaultValue": "",
+	"entityType": "RULE",
+	"catalogReference": null,
+	"noOfChar": 0,
+	"boolTrueValue": null,
+	"entityTextIfFalse": null,
+	"sourceType": "RULE",
+	"saved": true,
+	"trained": false,
+	"referenceName": "Claim Amount Rule"
+}

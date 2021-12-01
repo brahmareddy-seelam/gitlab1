@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "DATE",
+    "defaultValue": "",
+    "description": "Return Date",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Date",
+    "sourceType": "NLP",
+    "name": "Return Date",
+    "referenceName": "Return Date",
+    "entityTextIfFalse": null
+}

@@ -1,0 +1,23 @@
+{
+  "inputParams": [
+    {
+      "entityExtractionChannel": "Agent",
+      "entityPosition": "suffix",
+      "fuzzyMatch": false,
+      "keyPhrases": [
+        {
+          "categoryId": 0,
+          "isNew": null,
+          "keywordName": "my name is"
+        }
+      ],
+      "keyphraseMatchingChannel": "Agent",
+      "turnPosition": "same"
+    }
+  ],
+  "name": "APITesting1008",
+  "outputParams": {
+    "entityPosition": "",
+    "keyPhrase": ""
+  }
+}

@@ -1,0 +1,19 @@
+{
+	"entities": [
+		{
+			"ai-entity": "Gpe",
+			"catalog-reference": "Gpe",
+			"is-imported": true,
+			"nlp-entities": [
+			]
+		},
+		{
+			"ai-entity": "Person",
+			"catalog-reference": "Person",
+			"is-imported": true,
+			"nlp-entities": [
+			]
+		}
+	],
+	"model-name": "AI Entity Extraction Model"
+}

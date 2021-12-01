@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["medical"],
+        "level": 1,
+        "name": "medical",
+        "bagOfKeywords": [{
+            "keywordName": "medication",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": true,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

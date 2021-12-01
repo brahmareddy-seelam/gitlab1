@@ -1,0 +1,29 @@
+{
+    "callCategoryBeans": [
+      {
+        "bagOfKeywords": [
+          {
+            "categoryId": 0,
+            "isNew": true,
+            "keywordName": "not booked"
+          },
+  {
+            "categoryId": 0,
+            "isNew": true,
+            "keywordName": "cancelled"
+          }
+        ],
+        "callCategoryPath": [
+          "Hotel Booking,Normal,Not Booked"
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": [
+          "Agent"
+        ],
+        "level": 3,
+        "name": "not booked"
+      }
+    ],
+    "saved": true,
+    "trained": false
+  }

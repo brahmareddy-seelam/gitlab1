@@ -1,0 +1,14 @@
+{
+	"name": "Rule",
+	"description": "Rule",
+	"defaultValue": "",
+	"entityType": "RULE",
+	"catalogReference": null,
+	"noOfChar": 0,
+	"boolTrueValue": null,
+	"entityTextIfFalse": null,
+	"sourceType": "RULE",
+	"saved": true,
+	"trained": false,
+	"referenceName": "Rule"
+}

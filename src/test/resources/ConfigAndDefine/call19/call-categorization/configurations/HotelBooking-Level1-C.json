@@ -1,0 +1,29 @@
+{
+    "callCategoryBeans": [
+      {
+        "bagOfKeywords": [
+          {
+            "categoryId": 0,
+            "isNew": true,
+            "keywordName": "room"
+          },
+          {
+            "categoryId": 0,
+            "isNew": true,
+            "keywordName": "hotel"
+          }
+        ],
+        "callCategoryPath": [
+          "Hotel Booking"
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": [
+          "Agent"
+        ],
+        "level": 1,
+        "name": "Hotel Booking"
+      }
+    ],
+    "saved": true,
+    "trained": false
+  }

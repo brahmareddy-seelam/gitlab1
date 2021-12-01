@@ -1,0 +1,9 @@
+{
+  "catalogReference": "Free_form",
+  "defaultValue": "NA",
+  "description": "Desc Room Type",
+  "entityType": "FREE_FORM",
+  "name": "Room Type",
+  "saved": true,
+  "trained": true
+}

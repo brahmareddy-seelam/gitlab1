@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "DURATION",
+    "defaultValue": "",
+    "description": "Latest By",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Duration",
+    "sourceType": "NLP",
+    "name": "Latest By",
+    "referenceName": "Latest By",
+    "entityTextIfFalse": null
+}

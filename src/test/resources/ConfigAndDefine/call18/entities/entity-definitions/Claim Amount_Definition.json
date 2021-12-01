@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "MONEY",
+    "defaultValue": "",
+    "description": "Claim Amount",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Money",
+    "sourceType": "NLP",
+    "name": "Claim Amount",
+    "referenceName": "Claim Amount",
+    "entityTextIfFalse": null
+}

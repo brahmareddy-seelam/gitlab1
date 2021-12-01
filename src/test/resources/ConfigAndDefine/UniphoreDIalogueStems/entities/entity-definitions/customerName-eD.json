@@ -1,0 +1,9 @@
+{
+  "catalogReference": "Person",
+  "defaultValue": "NA",
+  "description": "Desc APITesting1008 Customer Name",
+  "entityType": "PERSON",
+  "name": "APITesting1008 Customer Name",
+  "saved": true,
+  "trained": true
+}

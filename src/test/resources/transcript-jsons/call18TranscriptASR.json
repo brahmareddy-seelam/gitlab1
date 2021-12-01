@@ -1,0 +1,61 @@
+{
+  "data": {
+    "sessionId": "1637070128370fe0tjxrw9",
+    "lang": "en-us",
+    "turns": [
+      {
+        "speaker": "Agent",
+        "text": "afternoon and welcome to AE insurance my name is John how can I help you"
+      },
+      {
+        "speaker": "Customer",
+        "text": "hi John this is the fourth time I've called regarding my medical claim getting a clear answer on when my claim will be processed I want somebody who can fix this"
+      },
+      {
+        "speaker": "Agent",
+        "text": "I'm extremely sorry for the inconvenience hours see your apologies and I will do my best to help you resolve this now may I please have your claim ID please"
+      },
+      {
+        "speaker": "Customer",
+        "text": "hey two zero zero eight four seven nine eight"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay thank you for that I see you filed your claim on the thirteenth of February . is that correct Mister Stanley"
+      },
+      {
+        "speaker": "Customer",
+        "text": "yeah it's been about five weeks now and I still haven't received the claim amount I paid four thousand dollars towards my hospitalization and medical expenses the last agent I talked to told me I would receive the check by February twenty third . but I have not seen anything from you so why is there such a long delay you guys I'd I just feel like you guys are are just jerking me around"
+      },
+      {
+        "speaker": "Agent",
+        "text": "well I totally understand your frustration 's and we try to win sure that all claims are paid as soon as possible to avoid any hardship for members I do see in your case there was a delay due to missing information from the hospital"
+      },
+      {
+        "speaker": "Customer",
+        "text": "oh okay well you know why didn't somebody tell me this"
+      },
+      {
+        "speaker": "Agent",
+        "text": "yes this should've been explained and again I'm very sorry and our sincere apologies um I updated your claim status and I move this forward for processing so you should receive the check within the next five business days"
+      },
+      {
+        "speaker": "Customer",
+        "text": "hi I I can't I I just can't believe this is taking so long let's just hope I'm not calling you again next week okay"
+      },
+      {
+        "speaker": "Agent",
+        "text": "no you won't need to do that at all Mister Stanley you should be fine now that we've clarified the information with the hospital you should see the reimbursement within five business days again I'm very sorry for the delay is there anything else I can help you with"
+      },
+      {
+        "speaker": "Customer",
+        "text": "hello"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay I appreciate your patience and understanding thank you for calling a insurance goodbye"
+      }
+    ]
+  },
+  "errors": ""
+}

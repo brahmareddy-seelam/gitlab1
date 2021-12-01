@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Phone Upgrade,Payment,Full Payment"],
+        "level": 3,
+        "name": "Full Payment",
+        "bagOfKeywords": [{
+            "keywordName": "full retail value",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

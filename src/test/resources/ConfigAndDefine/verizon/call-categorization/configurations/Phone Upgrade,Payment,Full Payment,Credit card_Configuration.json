@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Phone Upgrade,Payment,Full Payment,Credit card"],
+        "level": 4,
+        "name": "Credit card",
+        "bagOfKeywords": [{
+            "keywordName": "Credit card",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

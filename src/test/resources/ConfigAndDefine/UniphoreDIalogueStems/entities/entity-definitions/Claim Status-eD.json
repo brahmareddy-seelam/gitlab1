@@ -1,0 +1,9 @@
+{
+  "catalogReference": "Free_form",
+  "defaultValue": "NA",
+  "description": "Desc APITesting1008 Claim Status",
+  "entityType": "FREE_FORM",
+  "name": "APITesting1008 Claim Status",
+  "saved": true,
+  "trained": true
+}

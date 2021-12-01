@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "NUMBER",
+    "defaultValue": "",
+    "description": "Member Id",
+    "noOfChar": 5,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "Member Id",
+    "referenceName": "Member Id",
+    "entityTextIfFalse": null
+}

@@ -1,0 +1,175 @@
+{
+  "data": {
+    "catalog": {
+      "version": 0,
+      "items": [
+        {
+          "id": 1,
+          "type": "ALPHANUMERIC",
+          "name": "Phone_Number"
+        },
+        {
+          "id": 2,
+          "type": "ALPHANUMERIC",
+          "name": "Alphanumeric"
+        },
+        {
+          "id": 3,
+          "type": "DATE",
+          "name": "Date"
+        },
+        {
+          "id": 4,
+          "type": "GPE",
+          "name": "Gpe"
+        },
+        {
+          "id": 5,
+          "type": "MONEY",
+          "name": "Money"
+        },
+        {
+          "id": 6,
+          "type": "MONEY",
+          "name": "Billing_Amount"
+        },
+        {
+          "id": 15,
+          "type": "PERSON",
+          "name": "Person"
+        },
+        {
+          "id": 16,
+          "type": "PRODUCT",
+          "name": "Device"
+        },
+        {
+          "id": 17,
+          "type": "PRODUCT",
+          "name": "Plan"
+        },
+        {
+          "id": 18,
+          "type": "ORDINAL",
+          "name": "Ordinal"
+        },
+        {
+          "id": 19,
+          "type": "ORG",
+          "name": "Carrier_Company_Name"
+        },
+        {
+          "id": 20,
+          "type": "ORG",
+          "name": "Org"
+        },
+        {
+          "id": 22,
+          "type": "TIME",
+          "name": "Time"
+        },
+        {
+          "id": 23,
+          "type": "MONEY",
+          "name": "Price"
+        },
+        {
+          "id": 24,
+          "type": "PRODUCT",
+          "name": "Product"
+        },
+        {
+          "id": 25,
+          "type": "QUANTITY",
+          "name": "Quantity"
+        },
+        {
+          "id": 27,
+          "type": "INTENT",
+          "name": "day0_vzn"
+        },
+        {
+          "id": 28,
+          "type": "FREE_FORM",
+          "name": "Free_form"
+        },
+        {
+          "id": 29,
+          "type": "DURATION",
+          "name": "Duration"
+        },
+        {
+          "id": 32,
+          "type": "MONEY",
+          "name": "Discount"
+        },
+        {
+          "id": 33,
+          "type": "ALPHANUMERIC",
+          "name": "Reference_number"
+        },
+        {
+          "id": 35,
+          "type": "ALPHANUMERIC",
+          "name": "Device_identification_number"
+        },
+        {
+          "id": 37,
+          "type": "GPE",
+          "name": "Location"
+        },
+        {
+          "id": 38,
+          "type": "BOOLEAN",
+          "name": "BOOLEAN_DEFAULT"
+        },
+        {
+          "id": 39,
+          "type": "CARDINAL",
+          "name": "NUMBER_DEFAULT"
+        },
+        {
+          "id": 40,
+          "type": "PERSON",
+          "name": "name14sep"
+        },
+        {
+          "id": 42,
+          "type": "PERSON",
+          "name": "name1sep"
+        },
+        {
+          "id": 43,
+          "type": "EMAIL",
+          "name": "Email"
+        },
+        {
+          "id": 44,
+          "type": "FLOAT",
+          "name": "Float"
+        },
+        {
+          "id": 45,
+          "type": "EMAIL",
+          "name": "email"
+        },
+        {
+          "id": 46,
+          "type": "STRING",
+          "name": "String"
+        },
+        {
+          "id": 47,
+          "type": "PERSON",
+          "name": "CustName"
+        },
+        {
+          "id": 48,
+          "type": "PERSON",
+          "name": "CusName"
+        }
+      ]
+    }
+  },
+  "errors": ""
+}

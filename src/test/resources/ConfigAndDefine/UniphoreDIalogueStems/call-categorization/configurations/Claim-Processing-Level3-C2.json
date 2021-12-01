@@ -1,0 +1,25 @@
+{
+    "callCategoryBeans": [
+      {
+        "bagOfKeywords": [
+          {
+            "categoryId": 0,
+            "isNew": true,
+            "keywordName": "is in process"
+          }
+  
+        ],
+        "callCategoryPath": [
+          "insurance,claim,processing"
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": [
+          "Agent"
+        ],
+        "level": 3,
+        "name": "processing"
+      }
+    ],
+    "saved": true,
+    "trained": false
+  }

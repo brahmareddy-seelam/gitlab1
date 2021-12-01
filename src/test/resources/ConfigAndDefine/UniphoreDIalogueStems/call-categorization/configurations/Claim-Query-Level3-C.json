@@ -1,0 +1,24 @@
+{
+    "callCategoryBeans": [
+      {
+        "bagOfKeywords": [
+          {
+            "categoryId": 0,
+            "isNew": true,
+            "keywordName": "missing information"
+          }
+        ],
+        "callCategoryPath": [
+          "insurance,claim,Query"
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": [
+          "Agent"
+        ],
+        "level": 3,
+        "name": "Query"
+      }
+    ],
+    "saved": true,
+    "trained": false
+  }

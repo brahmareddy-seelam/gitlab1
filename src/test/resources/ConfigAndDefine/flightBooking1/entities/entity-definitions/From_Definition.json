@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "GPE",
+    "defaultValue": "",
+    "description": "From",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Location",
+    "sourceType": "NLP",
+    "name": "From",
+    "referenceName": "From",
+    "entityTextIfFalse": null
+}

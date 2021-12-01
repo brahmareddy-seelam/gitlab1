@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Phone Opted",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "which phone would you like to upgrade",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "i'll go in for the",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

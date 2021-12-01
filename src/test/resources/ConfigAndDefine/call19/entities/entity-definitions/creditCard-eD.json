@@ -1,0 +1,9 @@
+{
+  "catalogReference": "Free_form",
+  "defaultValue": "NA",
+  "description": "Desc Credit Card Exp Date",
+  "entityType": "FREE_FORM",
+  "name": "Credit Card Exp Date",
+  "saved": true,
+  "trained": true
+}

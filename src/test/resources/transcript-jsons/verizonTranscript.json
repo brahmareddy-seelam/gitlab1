@@ -1,0 +1,69 @@
+{
+  "data": {
+    "sessionId": "1636796244598jvr4y5nk8",
+    "lang": "en-us",
+    "turns": [
+      {
+        "speaker": "Agent",
+        "text": "welcome to premier communications drawn my name is michelle how can i help you today"
+      },
+      {
+        "speaker": "Customer",
+        "text": "hi michelle i'm calling to check on my wireless phone upgrade options"
+      },
+      {
+        "speaker": "Agent",
+        "text": "i can help you with that can you verify your ten digit wireless number"
+      },
+      {
+        "speaker": "Customer",
+        "text": "sure four zero eight five five five one two one two"
+      },
+      {
+        "speaker": "Agent",
+        "text": "can you please also verify the last four digits of your social security number"
+      },
+      {
+        "speaker": "Customer",
+        "text": "aah aah one two three four"
+      },
+      {
+        "speaker": "Agent",
+        "text": "thank you i see that you're eligible for an upgrade to any of the latest models you'd like you have two upgrade options you can buy the phone out right at its full retail value with no minimum contract or you can avail to pay and equal monthly payments for the next twenty four or thirty months we need to be with premier communications for the entire higher duration of the contract with the monthly payment option which option would you like to choose"
+      },
+      {
+        "speaker": "Customer",
+        "text": "although at the equal monthly payment option for twenty four months"
+      },
+      {
+        "speaker": "Agent",
+        "text": "great thanks <br> lemme go ahead and start the upgrade process which phone would you like to upgrade two"
+      },
+      {
+        "speaker": "Customer",
+        "text": "i'll go in for the two hundred and fifty six gigabyte iphone twelve"
+      },
+      {
+        "speaker": "Agent",
+        "text": "great thanks <br> <br> for twenty four months the equal monthly payment option is thirty one sixty seven which will be added to your monthly bill you want to proceed with this option thanks i'll go ahead and process the order would you like to add any accessories to the order thanks the or"
+      },
+      {
+        "speaker": "Customer",
+        "text": "yes aah no thanks"
+      },
+      {
+        "speaker": "Agent",
+        "text": "order has been processed the phone won't be shipped to your home address on file and you'll receive a new phone in the next seven to ten business days please follow the instructions to activate your phone is there anything else i can help you with hmm"
+      },
+      {
+        "speaker": "Customer",
+        "text": "no this is great thank you for your help"
+      },
+      {
+        "speaker": "Agent",
+        "text": "you're welcome thank you for being a loyal customer premier communications"
+      }
+    ]
+  },
+  "errors": ""
+}

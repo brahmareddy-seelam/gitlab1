@@ -1,0 +1,143 @@
+Feature: Test Offline Audio file - verizon
+
+  @verizon @smoke @Regression
+  Scenario Outline: To test offline load of verizon call and validate the output
+    ###CREATION OF ORGANIZATION, CATEGORY, AND AGENT
+    #Given a "backbone setup request" organization creation exists
+    Given we create an organization called <organization> with description as <description>
+    And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
+    #	Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
+    #	And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
+    #	And we sync <orgAgentName>
+    #
+    #	###############################################
+    #
+    #	##SETTING UP CALL VARIABLES
+    #
+    #Given a "offline-data" request exists
+    Given a <audio-file> file exists
+    And the request organization is <organization>
+    And the request category is <category>
+    And the request customerId is "8090909099"
+    And the request language is <language>
+    And the request agentId is <orgAgentName>
+    Then generate the callId
+    #
+    #############################################
+    #Then create entity catalog from <catalogue file>
+    #
+    #And wait for 15 seconds
+    #
+    ############################################
+    #
+    ##DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
+    #
+    #ENTITY
+    #
+    #Then define and configure entities in folder "ConfigAndDefine/verizon/entities/"
+    #
+    #Then validate and configure rules in folder "ConfigAndDefine/verizon/ruleEntity"
+    #
+    #SUMMARY FORMAT
+    #
+    #Then post summary format
+    #
+    #INTENT
+    #
+    #Then define and configure call categorization with folder "ConfigAndDefine/verizon/call-categorization"
+    #
+    #
+    #Then configure alerts in folder "ConfigAndDefine/verizon/alerts"
+    #
+    ###########################################
+    #
+    #TRAINING FOR ENTITY AND INTENT
+    #
+    #Then train entities
+    #Then train Alerts
+    #Then submit call category configuration
+    #Then train call-categories
+    #Then refresh all caches
+    #
+    #############################################
+    #
+    #		###SENDING OFFLINE AUDIO REQUEST
+    #
+    When the request with file <audio-file> is sent to the audio-connector
+    And wait for <audio-file> to get loaded
+    #
+    #	##############################################
+    #
+    #	###VERIFYING TRANSCRIPT AGAINST GOLD STANDARD
+    #
+    Then a transcript is generated for callId
+    And the transcript conversation for callId for <turn> has <phrase>
+    And the transcript conversation for callId matches the correct version <transcript-file>
+    #
+    #	##############################################
+    #
+    #	###VERIFYING ENTITIES AGAINST GOLD STANDARD
+    #
+    And entities for callId exist
+    And the entity for callId has "Phone Upgrade" as <phoneupgrade>
+    #
+    #	##############################################
+    #
+    #	 ###VERIFYING SUMMARY AGAINST GOLD STANDARD
+    #
+    And a summary for callId exists
+    And a summary for callId has intent of <intent>
+    And a summary for callId has "Phone Upgrade" <phoneupgrade>
+    And a summary for callId has "Social Security Number" <Social Security Number>
+    And a summary for callId has "Purchase Option 1" <Purchase Option 1>
+    And a summary for callId has "Time to deliver" <Time to deliver>
+    And a summary for callId has "Purchase Option 2" <Purchase Option 2>
+    And a summary for callId has "Customer Wireless Number" <Customer Wireless Number>
+    And a summary for callId has "Phone Opted" <Phone Opted>
+    #And a summary for callId has "Claim Amount Rule" <Claim Amount>
+    #
+    Then edit "Social Security Number" as "6789"
+    And edit "Time to deliver" as "5 to 7 business days"
+    Then submit the edited summaries
+    #
+    Then compare if "Social Security Number" has "6789" for callId
+    And compare if "Time to deliver" has "5 to 7 business days" for callId
+    #
+    #############################################
+    #
+    ##VERIFYING DISPOSITION AGAINST GOLD STANDARD
+    #
+    And disposition for callId has intent of <intent>
+
+    #
+    #############################################
+    #
+    ##DELETE ENTITIES
+    #
+    #Then delete all entities
+    #Then delete all alerts
+    #
+    ##############################################
+    #
+    ###DELETE ORGANIZATION AND AGENT
+    #Then we delete <orgAgentName> who is an <role> from <organization>
+    #And we delete an organization called <organization>
+    ##############################################
+    Examples: 
+      | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                                | transcript-file                                              | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              |
+      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"    | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscript.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" |
+
+  @deleteV
+  Scenario Outline: Delete
+    Given a <audio-file> file exists
+    And the request organization is <organization>
+    And the request category is <category>
+    And the request customerId is "8090909099"
+    And the request language is <language>
+    And the request agentId is <orgAgentName>
+    Then delete all entities
+    Then delete all alerts
+
+    Examples: 
+      | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                               | transcript-file                                                 | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number |
+      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "EUU"    | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/Full Payment" | "src/test/resources/transcript-jsons/verizonTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             |

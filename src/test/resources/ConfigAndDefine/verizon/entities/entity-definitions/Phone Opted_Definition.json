@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "FREE_FORM",
+    "defaultValue": "",
+    "description": "Phone Opted",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Free_form",
+    "sourceType": "NLP",
+    "name": "Phone Opted",
+    "referenceName": "Phone Opted",
+    "entityTextIfFalse": null
+}

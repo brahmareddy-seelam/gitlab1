@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Phone Upgrade",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "eligible for an upgrade",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "wireless phone upgrade",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}
