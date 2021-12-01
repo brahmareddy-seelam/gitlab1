@@ -3,6 +3,8 @@ stages:
 
 e2e-test:
   stage: test
+  tags:
+    - auto-runner
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'   # run only if triggered by a pipeline
   script:
