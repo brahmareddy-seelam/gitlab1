@@ -3,7 +3,7 @@ test-job:
   script:
     - mvn clean
     - mvn test
-  artifact:
+  artifacts:
     name: "$CI_JOB_NAME"
     paths:
     - target
