@@ -1,18 +1,7 @@
 stages:
-  - build
   - test
-
-build-code-job:
-  stage: build
-  tags:
-    - auto-runner
-  script:
-    - echo "To be integrated with dev branch"
-
 test-job:
   stage: test
-  tags:
-    - auto-runner
   script:
     - mvn clean
     - mvn test
