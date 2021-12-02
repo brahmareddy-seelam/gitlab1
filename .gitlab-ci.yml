@@ -3,3 +3,8 @@ test-job:
   script:
     - mvn clean
     - mvn test
+  artifact:
+    name: "$CI_JOB_NAME"
+    paths:
+    - target
+    expire_in: 1 day
