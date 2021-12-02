@@ -1,10 +1,5 @@
-stages:
-  - test
-
-trigger_job:
-  trigger:
-    include: .gitlab-ci.yml
-    strategy: depend
+test-job:
+  stage: test
   script:
     - mvn clean
     - mvn test
