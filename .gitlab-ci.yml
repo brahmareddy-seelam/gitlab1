@@ -1,8 +1,8 @@
 test-job:
   stage: test
   script:
-    - mvn clean
-    - mvn test
+    - mvn clean test
+    
   artifacts:
     name: "$CI_JOB_NAME"
     paths:
