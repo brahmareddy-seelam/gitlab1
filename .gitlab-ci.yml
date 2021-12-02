@@ -1,5 +1,6 @@
 test-job:
   stage: test
+  image: maven:3.8-openjdk-11
   script:
     - mvn clean
     - mvn test
