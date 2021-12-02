@@ -26,7 +26,7 @@ import java.util.Optional;
 //import com.atlassian.jira.rest.client.api.JiraRestClient;
 ////import com.atlassian.jira.rest.client.api.domain.Issue;
 //import com.atlassian.jira.rest.client.internal.async.AsynchronousJiraRestClientFactory;
-//import com.atlassian.util.concurrent.Promise;
+//import com.atlassian.util.concurrent.Promise;  
 
 public class JavaReporter {
 
