@@ -108,7 +108,8 @@ Feature: Test Offline Audio file - Call18
     ##VERIFYING DISPOSITION AGAINST GOLD STANDARD
     #
     And disposition for callId has intent of <intent>
-
+    #Then edit and submit disposition intent "Query" as "approved"
+    #Then compare if disposition has changed intent from "Query" to "approved"
     #
     #############################################
     #

@@ -28,6 +28,10 @@ public class CommonSteps extends BaseClass{
 	public static HashMap<String, String>  commonMap=new HashMap<String, String>();
 	public static HashMap<String, String> orgMap=new HashMap<String, String>();
 	
+	public static String userId;
+	public static String startDate;
+	public static String endDate;
+	
 	@And("a {string} file exists")
 	  public void the_call19_wav_file_exists(String audioFile) throws IOException, ClassNotFoundException {
 //		scenarioDef.createNode(new GherkinKeyword("Then"), "a {string} file exists");
@@ -72,6 +76,34 @@ public class CommonSteps extends BaseClass{
 	    System.out.println(commonMap.toString());
 	  }
 	
+	
+	 public String getStartDate() {
+		 return userId;
+	 }
+	 
+	 
+	 public void setUserId(String string) {
+		 CommonSteps.userId=string;
+	 }
+	 
+	 
+	 public void setStartDate(String startDate) {
+		 CommonSteps.userId=startDate;
+	 }
+	 
+	 public String getEndDate() {
+		 return userId;
+	 }
+	 
+	 public void setEndDate(String endDate) {
+		 CommonSteps.userId=endDate;
+	 }
+	 
+	 
+	 public String getUserid() {
+		 return userId;
+	 }
+	 
 	
 	public String getMap(String key) {
 		return commonMap.get(key);

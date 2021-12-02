@@ -201,16 +201,33 @@ public class AddAgent extends BaseClass{
 	public void sync_user(String username) throws IOException, URISyntaxException {
 		JSONObject jsonObj = new JSONObject();
 
-		jsonObj.put("Authorization", "Bearer " + TestCenter.getInstance().getAccessToken());
+		jsonObj.put("Authorization", "Bearer " + TestCenter.getInstance().getKeycloakAccessToken());
 		jsonObj.put("X-Username", username);
 
+		loadURL("KEYCLOAK_PORT");
+		HashMap<String, String> map = new HashMap<>();
+		map=new HashMap<String, String>();
+		map.put("grant_type", "password");
+		map.put("client_id", "demo_client_private");
+		map.put("username", port.getProperty("username"));
+		map.put("password", port.getProperty("password"));
+		
+		response=request.log().all().formParams(map).post("auth/realms/demo_realm/protocol/openid-connect/token");
+		jsonPathEvaluator = response.jsonPath();
+		String access_token = jsonPathEvaluator.get("access_token");
+		System.out.println(access_token);
+		TestCenter.getInstance().setAccessToken(access_token);
+		
 		loadURL("OCMS_PORT");
-//		request.auth().oauth2(access_token);
-//		response=request.post("configuration/sync-user");
-//		ResponseEntity<String> response = RestRequest.postResponseBack(ServiceType.OCMS, "configuration/sync-user",
-//				jsonObj);
-//
-//		Assertions.assertEquals(response.getStatusCodeValue(), 200);
+		request.auth().oauth2(access_token);
+		response=request.post("configuration/sync-user");
+		Map<Object, Object> user=response.jsonPath().getMap("user");
+		String startDate = String.valueOf(user.get("creation-date"));
+		String endDate = String.valueOf(user.get("modification-date"));
+		Object id=   user.get("id");
+		cs.setUserId(id.toString());
+		cs.setStartDate(startDate);
+		cs.setEndDate(endDate);
 	}
 
 }
