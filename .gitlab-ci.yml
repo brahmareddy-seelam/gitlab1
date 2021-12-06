@@ -13,3 +13,4 @@ E2e-Regression:
     paths:
     - target/cucumber.html
     expire_in: 1 day
+
