@@ -1,4 +1,8 @@
 E2e-Regression:
+stages:
+  - test
+  - report
+  
   stage: test
   image: maven:3.8-openjdk-8
   script:
