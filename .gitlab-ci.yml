@@ -1,6 +1,6 @@
 E2e-Regression:
   stage: test
-  image: maven:3.8-openjdk-11
+  image: maven:3.8-openjdk-8
   script:
 #    - mvn clean
 #    - mvn test
