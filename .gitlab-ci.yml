@@ -13,6 +13,7 @@
 
  Test-Reports:
     stage: report
+    trigger:
     artifacts:
     name: "E2e_Report"
     paths:
