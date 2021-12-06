@@ -4,5 +4,5 @@ E2e-Regression:
   script:
 #    - mvn clean
 #    - mvn test
-    - sudo /tmp/apache-maven-3.8.4/bin/mvn clean install
-    - sudo /tmp/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@call18" -Dbackend="3.17.7.15" -Dkeycloak="3.17.40.22" -Dcucumber.options="--plugin html:target/cucumber.html"
+    - /tmp/apache-maven-3.8.4/bin/mvn clean install
+    - /tmp/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@call18" -Dbackend="3.17.7.15" -Dkeycloak="3.17.40.22" -Dcucumber.options="--plugin html:target/cucumber.html"
