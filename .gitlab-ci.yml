@@ -13,7 +13,8 @@
 
  Test-Reports:
     stage: report
-    trigger:
+    script:
+     - echo "Report Creation"
     artifacts:
     name: "E2e_Report"
     paths:
