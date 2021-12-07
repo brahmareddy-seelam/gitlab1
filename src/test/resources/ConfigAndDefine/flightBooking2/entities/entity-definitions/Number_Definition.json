@@ -1,7 +1,7 @@
 {
     "trained": false,
     "saved": true,
-    "entityType": "NUMBER",
+    "entityType": "CARDINAL",
     "defaultValue": "",
     "description": "Number",
     "noOfChar": 10,

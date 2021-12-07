@@ -1,0 +1,12 @@
+{
+	"entities": [
+		{
+			"ai-entity": "Gpe",
+			"catalog-reference": "Gpe",
+			"is-imported": true,
+			"nlp-entities": [
+			]
+		}
+	],
+	"model-name": "AI Entity Extraction Model"
+}

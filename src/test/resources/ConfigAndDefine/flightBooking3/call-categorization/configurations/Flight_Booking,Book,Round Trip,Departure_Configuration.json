@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Flight_Booking,Book,Round Trip,Departure"],
+        "level": 4,
+        "name": "Departure",
+        "bagOfKeywords": [{
+            "keywordName": "departs at",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

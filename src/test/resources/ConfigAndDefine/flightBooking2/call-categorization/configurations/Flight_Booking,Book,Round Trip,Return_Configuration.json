@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Flight_Booking,Book,Round Trip,Return"],
+        "level": 4,
+        "name": "Return",
+        "bagOfKeywords": [{
+            "keywordName": "returning",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}
