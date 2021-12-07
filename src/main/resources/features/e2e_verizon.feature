@@ -6,9 +6,9 @@ Feature: Test Offline Audio file - verizon
     #Given a "backbone setup request" organization creation exists
     Given we create an organization called <organization> with description as <description>
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
-    #	Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
-    #	And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
-    #	And we sync <orgAgentName>
+    Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
+    And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
+    And we sync <orgAgentName>
     #
     #	###############################################
     #
@@ -34,30 +34,30 @@ Feature: Test Offline Audio file - verizon
     #
     #ENTITY
     #
-    #Then define and configure entities in folder "ConfigAndDefine/verizon/entities/"
+    Then define and configure entities in folder "ConfigAndDefine/verizon/entities/"
     #
-    #Then validate and configure rules in folder "ConfigAndDefine/verizon/ruleEntity"
+    Then validate and configure rules in folder "ConfigAndDefine/verizon/ruleEntity"
     #
     #SUMMARY FORMAT
     #
-    #Then post summary format
+    Then post summary format
     #
     #INTENT
     #
-    #Then define and configure call categorization with folder "ConfigAndDefine/verizon/call-categorization"
+    Then define and configure call categorization with folder "ConfigAndDefine/verizon/call-categorization"
     #
     #
-    #Then configure alerts in folder "ConfigAndDefine/verizon/alerts"
+    Then configure alerts in folder "ConfigAndDefine/verizon/alerts"
     #
     ###########################################
     #
     #TRAINING FOR ENTITY AND INTENT
     #
-    #Then train entities
-    #Then train Alerts
-    #Then submit call category configuration
-    #Then train call-categories
-    #Then refresh all caches
+    Then train entities
+    Then train Alerts
+    Then submit call category configuration
+    Then train call-categories
+    Then refresh all caches
     #
     #############################################
     #
@@ -108,14 +108,17 @@ Feature: Test Offline Audio file - verizon
     ##VERIFYING DISPOSITION AGAINST GOLD STANDARD
     #
     And disposition for callId has intent of <intent>
-
+    Then edit and submit disposition intent "24 Months" as "36 Months"
+    And we sync <orgAgentName>
+    Then compare if disposition has changed intent from "24 Months" to "36 Months"
     #
     #############################################
     #
     ##DELETE ENTITIES
     #
-    #Then delete all entities
-    #Then delete all alerts
+    Then delete all entities
+    Then delete all alerts
+
     #
     ##############################################
     #
@@ -125,7 +128,7 @@ Feature: Test Offline Audio file - verizon
     ##############################################
     Examples: 
       | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                                | transcript-file                                              | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              |
-      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"    | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscript.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" |
+      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscript.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" |
 
   @deleteV
   Scenario Outline: Delete

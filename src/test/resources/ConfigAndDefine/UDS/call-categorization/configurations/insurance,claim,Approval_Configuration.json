@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["insurance,claim,Approval"],
+        "level": 3,
+        "name": "Approval",
+        "bagOfKeywords": [{
+            "keywordName": "approval",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": true,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

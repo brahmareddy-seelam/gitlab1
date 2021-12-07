@@ -1,0 +1,53 @@
+{
+  "data": {
+    "sessionId": "1638772888147ynqezkfv9",
+    "lang": "en-us",
+    "turns": [
+      {
+        "speaker": "Agent",
+        "text": "good afternoon rob my name is john and i see you're calling about your pending claim eight six seven five three one nine we can take care of this right away"
+      },
+      {
+        "speaker": "Customer",
+        "text": "oh yeah this is the fourth time i'm contacting you and it's been a week now and still she's any money what's going on"
+      },
+      {
+        "speaker": "Agent",
+        "text": "i understand your frustration i see your claim is row to be paid but we need your approval of the settlement terms which we can take care of right now"
+      },
+      {
+        "speaker": "Customer",
+        "text": "wondering nobody told me this i never saw your request come through for an approval"
+      },
+      {
+        "speaker": "Agent",
+        "text": "i'm sorry about that let's take care of this right now i'll also send you a copy but for now i just need your verbal agreement that by accepting the settlement you agree we can close at this matter and there will be no further action do you agree okay ron now that you accepted the terms"
+      },
+      {
+        "speaker": "Customer",
+        "text": "yes"
+      },
+      {
+        "speaker": "Agent",
+        "text": "then you'll see a check within five business days"
+      },
+      {
+        "speaker": "Customer",
+        "text": "one more thing i noticed there was a rate incre on my latest bill i don't think that's fair after just the single incident"
+      },
+      {
+        "speaker": "Agent",
+        "text": "you're right i they did go up however because you're a valued customer i can reverser charges effective immediately you're okay with that"
+      },
+      {
+        "speaker": "Customer",
+        "text": "okay yes that works for me thank you"
+      },
+      {
+        "speaker": "Agent",
+        "text": "no thank you for your patience and understanding"
+      }
+    ]
+  },
+  "errors": ""
+}

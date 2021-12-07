@@ -2,27 +2,21 @@
 Feature: Test Offline Audio file
   This will test a offline audio wav load end-to-end
 
-  @UniphoreDIalogueStems
+  @UDS 
   Scenario Outline: Test offline load of call18
-
-   	###CREATION OF ORGANIZATION, CATEGORY, AND AGENT
-   	   	
-   #Given a "backbone setup request" organization creation exists
-   #And we create an organization called <organization> with description as <description>
-   #And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
-   #And we can add <orgAgentName> with email <agentEmail> as an agent to <organization>
-   	
-   #	Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
-   #	And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>   	
-   #	
-   #	#And we sync <orgAgentName>
-   #	
-   #	###############################################
-   #	
-   #	##SETTING UP CALL VARIABLES
-   #	
+    ###CREATION OF ORGANIZATION, CATEGORY, AND AGENT
+    Given we create an organization called <organization> with description as <description>
+    And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
+    Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
+    And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
+    And we sync <orgAgentName>
+    #
+    #	###############################################
+    #
+    #	##SETTING UP CALL VARIABLES
+    #
     #Given a "offline-data" request exists
-   Given a <audio-file> file exists
+    Given a <audio-file> file exists
     And the request organization is <organization>
     And the request category is <category>
     And the request customerId is "8090909099"
@@ -39,134 +33,101 @@ Feature: Test Offline Audio file
     ###DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     #
     ##ENTITY
+    Then import ai entities from "ConfigAndDefine/UDS/aiEntities/aiEntity.json"
     #
-    #Then define and configure entities in folder "/ConfigAndDefine/call18/entities/"
+    Then define and configure entities in folder "ConfigAndDefine/UDS/entities"
     #
+    Then validate and configure rules in folder "ConfigAndDefine/UDS/ruleEntity"
     ##SUMMARY FORMAT
     #
-    #Then post summary format
+    Then post summary format
     #
     ##INTENT
     #
-    #Then define and configure call categorization with folder "ConfigAndDefine/call18/call-categorization"
-
+    Then define and configure call categorization with folder "ConfigAndDefine/UDS/call-categorization"
+    #
+    Then configure alerts in folder "ConfigAndDefine/UDS/alerts"
     ##############################################
-    
     ###TRAINING FOR ENTITY AND INTENT
-    
-    #Then train entities
-    #Then submit call category configuration
-    #Then train call-categories
-    #Then refresh all caches
+    Then train entities
+    Then train Alerts
+    Then submit call category configuration
+    Then train call-categories
+    Then refresh all caches
     #
     ##############################################
-		
-		###SENDING OFFLINE AUDIO REQUEST
-		
-    #When the request with file <audio-file> is sent to the audio-connector
-    #And wait for <audio-file> for 150 seconds
-   #	
-   #	##############################################
-   #	
-   #	###VERIFYING TRANSCRIPT AGAINST GOLD STANDARD
-   #	
-    Then a transcript is generated for <callId>
-    #And the transcript conversation for <callId> for <turn> has <phrase>
-    And the transcript conversation for <callId> matches the correct version <transcript-file>
-   #
-   #	##############################################
-   #	
-   #	###VERIFYING ENTITIES AGAINST GOLD STANDARD
-   #	
-    #And entities for callid <callId> exist
-    And the entity for callid <callId> has <orgAgentName> as <agentName>
-   #
-   #	##############################################
-#
-#		###VERIFYING SUMMARY AGAINST GOLD STANDARD
-#		
-    #And a summary for callid <callId> exists
-    #And a summary for callid <callId> has intent of <intent> 
-    #And a summary for callid <callId> has "APITesting1008" <agentName>
-    #And a summary for callid <callId> has "APITesting1008 Claim Status" <Claim Status>
-    #And a summary for callid <callId> has "APITesting1008 Claim ID" <Claim ID>
-    
+    ###SENDING OFFLINE AUDIO REQUEST
+    When the request with file <audio-file> is sent to the audio-connector
+    And wait for <audio-file> to get loaded
+    #
+    #	##############################################
+    #
+    #	###VERIFYING TRANSCRIPT AGAINST GOLD STANDARD
+    #
+    Then a transcript is generated for callId
+    And the transcript conversation for callId for <turn> has <phrase>
+    And the transcript conversation for callId matches the correct version <transcript-file>
+    #
+    #
+    #	##############################################
+    #
+    #	###VERIFYING ENTITIES AGAINST GOLD STANDARD
+    #
+    And entities for callId exist
+    And the entity for callId has "Person" as <agentName>
+    #
+    #	##############################################
+    #
+    #		###VERIFYING SUMMARY AGAINST GOLD STANDARD
+    #
+    And a summary for callId exists
+    And a summary for callId has intent of <intent>
+    And a summary for callId has "Person" <agentName>
+    And a summary for callId has "Repeat Customer" <Repeat Customer>
+    And a summary for callId has "Date" <Date>
+    And a summary for callId has "Duration" <ETC>
+    And a summary for callId has "Claim Number" <Claim Number>
+    #
+    Then edit "Person" as "Johnson"
+    And edit "Duration" as "7 business days"
+    Then submit the edited summaries
+    #
+    Then compare if "Person" has "Johnson" for callId
+    And compare if "Duration" has "7 business days" for callId
     ##############################################
-    
     ###VERIFYING DISPOSITION AGAINST GOLD STANDARD
-    
-    #And disposition for callid <callId> has intent of <intent> 
-    #
+    And disposition for callId has intent of <intent>
+    Then edit and submit disposition intent "Approval" as "Pending"
+    And we sync <orgAgentName>
+    Then compare if disposition has changed intent from "Approval" to "Pending"
     ##############################################
     #
     ###DELETE ENTITIES
     #
-    #Then delete all entities
-    
-    #Then delete the entity "Customer Name"
-    #Then delete the entity "Agent Name"
-    #Then delete the entity "Room Type"
-    #Then delete the entity "Credit Card Exp Date"
-    #Then delete the entity "Check-In Date"
-    #Then delete the entity "Check-Out Date"
-    #Then delete the entity "Customer Email"
-    
-    ##############################################
+    Then delete all entities
+    Then delete all alerts
 
+    ##############################################
     ###DELETE ORGANIZATION AND AGENT
-
     #Then we delete <orgAgentName> who is an <role> from <organization>
-   	#And we delete an organization called <organization>
-
+    #And we delete an organization called <organization>
     ##############################################
-  	Examples:
+    Examples: 
+      | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                                                     | turn | phrase       | intent                     | transcript-file                                | description   | colorVR       | agentName | Repeat Customer | Claim Number  | Date     | ETC               |
+      | "APITesting"   | "call18"    | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/UDS/UDS.wav" |    0 | "my name is" | "insurance/claim/Approval" | "src/test/resources/transcript-jsons/UDS.json" | "description" | "colorSample" | "john"    | "YES"           | "8675319" | "a week" | "5 business days" |
 
-    | organization  | category    	| orgAgentName 		 		 |agentEmail              				|role    |language  | callId    			 					 |    audio-file            								                     | turn | phrase           |intent                  | transcript-file                                | description      | colorVR            | agentName    | customerName |   Claim ID 		|    Claim Status    																			| 
-    | "APITests"   	| "APITests"    | "APITesting1008"     |"APITesting1008@uniphore.com"   |"Agent" |"E"       | "1633515436608tgtqqoc02"   | "/audio-files/UniphoreDIalogueStems/UniphoreDIalogueStems.wav"|  0   | "my name is"     |"insurance/claim" 			| "/transcript-jsons/UniphoreDIalogueStems.json" | "description"    | "colorSample"      | "john"       | "stanley"    |   "8675319"    |    "8675319 we can take care of this right away"        | 
+  
+  @deletecall
+  Scenario Outline: Delete
+    Given a <audio-file> file exists
+    And the request organization is <organization>
+    And the request category is <category>
+    And the request customerId is "8090909099"
+    And the request language is <language>
+    And the request agentId is <orgAgentName>
+    Then delete all entities
+    Then delete all alerts
 
-
-
-    	
-    	
-    	
-    	
-    	
-    	
-    	@delete
-    	Scenario Outline: Delete
-    	
-    	Given a <audio-file> file exists 						
-    	And the request organization is <organization>
-    	And the request category is <category>
-    	And the request customerId is "8090909099"
-    	And the request language is <language>
-    	And the request agentId is <orgAgentName>
-    	Then delete all entities
-    	Then delete all alerts
-    	
-    	  	
-    	 Examples:
-
-    	| organization  | category    	| orgAgentName 		 		 |agentEmail              				|catalogue file       |role    |language   |    audio-file            								 | turn | phrase          |intent                  		  | transcript-file                          										| description      | colorVR            | agentName    | customerName |   Claim ID 			|    Claim Date    | Claim Deadline  |Claim Amount   |Claim Resolve in 	 |
-   		| "APITesting"    | "call18"        | "APITesting"     |"APITesting@uniphore.com"   |"entityCatalogue.json"|"Agent" |"EUU"     | "audio-files/call18AudioFiles/call18.wav"|  0   | "my name is"     |"insurance/claim/Query" 			| "src/test/resources/transcript-jsons/call18Transcript.json" | "description"    | "colorSample"      | "john"       | "stanley"    |   "20084798"    |    "2/13"        | "2/23/"				 |"4000 dollars" |"5 business days"  |
-    	
-    	
-    	
-    	@delete
-    	Scenario Outline: Delete
-    	
-    	Given a <audio-file> file exists 						
-    	And the request organization is <organization>
-    	And the request category is <category>
-    	And the request customerId is "8090909099"
-    	And the request language is <language>
-    	And the request agentId is <orgAgentName>
-    	Then delete all entities
-    	Then delete all alerts
-    	
-    	  	
-    	 Examples:
-
-    	| organization 	  | category    	| orgAgentName 		 		 |agentEmail              				|catalogue file        |role    |language  |    audio-file            								 | turn | phrase           |intent                  		  | transcript-file                          										 | description      | colorVR            | agentName    | customerName |   Claim ID 		 |    Claim Date    | Claim Deadline |Claim Amount   |Claim Resolve in 	 |
-   		| "APITests"    | "bill"        | "APITesting1008"     |"APITesting1008@uniphore.com"   |"entityCatalogue.json"|"Agent" |"EUU"     | "audio-files/verizonAudioFile/verizon.wav"|  0   | "my name is"     |"insurance/claim/Query" 			| "src/test/resources/transcript-jsons/verizonTranscript.json" | "description"    | "colorSample"      | "john"       | "stanley"    |   "20084798"    |    "2/13"        | "2/23/"				 |"4000 dollars" |"5 business days"  |
-    	
+    Examples: 
+      | organization | category | orgAgentName     | agentEmail                    | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                  | transcript-file                                              | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  |
+      | "APITests"   | "bill"   | "APITesting1008" | "APITesting1008@uniphore.com" | "entityCatalogue.json" | "Agent" | "EUU"    | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/verizonTranscript.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |

@@ -14,11 +14,11 @@ public class Main extends BaseClass{
 		// TODO Auto-generated method stub
 
 		String organization = "APITesting";
-		String category = "call18";
+		String category = "verizon";
 
 		prop.setProperty("Backend", "3.17.7.15");
 		port.setProperty("BACKEND_PORT", "3360");
-		String pathForSaving = "C:\\Users\\murali\\workspace\\data\\API";
+		String pathForSaving = "C:\\Users\\murali\\workspace\\flight2";
 
 
 	    TestCenter.getInstance().setAccessToken("l!5ZElx+DJy3#9</gZA_V9q5d2=hD9");
@@ -27,7 +27,7 @@ public class Main extends BaseClass{
 	    CommonSteps.orgMap.put("category", category);
 	    
 	    PullerandWriter.saveCallConfigFiles(pathForSaving);
-//	    PullerandWriter.saveCallAlertConfigFiles(pathForSaving);
+	    PullerandWriter.saveCallAlertConfigFiles(pathForSaving);
 	    
 	}
 

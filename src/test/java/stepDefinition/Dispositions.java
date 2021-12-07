@@ -62,7 +62,8 @@ public class Dispositions extends BaseClass{
 			  } else {}
 			}
 			finalValue=finalValue.append("]");
-			String payload=(finalValue.toString().replace("\"\"\"", "\"\"")).replace(",]", "]}]");
+			String payload=(finalValue.toString().replace("\"\"\"", "\"\"")).replace("\"},]", "}]}]");
+			System.out.println(payload);
 		HashMap<String, String> data=new HashMap<>();
 		data.put("sessionId", CommonSteps.commonMap.get("callId"));
 		data.put("userId", cs.getUserid());

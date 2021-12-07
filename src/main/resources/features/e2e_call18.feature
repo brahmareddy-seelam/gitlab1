@@ -108,15 +108,16 @@ Feature: Test Offline Audio file - Call18
     ##VERIFYING DISPOSITION AGAINST GOLD STANDARD
     #
     And disposition for callId has intent of <intent>
-    #Then edit and submit disposition intent "Query" as "approved"
-    #Then compare if disposition has changed intent from "Query" to "approved"
+    Then edit and submit disposition intent "Query" as "approved"
+    And we sync <orgAgentName>
+    Then compare if disposition has changed intent from "Query" to "approved"
     #
     #############################################
     #
     ##DELETE ENTITIES
     #
-    #Then delete all entities
-    #Then delete all alerts
+    Then delete all entities
+    Then delete all alerts
     #
     ##############################################
     #
@@ -136,20 +137,7 @@ Feature: Test Offline Audio file - Call18
       | catalogue file         |
       | "entityCatalogue.json" |
 
-  @test
-  Scenario Outline: run
-    Given a <audio-file> file exists
-    And the request organization is <organization>
-    And the request category is <category>
-    And the request customerId is "8090909099"
-    #And the request language is <language>
-    And the request agentId is <orgAgentName>
-    Then generate the callId
-
-    Examples: 
-      | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                                | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  |
-      | "APITests"   | "bill"   | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "EUU"    | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18TranscriptASR.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |
-
+  
   @delete
   Scenario Outline: Delete
     Given a <audio-file> file exists

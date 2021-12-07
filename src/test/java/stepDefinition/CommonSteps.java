@@ -78,7 +78,7 @@ public class CommonSteps extends BaseClass{
 	
 	
 	 public String getStartDate() {
-		 return userId;
+		 return startDate;
 	 }
 	 
 	 
@@ -88,15 +88,15 @@ public class CommonSteps extends BaseClass{
 	 
 	 
 	 public void setStartDate(String startDate) {
-		 CommonSteps.userId=startDate;
+		 CommonSteps.startDate=startDate;
 	 }
 	 
 	 public String getEndDate() {
-		 return userId;
+		 return endDate;
 	 }
 	 
 	 public void setEndDate(String endDate) {
-		 CommonSteps.userId=endDate;
+		 CommonSteps.endDate=endDate;
 	 }
 	 
 	 
