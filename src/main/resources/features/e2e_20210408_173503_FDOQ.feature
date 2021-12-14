@@ -117,6 +117,7 @@ Feature: Test Offline Audio file
     ##############################################
 
     ###DELETE ORGANIZATION AND AGENT
+    Then we delete category
 
     #Then we delete <orgAgentName> who is an <role> from <organization>
    	#And we delete an organization called <organization>
@@ -125,7 +126,7 @@ Feature: Test Offline Audio file
   	Examples:
 
     | organization  | category    	| orgAgentName 		 		 |agentEmail              				|role    |language  | callId    			 					 |    audio-file            								                     | turn | phrase           |intent                  | transcript-file                                | description      | colorVR            | agentName    | customerName |   Claim ID 		|    Claim Status    																			| 
-    | "APITests"   	| "APITests"    | "APITesting1008"     |"APITesting1008@uniphore.com"   |"Agent" |"E"       | "1633515436608tgtqqoc02"   | "/audio-files/UniphoreDIalogueStems/UniphoreDIalogueStems.wav"|  0   | "my name is"     |"insurance/claim" 			| "/transcript-jsons/UniphoreDIalogueStems.json" | "description"    | "colorSample"      | "john"       | "stanley"    |   "8675319"    |    "8675319 we can take care of this right away"        | 
+    | "APITests"   	| "FDOQ"    | "APITesting"     |"APITesting@uniphore.com"   |"Agent" |"E"       | "1633515436608tgtqqoc02"   | "/audio-files/UniphoreDIalogueStems/UniphoreDIalogueStems.wav"|  0   | "my name is"     |"insurance/claim" 			| "/transcript-jsons/UniphoreDIalogueStems.json" | "description"    | "colorSample"      | "john"       | "stanley"    |   "8675319"    |    "8675319 we can take care of this right away"        | 
 
 
 

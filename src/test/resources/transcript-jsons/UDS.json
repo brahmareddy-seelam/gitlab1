@@ -1,6 +1,6 @@
 {
   "data": {
-    "sessionId": "1638772888147ynqezkfv9",
+    "sessionId": "1638984101149cczylg69z",
     "lang": "en-us",
     "turns": [
       {
@@ -9,7 +9,7 @@
       },
       {
         "speaker": "Customer",
-        "text": "oh yeah this is the fourth time i'm contacting you and it's been a week now and still she's any money what's going on"
+        "text": "but yeah this is the fourth time i'm contacting you and it's been a week now and still she's any money what's going on"
       },
       {
         "speaker": "Agent",
@@ -21,7 +21,7 @@
       },
       {
         "speaker": "Agent",
-        "text": "i'm sorry about that let's take care of this right now i'll also send you a copy but for now i just need your verbal agreement that by accepting the settlement you agree we can close at this matter and there will be no further action do you agree okay ron now that you accepted the terms"
+        "text": "i'm sorry about that let's take care of this right now i'll also send you a copy but for now i just need your verbal agreement that by accepting the settlement you agree we can close out this matter and there will be no further action do you agree okay ron now that you accepted the terms"
       },
       {
         "speaker": "Customer",

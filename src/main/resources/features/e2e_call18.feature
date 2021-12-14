@@ -1,13 +1,13 @@
 Feature: Test Offline Audio file - Call18
 
-  @call18 @smoke @Regression
-  Scenario Outline: To test offline load of call18 and validate the output
+  @call18  @Regression
+  Scenario Outline: To test offline load of call18 and validate the summary and Feedbackloop
     ###CREATION OF ORGANIZATION, CATEGORY, AND AGENT
     Given we create an organization called <organization> with description as <description>
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
     Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
     And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
-    #	And we sync <orgAgentName>
+    And we sync <orgAgentName>
     #
     #	###############################################
     #
@@ -32,6 +32,7 @@ Feature: Test Offline Audio file - Call18
     ##DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     #
     #ENTITY
+    Then we add language "E" to org <organization> and category <category>
     #
     Then import ai entities from "ConfigAndDefine/call18/aiEntities/aiEntity.json"
     #
@@ -72,14 +73,14 @@ Feature: Test Offline Audio file - Call18
     #
     Then a transcript is generated for callId
     And the transcript conversation for callId for <turn> has <phrase>
-    And the transcript conversation for callId matches the correct version <transcript-file>
+    #And the transcript conversation for callId matches the correct version <transcript-file>
     #
     #	##############################################
     #
     #	###VERIFYING ENTITIES AGAINST GOLD STANDARD
     #
-    And entities for callId exist
-    And the entity for callId has "Agent Name" as <agentName>
+    #And entities for callId exist
+    #And the entity for callId has "Agent Name" as <agentName>
     #
     #	##############################################
     #
@@ -93,7 +94,7 @@ Feature: Test Offline Audio file - Call18
     And a summary for callId has "Claim DeadLine" <Claim Deadline>
     And a summary for callId has "Claim Amount" <Claim Amount>
     And a summary for callId has "Latest By" <Claim Resolve in>
-    And a summary for callId has "Name Asc" "john, jon"
+    And a summary for callId has "Name Asc" "john"
     And a summary for callId has "Claim Amount Rule" <Claim Amount>
     #
     Then edit "Agent Name" as "John Smith"
@@ -118,16 +119,18 @@ Feature: Test Offline Audio file - Call18
     #
     Then delete all entities
     Then delete all alerts
+
     #
     ##############################################
     #
     ###DELETE ORGANIZATION AND AGENT
+    Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                             | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  |
-      | "APITesting" | "call18" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"    | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18Transcript.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |
+      | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                                | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  |
+      | "APITesting" | "call18" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18TranscriptASR.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |
 
   @catalog
   Scenario Outline: To create entity-catalog
@@ -137,7 +140,6 @@ Feature: Test Offline Audio file - Call18
       | catalogue file         |
       | "entityCatalogue.json" |
 
-  
   @delete
   Scenario Outline: Delete
     Given a <audio-file> file exists
@@ -155,4 +157,9 @@ Feature: Test Offline Audio file - Call18
 
   @cti
   Scenario Outline: To add lnaguage to Org
-    Given we add language "E" to Organization and Categories
+    Then we add language "E" to org <organization> and category <category>
+
+    #Given we add language "E" to Organization and Categories
+    Examples: 
+      | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                             | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  |
+      | "APITesting" | "UDS" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18Transcript.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |

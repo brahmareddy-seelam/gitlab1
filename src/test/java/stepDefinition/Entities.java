@@ -43,6 +43,19 @@ public class Entities extends BaseClass{
 			System.out.println("defineJsonFileObj >>>>>> " + defineJsonFileObj);
 			request.body(defineJsonFileObj.toString()).when();
 			response=request.log().all().post("define/entity");
+			if(response.getStatusCode()==409) {
+				loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
+				response=request.get("entity");
+				JSONObject jsonObj = new JSONObject(response.body().asString());
+				JSONArray jsonArr = jsonObj.getJSONArray("data");
+				
+				loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
+				request.body(jsonArr.toString());
+				Assert.assertEquals(200, (request.post("delete/entities").getStatusCode()));
+				
+				request.body(defineJsonFileObj.toString()).when();
+				response=request.log().all().post("define/entity");
+			}
 			Assert.assertEquals(200,response.getStatusCode());
 		}
 		//To configure entities
@@ -52,6 +65,11 @@ public class Entities extends BaseClass{
 			JSONObject defineJsonFileObj = new JSONObject(configJsonString);
 			request.body(defineJsonFileObj.toString()).when();
 			response=request.post("configure/entity");
+			if(response.getStatusCode()==409) {
+				String name=defineJsonFileObj.getString("name");
+				loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
+				response=request.delete("entity"+name);
+				}
 			Assert.assertEquals(200,response.getStatusCode());
 		}
 	}
@@ -133,8 +151,10 @@ public class Entities extends BaseClass{
 		
 		
 		File[] listFile=ruleEntityFolder.listFiles();
+		int i=0;
 		for (File defineFile : listFile) {
-			int i=0;
+			
+			
 			String ruler="Rule"+i;
 			HashMap<String, String> rule=new HashMap<>();
 			rule.put("ruleName", ruler);

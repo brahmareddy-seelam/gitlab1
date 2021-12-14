@@ -32,6 +32,7 @@ Feature: Test Offline Audio file - verizon
     #
     ##DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     #
+    Then we add language "E" to org <organization> and category <category>
     #ENTITY
     #
     Then define and configure entities in folder "ConfigAndDefine/verizon/entities/"
@@ -72,7 +73,7 @@ Feature: Test Offline Audio file - verizon
     #
     Then a transcript is generated for callId
     And the transcript conversation for callId for <turn> has <phrase>
-    And the transcript conversation for callId matches the correct version <transcript-file>
+    #And the transcript conversation for callId matches the correct version <transcript-file>
     #
     #	##############################################
     #
@@ -90,7 +91,7 @@ Feature: Test Offline Audio file - verizon
     And a summary for callId has "Phone Upgrade" <phoneupgrade>
     And a summary for callId has "Social Security Number" <Social Security Number>
     And a summary for callId has "Purchase Option 1" <Purchase Option 1>
-    And a summary for callId has "Time to deliver" <Time to deliver>
+    #And a summary for callId has "Time to deliver" <Time to deliver>
     And a summary for callId has "Purchase Option 2" <Purchase Option 2>
     And a summary for callId has "Customer Wireless Number" <Customer Wireless Number>
     And a summary for callId has "Phone Opted" <Phone Opted>
@@ -123,24 +124,12 @@ Feature: Test Offline Audio file - verizon
     ##############################################
     #
     ###DELETE ORGANIZATION AND AGENT
+    Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
       | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                                | transcript-file                                              | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              |
-      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscript.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" |
+      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" |
 
-  @deleteV
-  Scenario Outline: Delete
-    Given a <audio-file> file exists
-    And the request organization is <organization>
-    And the request category is <category>
-    And the request customerId is "8090909099"
-    And the request language is <language>
-    And the request agentId is <orgAgentName>
-    Then delete all entities
-    Then delete all alerts
-
-    Examples: 
-      | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                               | transcript-file                                                 | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number |
-      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "EUU"    | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/Full Payment" | "src/test/resources/transcript-jsons/verizonTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             |
+ 

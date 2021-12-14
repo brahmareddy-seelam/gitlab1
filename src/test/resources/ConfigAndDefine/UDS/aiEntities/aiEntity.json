@@ -4,15 +4,16 @@
 			"ai-entity": "Person",
 			"catalog-reference": "Person",
 			"is-imported": true,
-			"nlp-entities": []
+			"nlp-entities": [
+			]
 		},
 		{
 			"ai-entity": "Date",
 			"catalog-reference": "Date",
 			"is-imported": true,
-			"nlp-entities": []
+			"nlp-entities": [
+			]
 		}
-		
 	],
-	"model-name": "AI Entity Extraction Model"
+    "model-name": "AI Entity Extraction Model"
 }

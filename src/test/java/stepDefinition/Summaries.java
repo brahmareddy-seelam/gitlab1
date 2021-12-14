@@ -207,7 +207,7 @@ public class Summaries extends BaseClass{
 		map.put("username", port.getProperty("username"));
 		map.put("password", port.getProperty("password"));
 		
-		response=request.log().all().formParams(map).post("auth/realms/demo_realm/protocol/openid-connect/token");
+		response=request.log().all().formParams(map).post("auth/realms/"+port.getProperty("realm")+"/protocol/openid-connect/token");
 		jsonPathEvaluator = response.jsonPath();
 		String access_token = jsonPathEvaluator.get("access_token");
 		System.out.println(access_token);

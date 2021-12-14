@@ -6,7 +6,7 @@
 	"components": [
 		{
 			"actions": [
-				"$.output=$.value().orderByTimeAsc()"
+				"$.output=$.value()"
 			],
 			"condition": "$.aiEntity('Person').isTrue()",
 			"description": "Enter discription here",

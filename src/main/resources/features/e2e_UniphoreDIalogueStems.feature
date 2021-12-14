@@ -1,9 +1,9 @@
 @E2eOffline
-Feature: Test Offline Audio file
+Feature: Test Offline Audio file - UniphoreDIalogueStems
   This will test a offline audio wav load end-to-end
 
-  @UDS 
-  Scenario Outline: Test offline load of call18
+  @UDS @smoke @Regression
+  Scenario Outline: Test offline load of UDS and validate transcript with Golden standard
     ###CREATION OF ORGANIZATION, CATEGORY, AND AGENT
     Given we create an organization called <organization> with description as <description>
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
@@ -32,6 +32,7 @@ Feature: Test Offline Audio file
     #
     ###DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     #
+    Then we add language "E" to org <organization> and category <category>
     ##ENTITY
     Then import ai entities from "ConfigAndDefine/UDS/aiEntities/aiEntity.json"
     #
@@ -109,25 +110,13 @@ Feature: Test Offline Audio file
 
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
+    Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
       | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                                                     | turn | phrase       | intent                     | transcript-file                                | description   | colorVR       | agentName | Repeat Customer | Claim Number  | Date     | ETC               |
-      | "APITesting"   | "call18"    | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/UDS/UDS.wav" |    0 | "my name is" | "insurance/claim/Approval" | "src/test/resources/transcript-jsons/UDS.json" | "description" | "colorSample" | "john"    | "YES"           | "8675319" | "a week" | "5 business days" |
+      | "APITesting"   | "UDS"    | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/UDS/UDS.wav" |    0 | "my name is" | "insurance/claim/Approval" | "src/test/resources/transcript-jsons/UDS.json" | "description" | "colorSample" | "john"    | "YES"           | "8675319" | "a week" | "5 business days" |
 
   
-  @deletecall
-  Scenario Outline: Delete
-    Given a <audio-file> file exists
-    And the request organization is <organization>
-    And the request category is <category>
-    And the request customerId is "8090909099"
-    And the request language is <language>
-    And the request agentId is <orgAgentName>
-    Then delete all entities
-    Then delete all alerts
-
-    Examples: 
-      | organization | category | orgAgentName     | agentEmail                    | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                  | transcript-file                                              | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  |
-      | "APITests"   | "bill"   | "APITesting1008" | "APITesting1008@uniphore.com" | "entityCatalogue.json" | "Agent" | "EUU"    | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/verizonTranscript.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |
+  

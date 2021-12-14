@@ -12,4 +12,4 @@ Feature: Delete all configurations
       | "APITesting" | "call18"  | 
       | "APITesting" | "call19"  |
       | "APITesting" | "verizon" | 
-      
+      | "APITesting" | "UDS" |

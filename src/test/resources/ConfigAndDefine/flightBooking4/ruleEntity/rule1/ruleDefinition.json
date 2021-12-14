@@ -1,0 +1,14 @@
+{
+	"name": "Location Rule",
+	"description": "Location Rule",
+	"defaultValue": "",
+	"entityType": "RULE",
+	"catalogReference": null,
+	"noOfChar": 0,
+	"boolTrueValue": null,
+	"entityTextIfFalse": null,
+	"sourceType": "RULE",
+	"saved": true,
+	"trained": false,
+	"referenceName": "Location Rule"
+}

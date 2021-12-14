@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "",
+    "description": "Number",
+    "noOfChar": 10,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "Number",
+    "referenceName": "Number",
+    "entityTextIfFalse": null
+}

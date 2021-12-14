@@ -1,8 +1,8 @@
 @E2eOffline
-Feature: Test Offline Audio file
+Feature: Test Offline Audio file - Call19
   This will test a offline audio wav load end-to-end
 
-  @call19 @hotel-booking 
+  @call19 @hotel-booking @Regression
   Scenario Outline: Test offline load of call19
     #Given a "backbone setup request" organization creation exists
     Given we create an organization called <organization> with description as <description>
@@ -29,11 +29,12 @@ Feature: Test Offline Audio file
     ##############################################
     ###DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     ##ENTITY
+    Then we add language "E" to org <organization> and category <category>
     Then import ai entities from "ConfigAndDefine/call19/aiEntities/aiEntity.json"
     #
-    Then define and configure entities in folder "/scenarios/call19/entities"
+    Then define and configure entities in folder "ConfigAndDefine/call19/entities"
     #
-    Then validate and configure rules in folder "ConfigAndDefine/call19/ruleEntity"
+    #Then validate and configure rules in folder "ConfigAndDefine/call19/ruleEntity"
     #
     ##SUMMARY FORMAT
     #
@@ -41,7 +42,7 @@ Feature: Test Offline Audio file
     #
     ##INTENT
     #
-    Then define and configure call categorization with folder "scenarios/call19/call-categorization"
+    Then define and configure call categorization with folder "ConfigAndDefine/call19/call-categorization"
     #
     Then configure alerts in folder "ConfigAndDefine/call19/alerts"
     #
@@ -107,9 +108,10 @@ Feature: Test Offline Audio file
 		#
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
+    Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
       | organization  | category | orgAgentName     | agentEmail               | role    | language   |  audio-file                | turn | phrase       | intent                        | transcript-file                           | description   | colorVR       | agentName | customerName | roomType                | creditCardExpDate | checkinDate | checkoutDate | customerEmail                        |
-      | "APITesting"    | "call19" | "APITesting" | "APITesting@uni.com" | "Agent" | "EUU"      |  "/audio-files/call19.wav" |    0 | "my name is" | "Hotel Booking/Deluxe/Booked" | "/transcript-jsons/call19Transcript.json" | "description" | "colorSample" | "michael" | "sarah"      | "sea view deluxe sweet" | "x/xx"            | "26"        | "27"         | "sarah dot parker and gmail dot com" |
+      | "APITesting"    | "call19" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      |  "audio-files/call19AudioFiles/call19.wav" |    0 | "my name is" | "Hotel Booking/Deluxe/Booked" | "/transcript-jsons/call19Transcript.json" | "description" | "colorSample" | "michael" | "sarah"      | "sea view deluxe sweet" | "x/xx"            | "26"        | "27"         | "sarah dot parker and gmail dot com" |

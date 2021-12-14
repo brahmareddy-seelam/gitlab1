@@ -136,7 +136,7 @@ public class AddAgent extends BaseClass{
 		realmRoles.put("office_access");
 		realmRoles.put("uma_authorization");
 
-		JSONArray cred=new JSONArray();
+		
 //		cred.put(")
 		JSONObject userAgent = new JSONObject();
 		userAgent.put("username", agentName);
@@ -148,17 +148,27 @@ public class AddAgent extends BaseClass{
 		userAgent.put("realmRoles", realmRoles);
 		userAgent.put("enabled", "true");
 		
-		TestCenter.getInstance().setAccessToken(TestCenter.getInstance().getKeycloakAccessToken());
+//		TestCenter.getInstance().setAccessToken(TestCenter.getInstance().getKeycloakAccessToken());
 		
 		request.auth().oauth2(TestCenter.getInstance().getKeycloakAccessToken()).header("Content-Type","application/json");
 		
 		request.body(userAgent.toString()).when();
 		
-		response=request.log().all().post("auth/admin/realms/demo_realm/users/");
+		response=request.log().all().post("auth/admin/realms/"+port.getProperty("realm")+"/users/");
 		
 		int reponseCode=response.getStatusCode();
 		System.out.println("reponseCode "+reponseCode);
 		Assert.assertTrue(reponseCode==201 || reponseCode==409);
+				
+		HashMap<String, String>  cred=new HashMap<>();
+		cred.put("type","password");
+		cred.put("value", port.getProperty("password"));
+		cred.put("temporary", "true");
+		loadURL("KEYCLOAK_PORT");
+		request.auth().oauth2(TestCenter.getInstance().getKeycloakAccessToken()).header("Content-Type","application/json");
+		request.body(cred.toString());
+		response=request.log().all().post("auth/admin/realms/"+port.getProperty("realm")+"/users/"+getId()+"/reset-password");
+//		Assert.assertEquals(204, response.getStatusCode());
 //		Assert.assertEquals(Matchers.anyOf(Matchers.is(200),Matchers.is(409)),response.getStatusCode());
 //		Assert.assertThat(response.getStatusCode(), Matchers.anyOf(Matchers.is(200),Matchers.is(409)));
 
@@ -189,7 +199,7 @@ public class AddAgent extends BaseClass{
 		loadURL("KEYCLOAK_PORT");
 		response=request.log().all().accept(ContentType.JSON).auth()
 				.oauth2(orginalAccessToken)
-				.get("auth/admin/realms/uniphore/users?search=" + emailDomain + "&max=5000");
+				.get("auth/admin/realms/"+port.getProperty("realm")+"/users?search=" + emailDomain + "&max=5000");
 
 		TestCenter.getInstance().setAccessToken(orginalAccessToken);
 
@@ -197,6 +207,17 @@ public class AddAgent extends BaseClass{
 
 		return users;
 	}
+	
+	public String getId() {
+		loadURL("KEYCLOAK_PORT");
+		response=request.log().all().accept(ContentType.JSON).auth()
+				.oauth2(TestCenter.getInstance().getKeycloakAccessToken())
+				.get("auth/admin/realms/"+port.getProperty("realm")+"/users?search="+port.getProperty("username"));
+		JSONArray JSONResponseBody = new  JSONArray(response.body().asString());
+		String id=JSONResponseBody.getJSONObject(0).getString("id");
+		return id;
+	}
+	
 	
 	
 	@Given("we sync {string}")
@@ -210,11 +231,11 @@ public class AddAgent extends BaseClass{
 		HashMap<String, String> map = new HashMap<>();
 		map=new HashMap<String, String>();
 		map.put("grant_type", "password");
-		map.put("client_id", "demo_client_private");
+		map.put("client_id", port.getProperty("client_id"));
 		map.put("username", port.getProperty("username"));
 		map.put("password", port.getProperty("password"));
 		
-		response=request.log().all().formParams(map).post("auth/realms/demo_realm/protocol/openid-connect/token");
+		response=request.log().all().formParams(map).post("auth/realms/"+port.getProperty("realm")+"/protocol/openid-connect/token");
 		jsonPathEvaluator = response.jsonPath();
 		String access_token = jsonPathEvaluator.get("access_token");
 		System.out.println(access_token);
@@ -232,4 +253,19 @@ public class AddAgent extends BaseClass{
 		cs.setEndDate(endDate);
 	}
 
+	
+	@Given("we delete category")
+	public void delete_agent() {
+		loadURL("OCMS_PORT");
+		loadQueryParams(CommonSteps.orgMap);
+		response=request.delete("config/category");
+		Assert.assertEquals(200, response.getStatusCode());
+	}
+	
+	@Given("we delete organization {string}")
+	public void delete_org(String org) {
+		loadURL("OCMS_PORT");
+		response=request.delete("config/organization/"+org);
+		Assert.assertEquals(200, response.getStatusCode());
+	}
 }

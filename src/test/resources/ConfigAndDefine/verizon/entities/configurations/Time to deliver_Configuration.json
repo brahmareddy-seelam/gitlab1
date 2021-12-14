@@ -9,7 +9,12 @@
             "keywordName": "you'll receive a new phone in the next",
             "isNew": null,
             "categoryId": 0
-        }],
+        },
+        {
+                "keywordName": "you'll receive a new phone and the next ",
+                "isNew": null,
+                "categoryId": 0
+            }],
         "entityExtractionChannel": "Agent",
         "entityPosition": "Suffix",
         "turnPosition": "Same",
