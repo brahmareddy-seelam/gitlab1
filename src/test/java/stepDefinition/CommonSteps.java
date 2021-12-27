@@ -224,7 +224,7 @@ public class CommonSteps extends BaseClass{
 		System.out.println(finalASR.toString());
 		loadURL("BACKEND_PORT");
 		request.log().all().contentType(ContentType.JSON).body(finalASR.toString());
-		response=request.put("asr-instances");
+		response=request.put("asr-instance");
 		Assert.assertEquals(200, response.getStatusCode());
 	}
 	
