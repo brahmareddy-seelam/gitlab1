@@ -123,12 +123,12 @@ Feature: Test Offline Audio file - Call18
     #
     Then delete all entities
     Then delete all alerts
+
     #
     ##############################################
     #
     ###DELETE ORGANIZATION AND AGENT
     #Then we delete category
-
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
@@ -175,17 +175,15 @@ Feature: Test Offline Audio file - Call18
     Examples: 
       | name            | type                |
       | "Call Duration" | "Information Alert" |
-      
-      
-   @test
-   Scenario Outline: Test
-     Given we create an organization called <organization> with description as <description>
+
+  @test
+  Scenario Outline: Test
+    Given we create an organization called <organization> with description as <description>
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
     Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
     And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
     And we sync <orgAgentName>
-    
-    Examples:
-    | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                                                     | turn | phrase       | intent                     | transcript-file                                | description   | colorVR       | agentName | Repeat Customer | Claim Number  | Date     | ETC               |
-    | "APITesting"   | "UDS"    | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/UDS/UDS.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/UDS.json" | "description" | "colorSample" | "john"    | "YES"           | "8675319" | "a week" | "5 business days" |
-    
+
+    Examples: 
+      | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                | turn | phrase       | intent                  | transcript-file                                | description   | colorVR       | agentName | Repeat Customer | Claim Number | Date     | ETC               |
+      | "APITesting" | "UDS"    | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/UDS/UDS.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/UDS.json" | "description" | "colorSample" | "john"    | "YES"           | "8675319"    | "a week" | "5 business days" |
