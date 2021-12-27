@@ -15,6 +15,11 @@
                 "keywordName": "i'll go in for the",
                 "isNew": null,
                 "categoryId": 0
+            },
+            {
+                "keywordName": "all good in for the",
+                "isNew": null,
+                "categoryId": 0
             }
         ],
         "entityExtractionChannel": "Customer",

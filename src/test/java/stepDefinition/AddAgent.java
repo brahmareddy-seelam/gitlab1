@@ -3,6 +3,7 @@ package stepDefinition;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.hamcrest.Matchers;
 import org.json.JSONArray;
@@ -13,6 +14,7 @@ import com.uniphore.ri.main.e2e.BaseClass;
 import com.uniphore.ri.main.e2e.TestCenter;
 import io.cucumber.java.en.Given;
 import io.restassured.http.ContentType;
+import java.util.Map;
 
 public class AddAgent extends BaseClass{
 	
@@ -33,7 +35,7 @@ public class AddAgent extends BaseClass{
 		loadURL("OCMS_PORT");
 		request.log().all().contentType(ContentType.JSON).body(jsonObj.toString()).post("config/organization");
 
-//		System.out.println("Organization: " + response.getBody());
+//		System.out.println("Organization: " + response.getBody()); Commenting the lines since successful response is not returning any body!
 //		Assert.assertEquals("200 OK", response.getStatusLine() );
 
 	}
@@ -134,8 +136,6 @@ public class AddAgent extends BaseClass{
 		realmRoles.put("office_access");
 		realmRoles.put("uma_authorization");
 
-		JSONArray cred=new JSONArray();
-//		cred.put(")
 		JSONObject userAgent = new JSONObject();
 		userAgent.put("username", agentName);
 		userAgent.put("firstName", agentName);
@@ -152,13 +152,21 @@ public class AddAgent extends BaseClass{
 		
 		request.body(userAgent.toString()).when();
 		
-		response=request.log().all().post("auth/admin/realms/demo_realm/users/");
+		response=request.log().all().post("auth/admin/realms/"+port.getProperty("realm")+"/users/");
 		
 		int reponseCode=response.getStatusCode();
 		System.out.println("reponseCode "+reponseCode);
 		Assert.assertTrue(reponseCode==201 || reponseCode==409);
-//		Assert.assertEquals(Matchers.anyOf(Matchers.is(200),Matchers.is(409)),response.getStatusCode());
-//		Assert.assertThat(response.getStatusCode(), Matchers.anyOf(Matchers.is(200),Matchers.is(409)));
+				
+		HashMap<String, String>  cred=new HashMap<>();
+		cred.put("type","password");
+		cred.put("value", port.getProperty("password"));
+		cred.put("temporary", "false");
+		loadURL("KEYCLOAK_PORT");
+		request.auth().oauth2(TestCenter.getInstance().getKeycloakAccessToken()).header("Content-Type","application/json");
+		request.body(cred);
+		response=request.log().all().put("auth/admin/realms/"+port.getProperty("realm")+"/users/"+getId()+"/reset-password");
+		Assert.assertEquals(204, response.getStatusCode());
 
 	}
 	
@@ -187,7 +195,7 @@ public class AddAgent extends BaseClass{
 		loadURL("KEYCLOAK_PORT");
 		response=request.log().all().accept(ContentType.JSON).auth()
 				.oauth2(orginalAccessToken)
-				.get("auth/admin/realms/uniphore/users?search=" + emailDomain + "&max=5000");
+				.get("auth/admin/realms/"+port.getProperty("realm")+"/users?search=apitesting@uniphore.com&max=5000");
 
 		TestCenter.getInstance().setAccessToken(orginalAccessToken);
 
@@ -196,21 +204,65 @@ public class AddAgent extends BaseClass{
 		return users;
 	}
 	
+	public String getId() {
+		loadURL("KEYCLOAK_PORT");
+		response=request.log().all().accept(ContentType.JSON).auth()
+				.oauth2(TestCenter.getInstance().getKeycloakAccessToken())
+				.get("auth/admin/realms/"+port.getProperty("realm")+"/users?search="+port.getProperty("username"));
+		JSONArray JSONResponseBody = new  JSONArray(response.body().asString());
+		String id=JSONResponseBody.getJSONObject(0).getString("id");
+		return id;
+	}
+	
+	
 	
 	@Given("we sync {string}")
 	public void sync_user(String username) throws IOException, URISyntaxException {
 		JSONObject jsonObj = new JSONObject();
 
-		jsonObj.put("Authorization", "Bearer " + TestCenter.getInstance().getAccessToken());
+		jsonObj.put("Authorization", "Bearer " + TestCenter.getInstance().getKeycloakAccessToken());
 		jsonObj.put("X-Username", username);
 
+		loadURL("KEYCLOAK_PORT");
+		
+		HashMap<String, String> map = new HashMap<>();
+		map=new HashMap<String, String>();
+		map.put("grant_type", "password");
+		map.put("client_id", port.getProperty("client_id"));
+		map.put("username", port.getProperty("username"));
+		map.put("password", port.getProperty("password"));
+		
+		response=request.log().all().formParams(map).post("auth/realms/"+port.getProperty("realm")+"/protocol/openid-connect/token");
+		jsonPathEvaluator = response.jsonPath();
+		String access_token = jsonPathEvaluator.get("access_token");
+		System.out.println(access_token);
+		TestCenter.getInstance().setAccessToken(access_token);
+		
 		loadURL("OCMS_PORT");
-//		request.auth().oauth2(access_token);
-//		response=request.post("configuration/sync-user");
-//		ResponseEntity<String> response = RestRequest.postResponseBack(ServiceType.OCMS, "configuration/sync-user",
-//				jsonObj);
-//
-//		Assertions.assertEquals(response.getStatusCodeValue(), 200);
+		request.auth().oauth2(access_token);
+		response=request.post("configuration/sync-user");
+		Map<Object, Object> user=response.jsonPath().getMap("user");
+		String startDate = String.valueOf(user.get("creation-date"));
+		String endDate = String.valueOf(user.get("modification-date"));
+		Object id=   user.get("id");
+		cs.setUserId(id.toString());
+		cs.setStartDate(startDate);
+		cs.setEndDate(endDate);
 	}
 
+	
+	@Given("we delete category")
+	public void delete_agent() {
+		loadURL("OCMS_PORT");
+		loadQueryParams(CommonSteps.orgMap);
+		response=request.delete("config/category");
+		Assert.assertEquals(200, response.getStatusCode());
+	}
+	
+	@Given("we delete organization {string}")
+	public void delete_org(String org) {
+		loadURL("OCMS_PORT");
+		response=request.delete("config/organization/"+org);
+		Assert.assertEquals(200, response.getStatusCode());
+	}
 }

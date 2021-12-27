@@ -1,0 +1,25 @@
+{
+    "categoryHBeanRequest": [{
+        "children": [{
+            "children": [
+                {
+                    "children": [],
+                    "name": "inactive"
+                },
+                {
+                    "children": [],
+                    "name": "active"
+                }
+            ],
+            "name": "cover"
+        }],
+        "name": "insurance"
+    }],
+    "levels": [
+        "Level",
+        "Level-2",
+        "Level-3",
+        "Level-4",
+        "Level-5"
+    ]
+}

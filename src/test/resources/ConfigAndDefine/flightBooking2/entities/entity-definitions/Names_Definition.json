@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "PERSON",
+    "defaultValue": "",
+    "description": "Names",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Person",
+    "sourceType": "NLP",
+    "name": "Names",
+    "referenceName": "Names",
+    "entityTextIfFalse": null
+}
