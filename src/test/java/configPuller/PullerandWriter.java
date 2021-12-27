@@ -59,7 +59,7 @@ public class PullerandWriter extends BaseClass{
 		String csvString = response.getBody().asString();
 		Integer indexOfFirstLevel = csvString.lastIndexOf('¿');
 		return csvString.substring(indexOfFirstLevel+1,csvString.length());
-		//return csvString;
+		 //return csvString;
 	}
 	
 	
