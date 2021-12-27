@@ -36,6 +36,8 @@ Feature: Test Offline Audio file - FlightBooking Calls
     ##ENTITY
     Then we add language "E" to org <organization> and category <category>
     #
+    Then delete all entities
+    #
     Then define and configure entities in folder "ConfigAndDefine/flightBooking1/entities/"
     #
     #
@@ -70,7 +72,7 @@ Feature: Test Offline Audio file - FlightBooking Calls
     #
     Then a transcript is generated for callId
     And the transcript conversation for callId for <turn> has <phrase>
-    #And the transcript conversation for callId matches the correct version <transcript-file>
+    And the transcript conversation for callId matches the correct version <transcript-file>
     #	##############################################
     #
     #	###VERIFYING ENTITIES AGAINST GOLD STANDARD
@@ -82,11 +84,11 @@ Feature: Test Offline Audio file - FlightBooking Calls
     #
     #		###VERIFYING SUMMARY AGAINST GOLD STANDARD
     #
-    #And a summary for callId exists
+    And a summary for callId exists
     And a summary for callId has intent of <intent>
     And a summary for callId has "Agent Name" <agentName>
     And a summary for callId has "Flight Number" <Flight Number>
-    And a summary for callId has "Departure Date " <Departure  Date>
+    And a summary for callId has "Departure Date" <Departure  Date>
     #And a summary for callId has "Type " <Type>
     #
     Then edit "Agent Name" as "McKenna"
@@ -100,9 +102,11 @@ Feature: Test Offline Audio file - FlightBooking Calls
     ###VERIFYING DISPOSITION AGAINST GOLD STANDARD
     And disposition for callId has intent of <intent>
     And we sync <orgAgentName>
-    Then edit and submit disposition intent "Flight_Booking" as "Flight_Cancel"
-    Then compare if disposition has changed intent from "Flight_Booking" to "Flight_Cancel"
+    Then edit and submit disposition intent "Departure" as "Arrival"
+    Then compare if disposition has changed intent from "Departure" to "Arrival"
     #
+    Then verify that supervisor has alert "Call Duration" with type "Information Alert"
+    Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
     ##############################################
     #
     ###DELETE ENTITIES
@@ -112,13 +116,13 @@ Feature: Test Offline Audio file - FlightBooking Calls
 
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
-    Then we delete category
+    #Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
       | organization | category  | orgAgentName | agentEmail                | role    | language | audio-file                                      | turn | phrase                  | intent                                     | transcript-file                                           | description   | colorVR       | agentName | Flight Number | Departure  Date | Type         |
-      | "APITesting" | "flight1" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking1/flightBooking1.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Departure" | "src/test/resources/transcript-jsons/flightBooking1.json" | "description" | "colorSample" | "kenna"   | "2534"        | "8/30/"         | "round trip" |
+      | "APITesting" | "flight1" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking1/flightBooking1.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Departure" | "src/test/resources/transcript-jsons/flightBooking1.json" | "description" | "colorSample" | "mckenna"   | "2534"        | "8/30/"         | "round trip" |
 
   @flightBooking2 @Regression
   Scenario Outline: Test offline load of Flight-Booking_2
@@ -153,6 +157,8 @@ Feature: Test Offline Audio file - FlightBooking Calls
     #
     Then we add language "E" to org <organization> and category <category>
     ##ENTITY
+    Then delete all entities
+    #
     Then import ai entities from "ConfigAndDefine/flightBooking2/aiEntities/aiEntity.json"
     #
     Then define and configure entities in folder "ConfigAndDefine/flightBooking2/entities/"
@@ -203,7 +209,8 @@ Feature: Test Offline Audio file - FlightBooking Calls
     #
     And a summary for callId exists
     And a summary for callId has intent of <intent>
-    And a summary for callId has "Number " <Number>
+    And a summary for callId has "Names" <Names>
+    And a summary for callId has "Number" <Number>
     And a summary for callId has "Price rule" <Price rule>
     And a summary for callId has "Travel date Rule" <Travel date Rule>
     And a summary for callId has "Location Rule" <Location Rule>
@@ -217,8 +224,11 @@ Feature: Test Offline Audio file - FlightBooking Calls
     ###VERIFYING DISPOSITION AGAINST GOLD STANDARD
     And disposition for callId has intent of <intent>
     And we sync <orgAgentName>
-    Then edit and submit disposition intent "Flight_Booking" as "Flight_Cancel"
-    Then compare if disposition has changed intent from "Flight_Booking" to "Flight_Cancel"
+    Then edit and submit disposition intent "Departure" as "Arrival"
+    Then compare if disposition has changed intent from "Departure" to "Arrival"
+    #
+    Then verify that supervisor has alert "Call Duration" with type "Information Alert"
+    Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
     ##############################################
     #
     ###DELETE ENTITIES
@@ -228,13 +238,13 @@ Feature: Test Offline Audio file - FlightBooking Calls
 
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
-    Then we delete category
+    #Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category  | orgAgentName | agentEmail                | role    | language | audio-file                                      | turn | phrase                  | intent                | transcript-file                                           | description   | colorVR       | agentName | Number       | Price rule                                                         | Travel date Rule                        | Location Rule |
-      | "APITesting" | "flight2" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking2/flightBooking2.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/One Way/Departure" | "src/test/resources/transcript-jsons/flightBooking2.json" | "description" | "colorSample" | "kenna"   | "9737037772" | "500 dollars, 3400 dollars, 468 dollars, 376 dollars and 15 cents" | "8/0/0, 8/19/ , 0/19/23, 8/17/ , 9/0/0" | "westchester" |
+      | organization | category  | orgAgentName | agentEmail                | role    | language | audio-file                                      | turn | phrase                  | intent                | transcript-file                                           | description   | colorVR       | Names | Number       | Price rule                                                         | Travel date Rule                        | Location Rule |
+      | "APITesting" | "flight2" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking2/flightBooking2.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/One Way/Departure" | "src/test/resources/transcript-jsons/flightBooking2.json" | "description" | "colorSample" | "melissa"   | "9737037772" | "500 dollars, 3400 dollars, 468 dollars, 376 dollars and 15 cents, 376 dollars, 369 dollars and 15 cents, 23 dollars" | "8/0/0, 8/19/ , 8/23/ , 8/17/ , 8/24/" | "new jersey, new york, mexico, puerto rico" |
 
   @flightBooking3 @Regression
   Scenario Outline: Test offline load of Flight-Booking_3
@@ -269,6 +279,8 @@ Feature: Test Offline Audio file - FlightBooking Calls
     #
     Then we add language "E" to org <organization> and category <category>
     ##ENTITY
+    Then delete all entities
+    #
     Then import ai entities from "ConfigAndDefine/flightBooking3/aiEntities/aiEntity.json"
     #
     Then define and configure entities in folder "ConfigAndDefine/flightBooking3/entities/"
@@ -332,8 +344,11 @@ Feature: Test Offline Audio file - FlightBooking Calls
     ###VERIFYING DISPOSITION AGAINST GOLD STANDARD
     And disposition for callId has intent of <intent>
     And we sync <orgAgentName>
-    Then edit and submit disposition intent "Flight_Booking" as "Flight_Cancel"
-    Then compare if disposition has changed intent from "Flight_Booking" to "Flight_Cancel"
+    Then edit and submit disposition intent "Return" as "Arrival"
+    Then compare if disposition has changed intent from "Return" to "Arrival"
+    #
+    Then verify that supervisor has alert "Call Duration" with type "Information Alert"
+    Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
     ##############################################
     #
     ###DELETE ENTITIES
@@ -343,13 +358,13 @@ Feature: Test Offline Audio file - FlightBooking Calls
 
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
-    Then we delete category
+    #Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
       | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                                      | turn | phrase                  | intent                                  | transcript-file                                           | description   | colorVR       | agentName | Number       | Price rule                                      | Travel date Rule                      | Location Rule                     | Duration |
-      | "APITesting" | "flight3" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking3/flightBooking3.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Return" | "src/test/resources/transcript-jsons/flightBooking3.json" | "description" | "colorSample" | "kenna"   | "9737037772" | "5 dollar, 5 dollars, 452 dollars and 11 cents" | "8/17/ , 8/0/0, 8/22/ , 8/18/ , 8/9/" | "michigan, springfield, kentucky" | "4 days" |
+      | "APITesting" | "flight3" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking3/flightBooking3.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Return" | "src/test/resources/transcript-jsons/flightBooking3.json" | "description" | "colorSample" | "mckenna"   | "9737037772" | "289 dollars and 9 cents, 452 dollars and 11 cents" | "10/0/0, 8/17/ , 8/21/ , 8/18/ , 8/20/ , 8/9/" | "michigan, springfield, kentucky" | "4 days" |
 
 
 
@@ -386,6 +401,8 @@ Feature: Test Offline Audio file - FlightBooking Calls
     #
     ##ENTITY
     Then we add language "E" to org <organization> and category <category>
+    #
+    Then delete all entities
     #
     Then define and configure entities in folder "ConfigAndDefine/flightBooking4/entities/"
     #
@@ -451,9 +468,11 @@ Feature: Test Offline Audio file - FlightBooking Calls
     ###VERIFYING DISPOSITION AGAINST GOLD STANDARD
     And disposition for callId has intent of <intent>
     And we sync <orgAgentName>
-    Then edit and submit disposition intent "Flight_Booking" as "Flight_Cancel"
-    Then compare if disposition has changed intent from "Flight_Booking" to "Flight_Cancel"
+    Then edit and submit disposition intent "Departure" as "Arrival"
+    Then compare if disposition has changed intent from "Departure" to "Arrival"
     #
+    Then verify that supervisor has alert "Call Duration" with type "Information Alert"
+    Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
     ##############################################
     #
     ###DELETE ENTITIES
@@ -463,30 +482,12 @@ Feature: Test Offline Audio file - FlightBooking Calls
 
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
-    Then we delete category
-    Then we delete organization <organization>
+    #Then we delete category
+    #Then we delete organization <organization>
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
       | organization | category  | orgAgentName | agentEmail                | role    | language | audio-file                                      | turn | phrase                  | intent                                     | transcript-file                                           | description   | colorVR       | agentName | Flight Number | Departure  Date | Type         |
-      | "APITesting" | "flight4" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking1/flightBooking1.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Departure" | "src/test/resources/transcript-jsons/flightBooking1.json" | "description" | "colorSample" | "kenna"   | "2534"        | "8/30/"         | "round trip" |
+      | "APITesting" | "flight4" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking1/flightBooking1.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Departure" | "src/test/resources/transcript-jsons/flightBooking1.json" | "description" | "colorSample" | "mckenna"   | "2534"        | "8/30/"         | "round trip" |
 	
-
-
-
-
-  @delete1
-  Scenario Outline: Delete
-    Given a <audio-file> file exists
-    And the request organization is <organization>
-    And the request category is <category>
-    And the request customerId is "8090909099"
-    And the request language is <language>
-    And the request agentId is <orgAgentName>
-    Then delete all entities
-    Then delete all alerts
-
-    Examples: 
-      | organization | category  | orgAgentName | agentEmail                | role    | language | audio-file                                      | turn | phrase                  | intent                                     | transcript-file                         | description   | colorVR       | agentName | Flight Number | Date    | Type         |
-      | "APITesting" | "flight1" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking1/flightBooking1.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Departure" | "/transcript-jsons/flightBooking1.json" | "description" | "colorSample" | "kenna"   | "2534"        | "8/30/" | "round trip" |

@@ -32,6 +32,8 @@ Feature: Test Offline Audio file - verizon
     #
     ##DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     #
+    Then delete all entities
+    #
     Then we add language "E" to org <organization> and category <category>
     #ENTITY
     #
@@ -91,14 +93,16 @@ Feature: Test Offline Audio file - verizon
     And a summary for callId has "Phone Upgrade" <phoneupgrade>
     And a summary for callId has "Social Security Number" <Social Security Number>
     And a summary for callId has "Purchase Option 1" <Purchase Option 1>
-    #And a summary for callId has "Time to deliver" <Time to deliver>
+    And a summary for callId has "Time to deliver" <Time to deliver>
     And a summary for callId has "Purchase Option 2" <Purchase Option 2>
     And a summary for callId has "Customer Wireless Number" <Customer Wireless Number>
-    And a summary for callId has "Phone Opted" <Phone Opted>
+    And a summary for callId has "Purchase Options Rule" <Purchase Options Rule>
+    #And a summary for callId has "Phone Opted" <Phone Opted>
     #And a summary for callId has "Claim Amount Rule" <Claim Amount>
     #
     Then edit "Social Security Number" as "6789"
     And edit "Time to deliver" as "5 to 7 business days"
+    And edit "Purchase Options Rule" as "full retail value"
     Then submit the edited summaries
     #
     Then compare if "Social Security Number" has "6789" for callId
@@ -113,6 +117,8 @@ Feature: Test Offline Audio file - verizon
     And we sync <orgAgentName>
     Then compare if disposition has changed intent from "24 Months" to "36 Months"
     #
+    Then verify that supervisor has alert "Call Duration" with type "Information Alert"
+    Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
     #############################################
     #
     ##DELETE ENTITIES
@@ -124,12 +130,12 @@ Feature: Test Offline Audio file - verizon
     ##############################################
     #
     ###DELETE ORGANIZATION AND AGENT
-    Then we delete category
+    #Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                                | transcript-file                                              | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              |
-      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" |
+      | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                                | transcript-file                                              | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              | Purchase Options Rule |
+      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" | "full retail value, monthly payments" |
 
  

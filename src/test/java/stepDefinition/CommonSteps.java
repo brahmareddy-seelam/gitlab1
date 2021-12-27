@@ -3,8 +3,10 @@ package stepDefinition;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import javax.sound.sampled.AudioInputStream;
@@ -12,6 +14,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.Assert;
 
 import com.aventstack.extentreports.GherkinKeyword;
@@ -22,6 +26,7 @@ import com.uniphore.ri.main.e2e.TestCenter;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.restassured.http.ContentType;
 
 public class CommonSteps extends BaseClass{
 	
@@ -149,4 +154,78 @@ public class CommonSteps extends BaseClass{
 		ObjectMapper objectMapper = new ObjectMapper();
 		return objectMapper.readValue(string, Map.class);
 	}
+	
+	@Then("update app-profile from {string}")
+	public void update_profile(String folder) throws IOException {
+		String absoluteFolderPath = Paths.get(TestCenter.getInstance().getFile(folder).getAbsolutePath())
+				.toString();
+		String defineJsonrule = new String(Files.readAllBytes(Paths.get(absoluteFolderPath)));
+		JSONObject defineAppProfile = new JSONObject(defineJsonrule);
+		loadURL("BACKEND_PORT");
+		request.contentType(ContentType.JSON).body(defineAppProfile.toString()).when();
+		response=request.log().all().post("app-profile");
+		Assert.assertEquals(201,response.getStatusCode());
+	}
+	
+	
+	@Then("we update asr-engine from folder {string}")
+	public void update_asr_engine(String folder) throws IOException {
+		int concurrency=1;
+		String defineJsonrule = new String(Files.readAllBytes(Paths.get(folder)));
+		JSONArray asr_data=new JSONArray(defineJsonrule);
+		JSONArray finalASR= new JSONArray();
+		
+		for (int i = 0; i <asr_data.length(); i++) {
+			
+	        JSONObject jsonObj = asr_data.getJSONObject(i);
+	        String k = jsonObj.keys().next();
+	        String value=(jsonObj.getJSONObject(k).toString()).replaceAll("\"\"", "");
+	       
+	       
+	        JSONObject parent=new JSONObject();
+	        parent.put("languageCode", k.substring(k.indexOf("(")+1, k.indexOf(")")));
+	        parent.put("engineName", k.substring(0, k.indexOf('(')));
+	        JSONArray endpoint=new JSONArray();
+	        
+	        for (String s : value.toString().substring(0,value.length()).split("]")) {
+	        	JSONObject child=new JSONObject();
+	        if(!s.contains("}")) {
+	        Integer indexOfSeparation = value.indexOf(":");
+	        String entity = s.substring(1, indexOfSeparation);
+	        String values=s.substring(s.indexOf("[")+1, s.length());
+	        String new_value=values.replaceAll("\"", "").trim();
+	        if(new_value.contains(",")) {
+	        	 for (String str : new_value.toString().substring(0,new_value.length()).split(",")) {
+	        		 JSONObject child_value=new JSONObject();
+	        		 child_value.put("url", str);
+	        		 child_value.put("protocol", entity.replaceAll("\"", "").trim());
+	        		 child_value.put("concurrency", concurrency);
+	     	       endpoint.put(child_value);
+	     	      
+	        		 System.out.println(str);
+	        	 }
+	        }
+	        else {
+	        child.put("url", new_value);
+	        child.put("protocol", entity.replaceAll("[^a-zA-Z0-9]", " ").trim());
+	        child.put("concurrency", concurrency);
+	        }
+	        }
+	        else {
+	        }
+	        if(!child.isEmpty()) {
+	        endpoint.put(child);
+	        }
+	    }
+	        parent.put("endpoints", endpoint);
+	        finalASR.put(parent);
+		}
+		concurrency++;
+		System.out.println(finalASR.toString());
+		loadURL("BACKEND_PORT");
+		request.log().all().contentType(ContentType.JSON).body(finalASR.toString());
+		response=request.put("asr-instances");
+		Assert.assertEquals(200, response.getStatusCode());
+	}
+	
 }

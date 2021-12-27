@@ -34,7 +34,7 @@ public class Alerts extends BaseClass{
 		request.body(defineJsonFileObj.toString()).when();
 		response=request.log().all().post("alert/configure");
 		
-//		Assert.assertEquals(200,response.getStatusCode());
+		Assert.assertTrue((response.getStatusCode())==200||(response.getStatusCode())==409);
 		}
 /*
 	
@@ -67,6 +67,22 @@ public class Alerts extends BaseClass{
 	}
 	
 	
+	@Given("verify that supervisor has alert {string} with type {string}")
+	public void supervisor_alerts(String alert, String alert_type) {
+		loadURL("SMS_PORT");
+		request.queryParams("sessionId",CommonSteps.commonMap.get("callId"));
+		response=request.log().all().get("/supervisor/api/alert");
+		JSONArray langObj = new JSONArray(response.body().asString());
+		for (int i = 0; i < langObj.length(); i++) {
+			JSONObject item = langObj.getJSONObject(i);
+			if (item.has("name")) {
+				if (item.get("name").toString().equalsIgnoreCase(alert)
+						&& item.get("type").toString().equalsIgnoreCase(alert_type)) {
+					System.out.println("Alert sent as expected!");
+				}
+				}
+		}
+	}
 	
 	@Then("delete all alerts")
 	public void delete_all_entites() throws IOException, URISyntaxException {
@@ -77,7 +93,8 @@ public class Alerts extends BaseClass{
 		
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
 		for(int i = 0; i < alertList.length(); i++) {
-			Assert.assertEquals(200,(request.delete("alert/" +  alertList.getJSONObject(i).get("name")).getStatusCode()));
+			response=request.delete("alert/" +  alertList.getJSONObject(i).get("name"));
+			Assert.assertTrue((response.getStatusCode())==200 || (response.getStatusCode())==404);
 		}
 	}
 

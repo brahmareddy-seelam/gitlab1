@@ -2,7 +2,7 @@
 Feature: Test Offline Audio file - Call19
   This will test a offline audio wav load end-to-end
 
-  @call19 @hotel-booking @Regression
+  @call19 @hotel-booking 
   Scenario Outline: Test offline load of call19
     #Given a "backbone setup request" organization creation exists
     Given we create an organization called <organization> with description as <description>
@@ -30,6 +30,8 @@ Feature: Test Offline Audio file - Call19
     ###DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     ##ENTITY
     Then we add language "E" to org <organization> and category <category>
+    Then delete all entities
+    #
     Then import ai entities from "ConfigAndDefine/call19/aiEntities/aiEntity.json"
     #
     Then define and configure entities in folder "ConfigAndDefine/call19/entities"
@@ -100,6 +102,8 @@ Feature: Test Offline Audio file - Call19
     And we sync <orgAgentName>
     Then compare if disposition has changed intent from "Booked" to "Cancelled"
     #
+    Then verify that supervisor has alert "Call Duration" with type "Information Alert"
+    Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
     ##############################################
     ###DELETE ENTITIES
     #
@@ -108,7 +112,7 @@ Feature: Test Offline Audio file - Call19
 		#
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
-    Then we delete category
+    #Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################

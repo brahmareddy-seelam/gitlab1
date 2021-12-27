@@ -2,30 +2,18 @@
     "alertAttributes": [{
         "occurrenceOperator": "GE",
         "inclusionContains": true,
-        "keyPhrases": [
-            {
-                "keywordName": "afternoon",
-                "isNew": true,
-                "categoryId": 0
-            },
-            {
-                "keywordName": "morning",
-                "isNew": false,
-                "categoryId": 288
-            },
-            {
-                "keywordName": "welcome",
-                "isNew": false,
-                "categoryId": 288
-            }
-        ],
+        "keyPhrases": [{
+            "keywordName": "welcome",
+            "isNew": true,
+            "categoryId": 0
+        }],
         "attributeOperator": "",
         "attributeDurationType": "initial",
         "attributeType": "keyphrase_attribute",
         "attributeOrder": 0,
         "occurrenceCount": 2,
         "alertAttributeGroupOrder": 0,
-        "attributeDurationSecs": 5,
+        "attributeDurationSecs": 1,
         "alertAttributeGroupOperator": "",
         "attributeSpeaker": "Agent"
     }],
@@ -34,9 +22,9 @@
     "draft": false,
     "name": "Greeting",
     "icon": "string",
-    "recipient": "agent",
-    "description": "Greeting the customer",
-    "message": "Agent greeted Customer",
+    "recipient": "supervisor",
+    "description": "Greet",
+    "message": "Customer Greet",
     "type": "Information Alert",
     "referenceName": "Greeting"
 }

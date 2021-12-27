@@ -1,0 +1,9 @@
+{
+  "featureFlags": {
+    "acw": true,
+    "alerts": true,
+    "assurance": true,
+    "trustedAgent": true
+  },
+  "tenantId": 1
+}

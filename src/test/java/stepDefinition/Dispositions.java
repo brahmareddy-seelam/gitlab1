@@ -35,34 +35,34 @@ public class Dispositions extends BaseClass{
 				.getString("hierarchy");
 		
 		data = new JSONObject(response.getBody().asString()).getJSONObject("resolution")
-				.getString("data").replaceAll("}]","\"},]");
+				.getString("data").replaceAll("}]","},]");
 		Assert.assertEquals(hierarchy, intent);
 	}
 	
 	
 	
 	@Then("edit and submit disposition intent {string} as {string}")
-	public void edit_disposition(String existing, String edited) {
+	public void edit_disposition(String existing, String edited) throws StringIndexOutOfBoundsException {
 		finalValue=new StringBuilder("[{\"requestId\":\""+requestId+"\",\"data\":[");
 		String new_data=data.replace(existing, edited);
 		boolean status=false;
 		HashMap<String, String> dataMap = new HashMap<String, String>();
-		  for (String str : new_data.toString().substring(1,data.length()-1).split(",")){
-			  if(!str.contains("]")&&!str.matches("[0-9]")&&!str.equals("}")){
+		  for (String str : new_data.toString().substring(1,data.length()-2).split(",")){
+			  if(!str.contains("]")&&!str.matches("^[1-9][0-9]?$|^100$")&&!str.equals("}")){
 				  Integer indexOfSeparation = str.indexOf(":");
 				  String entity = str.substring(1, indexOfSeparation);
 				  status=(str.contains("level")?true:false);
 				  if(!entity.contains("rawTurnIds")) {
-					  String entityVal = str.substring(indexOfSeparation + 2, str.length()-1);
+					  String entityVal = str.substring(indexOfSeparation +1 , str.length()-1);
 					  dataMap.put(entity.replaceAll("\"", ""), entityVal.trim());
 					  String key=entity.replaceAll("\"", "");
-					  String value=entityVal.trim();
+					  String value=entityVal.replaceAll("\"", "").trim();
 					  finalValue=(status?finalValue.append("{\""+key+"\":\""+value+"\","):finalValue.append("\""+key+"\":\""+value+"\"},"));
 				  }else {}
 			  } else {}
 			}
 			finalValue=finalValue.append("]");
-			String payload=(finalValue.toString().replace("\"\"\"", "\"\"")).replace("\"},]", "}]}]");
+			String payload=(finalValue.toString().replace("\"\"\"", "\"\"")).replace("},]", "}]}]");
 			System.out.println(payload);
 		HashMap<String, String> data=new HashMap<>();
 		data.put("sessionId", CommonSteps.commonMap.get("callId"));

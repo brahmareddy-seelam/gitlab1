@@ -61,11 +61,12 @@ public class Summaries extends BaseClass{
 		response=request.get("summaries/" + CommonSteps.commonMap.get("callId"));
 		JSONObject responseJSONObj = new JSONObject(response.body().asString());
 		requestId=responseJSONObj.getString("requestId");
+		System.out.println(requestId);
 		sessionId=responseJSONObj.getString("sessionId");
 		JSONObject summaryText = new JSONObject(responseJSONObj.getString("text"));
 		
 		System.out.println("\nCall Intent: " + summaryText + "\n");
-		Assert.assertEquals(responseJSONObj.getString("intent"), intent);
+		Assert.assertEquals(intent,responseJSONObj.getString("intent"));
 	}
 	
 	
@@ -155,7 +156,7 @@ public class Summaries extends BaseClass{
 	public void submit_edited_summaries() {
 		StringBuilder bulletValue = new StringBuilder("[");
 	    for (String key : summariesMap.keySet()) {
-	    	bulletValue.append("\""+key + ":" + summariesMap.get(key) + "\", ");
+	    	bulletValue.append("\""+key + ": " + summariesMap.get(key) + "\", ");
 	    }
 	    bulletValue.delete(bulletValue.length()-2, bulletValue.length()).append("]");
 	    bulletValue.toString();
@@ -187,7 +188,7 @@ public class Summaries extends BaseClass{
 			if (item.has("edited"))
 	        {
 	            value = item.get("edited");
-	            String expected=key+":"+editedValue;
+	            String expected=key+": "+editedValue;
 	            if(value.equals(expected))
 	            {
 	            	System.out.println(expected);
@@ -203,7 +204,7 @@ public class Summaries extends BaseClass{
 		HashMap<String, String> map = new HashMap<>();
 		map=new HashMap<String, String>();
 		map.put("grant_type", "password");
-		map.put("client_id", "demo_client_private");
+		map.put("client_id", port.getProperty("client_id"));
 		map.put("username", port.getProperty("username"));
 		map.put("password", port.getProperty("password"));
 		

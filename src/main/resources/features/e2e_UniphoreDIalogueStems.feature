@@ -34,6 +34,8 @@ Feature: Test Offline Audio file - UniphoreDIalogueStems
     #
     Then we add language "E" to org <organization> and category <category>
     ##ENTITY
+    Then delete all entities
+    #
     Then import ai entities from "ConfigAndDefine/UDS/aiEntities/aiEntity.json"
     #
     Then define and configure entities in folder "ConfigAndDefine/UDS/entities"
@@ -101,6 +103,9 @@ Feature: Test Offline Audio file - UniphoreDIalogueStems
     Then edit and submit disposition intent "Approval" as "Pending"
     And we sync <orgAgentName>
     Then compare if disposition has changed intent from "Approval" to "Pending"
+    #
+    Then verify that supervisor has alert "Call Duration" with type "Information Alert"
+    Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
     ##############################################
     #
     ###DELETE ENTITIES
@@ -110,7 +115,7 @@ Feature: Test Offline Audio file - UniphoreDIalogueStems
 
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
-    Then we delete category
+    #Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################

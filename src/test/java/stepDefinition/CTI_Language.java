@@ -72,8 +72,7 @@ public class CTI_Language extends BaseClass {
 		boolean status = false;
 		loadURL("BACKEND_PORT");
 		response = request.get("/cti-language");
-		String res=response.body().asString();
-		JSONArray langObj = new JSONArray(res);
+		JSONArray langObj = new JSONArray(response.body().asString());
 		for (int i = 0; i < langObj.length(); i++) {
 			JSONObject item = langObj.getJSONObject(i);
 			if (item.has("organizationName")) {

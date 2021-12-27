@@ -1,6 +1,6 @@
 {
   "data": {
-    "sessionId": "1638984101149cczylg69z",
+    "sessionId": "1640241815913b0q2trbys",
     "lang": "en-us",
     "turns": [
       {
@@ -9,7 +9,7 @@
       },
       {
         "speaker": "Customer",
-        "text": "but yeah this is the fourth time i'm contacting you and it's been a week now and still she's any money what's going on"
+        "text": "oh yeah this is the fourth time i'm contacting you and it's been a week now and still or she's any money what's going on"
       },
       {
         "speaker": "Agent",
@@ -21,19 +21,11 @@
       },
       {
         "speaker": "Agent",
-        "text": "i'm sorry about that let's take care of this right now i'll also send you a copy but for now i just need your verbal agreement that by accepting the settlement you agree we can close out this matter and there will be no further action do you agree okay ron now that you accepted the terms"
+        "text": "i'm sorry about that let's take care of this right now i'll also send you a copy but for now i just need your verbal agreement that by accepting the settlement you agree we can close at this matter and there will be no further action do you agree okay ron now that you accepted the terms then you'll see a check within five business days"
       },
       {
         "speaker": "Customer",
-        "text": "yes"
-      },
-      {
-        "speaker": "Agent",
-        "text": "then you'll see a check within five business days"
-      },
-      {
-        "speaker": "Customer",
-        "text": "one more thing i noticed there was a rate incre on my latest bill i don't think that's fair after just the single incident"
+        "text": "yes one more thing i noticed there was a rate incre on my latest bill i don't think that's fair after just the single incident"
       },
       {
         "speaker": "Agent",

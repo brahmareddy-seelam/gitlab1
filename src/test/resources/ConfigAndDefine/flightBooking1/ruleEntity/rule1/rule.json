@@ -8,7 +8,7 @@
 			"name": "Enter name here",
 			"description": "Enter discription here",
 			"priority": 1,
-			"condition": "$.aiEntity('Date').isTrue()",
+			"condition": "$.aiEntity('Departure Date').isTrue()",
 			"actions": [
 				"$.output=$.value()"
 			]

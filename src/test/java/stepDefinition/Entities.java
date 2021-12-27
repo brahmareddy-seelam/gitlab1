@@ -43,19 +43,6 @@ public class Entities extends BaseClass{
 			System.out.println("defineJsonFileObj >>>>>> " + defineJsonFileObj);
 			request.body(defineJsonFileObj.toString()).when();
 			response=request.log().all().post("define/entity");
-			if(response.getStatusCode()==409) {
-				loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
-				response=request.get("entity");
-				JSONObject jsonObj = new JSONObject(response.body().asString());
-				JSONArray jsonArr = jsonObj.getJSONArray("data");
-				
-				loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
-				request.body(jsonArr.toString());
-				Assert.assertEquals(200, (request.post("delete/entities").getStatusCode()));
-				
-				request.body(defineJsonFileObj.toString()).when();
-				response=request.log().all().post("define/entity");
-			}
 			Assert.assertEquals(200,response.getStatusCode());
 		}
 		//To configure entities
@@ -136,10 +123,12 @@ public class Entities extends BaseClass{
 		response=request.get("entity");
 		JSONObject jsonObj = new JSONObject(response.body().asString());
 		JSONArray jsonArr = jsonObj.getJSONArray("data");
-		
+		if(jsonArr.length()>0) {
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
 		request.body(jsonArr.toString());
-		Assert.assertEquals(200, (request.post("delete/entities").getStatusCode()));
+		Assert.assertTrue((request.post("delete/entities").getStatusCode())==201 || (request.post("delete/entities").getStatusCode())==404);
+//		Assert.assertEquals(200, (request.post("delete/entities").getStatusCode()));
+		}
 	}
 	
 	

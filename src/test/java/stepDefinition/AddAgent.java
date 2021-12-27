@@ -35,7 +35,7 @@ public class AddAgent extends BaseClass{
 		loadURL("OCMS_PORT");
 		request.log().all().contentType(ContentType.JSON).body(jsonObj.toString()).post("config/organization");
 
-//		System.out.println("Organization: " + response.getBody());
+//		System.out.println("Organization: " + response.getBody()); Commenting the lines since successful response is not returning any body!
 //		Assert.assertEquals("200 OK", response.getStatusLine() );
 
 	}
@@ -136,8 +136,6 @@ public class AddAgent extends BaseClass{
 		realmRoles.put("office_access");
 		realmRoles.put("uma_authorization");
 
-		
-//		cred.put(")
 		JSONObject userAgent = new JSONObject();
 		userAgent.put("username", agentName);
 		userAgent.put("firstName", agentName);
@@ -148,7 +146,7 @@ public class AddAgent extends BaseClass{
 		userAgent.put("realmRoles", realmRoles);
 		userAgent.put("enabled", "true");
 		
-//		TestCenter.getInstance().setAccessToken(TestCenter.getInstance().getKeycloakAccessToken());
+		TestCenter.getInstance().setAccessToken(TestCenter.getInstance().getKeycloakAccessToken());
 		
 		request.auth().oauth2(TestCenter.getInstance().getKeycloakAccessToken()).header("Content-Type","application/json");
 		
@@ -163,14 +161,12 @@ public class AddAgent extends BaseClass{
 		HashMap<String, String>  cred=new HashMap<>();
 		cred.put("type","password");
 		cred.put("value", port.getProperty("password"));
-		cred.put("temporary", "true");
+		cred.put("temporary", "false");
 		loadURL("KEYCLOAK_PORT");
 		request.auth().oauth2(TestCenter.getInstance().getKeycloakAccessToken()).header("Content-Type","application/json");
-		request.body(cred.toString());
-		response=request.log().all().post("auth/admin/realms/"+port.getProperty("realm")+"/users/"+getId()+"/reset-password");
-//		Assert.assertEquals(204, response.getStatusCode());
-//		Assert.assertEquals(Matchers.anyOf(Matchers.is(200),Matchers.is(409)),response.getStatusCode());
-//		Assert.assertThat(response.getStatusCode(), Matchers.anyOf(Matchers.is(200),Matchers.is(409)));
+		request.body(cred);
+		response=request.log().all().put("auth/admin/realms/"+port.getProperty("realm")+"/users/"+getId()+"/reset-password");
+		Assert.assertEquals(204, response.getStatusCode());
 
 	}
 	
@@ -199,7 +195,7 @@ public class AddAgent extends BaseClass{
 		loadURL("KEYCLOAK_PORT");
 		response=request.log().all().accept(ContentType.JSON).auth()
 				.oauth2(orginalAccessToken)
-				.get("auth/admin/realms/"+port.getProperty("realm")+"/users?search=" + emailDomain + "&max=5000");
+				.get("auth/admin/realms/"+port.getProperty("realm")+"/users?search=apitesting@uniphore.com&max=5000");
 
 		TestCenter.getInstance().setAccessToken(orginalAccessToken);
 
@@ -228,6 +224,7 @@ public class AddAgent extends BaseClass{
 		jsonObj.put("X-Username", username);
 
 		loadURL("KEYCLOAK_PORT");
+		
 		HashMap<String, String> map = new HashMap<>();
 		map=new HashMap<String, String>();
 		map.put("grant_type", "password");

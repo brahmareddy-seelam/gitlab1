@@ -49,7 +49,7 @@ public class TestCenter {
 
 	private String accessToken;
 	private String accessToken2;
-	private String keycloakAccessToken;
+	public String keycloakAccessToken;
 
 	private void reset() {
 
