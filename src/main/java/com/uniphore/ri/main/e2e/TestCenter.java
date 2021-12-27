@@ -27,7 +27,7 @@ public class TestCenter {
 	public static String KEYCLOAK_PORT = "8080";
 	public static String PLATFORM_PORT = "5432";
 
-	public static String KEYCLOAK_REALM = "demo_realm";
+	public static String KEYCLOAK_REALM = "uniphore";
 
 	public static TestCenter getInstance() {
 		if (instance == null) {
@@ -49,7 +49,7 @@ public class TestCenter {
 
 	private String accessToken;
 	private String accessToken2;
-	private String keycloakAccessToken;
+	public String keycloakAccessToken;
 
 	private void reset() {
 

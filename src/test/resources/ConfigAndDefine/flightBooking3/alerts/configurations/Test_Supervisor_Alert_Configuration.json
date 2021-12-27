@@ -1,0 +1,26 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": false,
+        "keyPhrases": [],
+        "attributeOperator": "",
+        "attributeDurationType": "ongoing",
+        "attributeType": "call_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 2,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 10,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": ""
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Test_Supervisor_Alert",
+    "icon": "string",
+    "recipient": "supervisor",
+    "description": "Test_Supervisor_Alert",
+    "message": "Test_Supervisor_Alert",
+    "type": "Information Alert",
+    "referenceName": "Test_Supervisor_Alert"
+}

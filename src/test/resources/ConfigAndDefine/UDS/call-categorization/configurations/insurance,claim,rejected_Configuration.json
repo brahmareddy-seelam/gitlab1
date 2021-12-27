@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["insurance,claim,rejected"],
+        "level": 3,
+        "name": "rejected",
+        "bagOfKeywords": [{
+            "keywordName": "rejected",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

@@ -209,9 +209,14 @@ public class PullerandWriter extends BaseClass{
 		dataObj.put("trained", false);
 		dataObj.put("draft", false);
 		
+		if((dataObj.getJSONArray("alertAttributes").getJSONObject(0).get("attributeType")).equals("keyphrase_attribute"))
+		{
 		dataObj.getJSONArray("alertAttributes").getJSONObject(0).getJSONArray("keyPhrases").getJSONObject(0).put("isNew", true);
 		dataObj.getJSONArray("alertAttributes").getJSONObject(0).getJSONArray("keyPhrases").getJSONObject(0).put("categoryId", 0);
-		
+		}
+		else if((dataObj.getJSONArray("alertAttributes").getJSONObject(0).get("attributeType")).equals("call_attribute")){
+			
+		}
 		return dataObj;
 	}
 ////

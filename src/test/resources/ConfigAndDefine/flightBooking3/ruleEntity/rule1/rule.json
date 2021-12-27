@@ -1,0 +1,20 @@
+{
+	"skipOnFirstRuleApplied": true,
+	"skipOnFirstNonTriggeredRule": true,
+	"priorityThreshold": 10,
+	"delimeter": ",",
+	"components": [
+		{
+			"name": "Enter name here",
+			"description": "Enter discription here",
+			"priority": 1,
+			"condition": "$.entity('Location').isTrue()",
+			"actions": [
+				"$.output=$.value"
+			]
+		}
+	],
+	"ruleName": "Location Rule",
+	"skipOnFirstFailedRule": false,
+	"type": "ENTITY"
+}

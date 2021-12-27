@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "",
+    "description": "Claim Number",
+    "noOfChar": 7,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "Claim Number",
+    "referenceName": "Claim Number",
+    "entityTextIfFalse": null
+}

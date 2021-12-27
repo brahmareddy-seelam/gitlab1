@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "STRING",
+    "defaultValue": "",
+    "description": "Repeat",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "String",
+    "sourceType": "NLP",
+    "name": "Repeat",
+    "referenceName": "Repeat",
+    "entityTextIfFalse": null
+}

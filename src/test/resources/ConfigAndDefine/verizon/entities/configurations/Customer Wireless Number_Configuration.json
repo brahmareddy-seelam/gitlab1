@@ -9,6 +9,11 @@
             "keywordName": "wireless number",
             "isNew": null,
             "categoryId": 0
+        },
+        {
+            "keywordName": "you verify your ten digit wireless",
+            "isNew": null,
+            "categoryId": 0
         }],
         "entityExtractionChannel": "Customer",
         "entityPosition": "",

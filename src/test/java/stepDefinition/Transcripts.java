@@ -11,6 +11,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Assert;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uniphore.ri.main.e2e.BaseClass;
 import io.cucumber.java.en.Then;	
@@ -18,7 +20,8 @@ import io.cucumber.java.en.Then;
 public class Transcripts extends BaseClass{
 	
 	CommonSteps cs = new CommonSteps();
-
+	ObjectMapper mapper = new ObjectMapper();
+	int conversationTurns=0;
 
 	@Then("a transcript is generated for callId")
 	public void a_transcript_is_generated_for_callid() throws IOException, URISyntaxException {
@@ -58,7 +61,7 @@ public class Transcripts extends BaseClass{
 		HashMap<String, String> map = new HashMap<>();
 		map.put("contactId", CommonSteps.commonMap.get("callId"));
 		loadURL("BACKEND_PORT");loadQueryparams(map);
-		ObjectMapper mapper = new ObjectMapper();
+		
 
 		Map<?, ?> jsonToMap=(request.log().all().get("conversations")).as(Map.class);
 		
@@ -77,7 +80,7 @@ public class Transcripts extends BaseClass{
 		System.out.println(jsonFileArr.length());
 		Assert.assertEquals(responseTranscriptArr.length(), jsonFileArr.length());
 
-		int conversationTurns = responseTranscriptArr.length();
+		conversationTurns = responseTranscriptArr.length();
 
 		for (int i = 0; i < conversationTurns; i++) {
 
@@ -101,5 +104,20 @@ public class Transcripts extends BaseClass{
 
 		}
 		System.out.println("\nTranscript Matches Gold JSON File\n");
+	}
+	
+	
+	@Then("verify transcript turns for supervisor")
+	public void verify_transcript_supervisor() throws JsonProcessingException, IOException {
+		loadURL("BACKEND_PORT");request.queryParam("sessionId", CommonSteps.commonMap.get("callId"));
+		Map<?, ?> jsonToMap=(request.log().all().get("/supervisor/api/transcript")).as(Map.class);
+		
+		System.out.println("jsonToMap "+jsonToMap);
+
+		Map<String, Object> tempMap = CommonSteps
+				.jsonStringToMap(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonToMap.get("data")));
+		JSONArray responseTranscriptArr = new JSONArray(
+				mapper.writerWithDefaultPrettyPrinter().writeValueAsString(tempMap.get("data")));
+		Assert.assertEquals(responseTranscriptArr.length(),conversationTurns);
 	}
 }

@@ -1,5 +1,5 @@
 @E2eOffline
-Feature: Test Offline Audio file
+Feature: Test Offline Audio file - Call19
   This will test a offline audio wav load end-to-end
 
   @call19 @hotel-booking 
@@ -9,7 +9,7 @@ Feature: Test Offline Audio file
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
     Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
     And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
-    #	And we sync <orgAgentName>
+    And we sync <orgAgentName>
     #
     ###############################################
     #
@@ -29,9 +29,14 @@ Feature: Test Offline Audio file
     ##############################################
     ###DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     ##ENTITY
-    Then define and configure entities in folder "/scenarios/call19/entities"
+    Then we add language "E" to org <organization> and category <category>
+    Then delete all entities
     #
-    Then validate and configure rules in folder "ConfigAndDefine/call19/ruleEntity"
+    Then import ai entities from "ConfigAndDefine/call19/aiEntities/aiEntity.json"
+    #
+    Then define and configure entities in folder "ConfigAndDefine/call19/entities"
+    #
+    #Then validate and configure rules in folder "ConfigAndDefine/call19/ruleEntity"
     #
     ##SUMMARY FORMAT
     #
@@ -39,7 +44,7 @@ Feature: Test Offline Audio file
     #
     ##INTENT
     #
-    Then define and configure call categorization with folder "scenarios/call19/call-categorization"
+    Then define and configure call categorization with folder "ConfigAndDefine/call19/call-categorization"
     #
     Then configure alerts in folder "ConfigAndDefine/call19/alerts"
     #
@@ -83,21 +88,34 @@ Feature: Test Offline Audio file
     And a summary for callId has "Check-Out Date" <checkoutDate>
     And a summary for callId has "Customer Email" <customerEmail>
     #
+    Then edit "Agent Name" as "Michael Scott"
+    And edit "Check-Out Date" as "27"
+    Then submit the edited summaries
+    #
+    Then compare if "Agent Name" has "Michael Scott " for callId
+    And compare if "Check-Out Date" has "28" for callId
     ##############################################
     ###VERIFYING DISPOSITION AGAINST GOLD STANDARD
     #
     And disposition for callId has intent of <intent>
+    Then edit and submit disposition intent "Booked" as "Cancelled"
+    And we sync <orgAgentName>
+    Then compare if disposition has changed intent from "Booked" to "Cancelled"
     #
+    Then verify that supervisor has alert "Call Duration" with type "Information Alert"
+    Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
     ##############################################
     ###DELETE ENTITIES
     #
-    #Then delete all entities
+    Then delete all entities
+    Then delete all alerts
 		#
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
+    #Then we delete category
     #Then we delete <orgAgentName> who is an <role> from <organization>
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
       | organization  | category | orgAgentName     | agentEmail               | role    | language   |  audio-file                | turn | phrase       | intent                        | transcript-file                           | description   | colorVR       | agentName | customerName | roomType                | creditCardExpDate | checkinDate | checkoutDate | customerEmail                        |
-      | "APITests"    | "call19" | "APITesting" | "APITesting@uni.com" | "Agent" | "EUU"      |  "/audio-files/call19.wav" |    0 | "my name is" | "Hotel Booking/Deluxe/Booked" | "/transcript-jsons/call19Transcript.json" | "description" | "colorSample" | "michael" | "sarah"      | "sea view deluxe sweet" | "x/xx"            | "26"        | "27"         | "sarah dot parker and gmail dot com" |
+      | "APITesting"    | "call19" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      |  "audio-files/call19AudioFiles/call19.wav" |    0 | "my name is" | "Hotel Booking/Deluxe/Booked" | "/transcript-jsons/call19Transcript.json" | "description" | "colorSample" | "michael" | "sarah"      | "sea view deluxe sweet" | "x/xx"            | "26"        | "27"         | "sarah dot parker and gmail dot com" |

@@ -1,0 +1,46 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Repeat",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "this is the fourth time i'm contacting you",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "this is the second time I am contacting you",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "this is the fourth time",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "this is the third time",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "this is the second time",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "this is the fifith time",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

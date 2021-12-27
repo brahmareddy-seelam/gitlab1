@@ -1,0 +1,31 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "State",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "state",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "what state",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "calling from",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

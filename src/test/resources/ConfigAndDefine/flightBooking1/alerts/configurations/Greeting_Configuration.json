@@ -2,28 +2,11 @@
     "alertAttributes": [{
         "occurrenceOperator": "GE",
         "inclusionContains": true,
-        "keyPhrases": [
-            {
-                "keywordName": "welcome",
-                "isNew": true,
-                "categoryId": 0
-            },
-            {
-                "keywordName": "good morning",
-                "isNew": false,
-                "categoryId": 3
-            },
-            {
-                "keywordName": "good aftenoon",
-                "isNew": false,
-                "categoryId": 3
-            },
-            {
-                "keywordName": "thank you for calling",
-                "isNew": false,
-                "categoryId": 3
-            }
-        ],
+        "keyPhrases": [{
+            "keywordName": "welcome",
+            "isNew": true,
+            "categoryId": 0
+        }],
         "attributeOperator": "",
         "attributeDurationType": "initial",
         "attributeType": "keyphrase_attribute",
@@ -39,9 +22,9 @@
     "draft": false,
     "name": "Greeting",
     "icon": "string",
-    "recipient": "agent",
-    "description": "Greeting",
-    "message": "Customer Greeted",
+    "recipient": "supervisor",
+    "description": "Greet",
+    "message": "Customer Greet",
     "type": "Information Alert",
     "referenceName": "Greeting"
 }
