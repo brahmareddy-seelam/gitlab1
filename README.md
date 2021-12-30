@@ -23,7 +23,7 @@ Open Command Prompt
 Traverse to the folder where the project has been placed/downloaded. C:\Users\user\cucumberFramework\e2eAPIAutomation>
 
 Use the following sample format to define the ASR Engine Properties in asr-engine.json file.
-[
+
 	{
 		"<ENGINE>(lang)": {
 			"<protocol1>": [
@@ -34,7 +34,7 @@ Use the following sample format to define the ASR Engine Properties in asr-engin
 			]
 		}
 	}
-]
+
 ------------------------------------------------------------------------------
 Sample:
 [
@@ -70,6 +70,6 @@ Report will be generated in target folder as target/cucumber.html
 
  
 
-# Note: Replace the backend and keycloak values (18.190.161.131) as required for the environment.
+## Note: Replace the backend and keycloak values (18.190.161.131) as required for the environment.
 
-# Live call testing needs CTI Language skill to be ‘99999’ and code has been updated in the path src/test/java/stepDefinition/CTI_Language.java.(Line 97) For any new env, all categories will be created with skillcode ‘99999’ which can be changed by removing ‘99999’ and uncommenting ‘String.format("%04d",random.nextInt(10000))’.
+## Live call testing needs CTI Language skill to be ‘99999’ and code has been updated in the path src/test/java/stepDefinition/CTI_Language.java.(Line 97) For any new env, all categories will be created with skillcode ‘99999’ which can be changed by removing ‘99999’ and uncommenting ‘String.format("%04d",random.nextInt(10000))’.
