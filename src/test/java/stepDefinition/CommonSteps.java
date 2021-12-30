@@ -155,8 +155,8 @@ public class CommonSteps extends BaseClass{
 		return objectMapper.readValue(string, Map.class);
 	}
 	
-	@Then("update app-profile from {string}")
-	public void update_profile(String folder) throws IOException {
+	@Then("update app-profile")
+	public void update_profile() throws IOException {
 		loadURL("BACKEND_PORT");
 		response=request.log().all().get("app-profile");
 		JSONObject entityList=new JSONObject(response.getBody().asString()).getJSONObject("data");
@@ -172,14 +172,14 @@ public class CommonSteps extends BaseClass{
 		entityList.put("featureFlags", newFeature);
 		loadURL("BACKEND_PORT");
 		request.contentType(ContentType.JSON).body(entityList.toString()).when();
-		response=request.log().all().put("app-profile");
+		response=request.log().all().post("app-profile");
 		Assert.assertEquals(201,response.getStatusCode());
 	}
 	
 	
 	@Then("we update asr-engine from folder {string}")
 	public void update_asr_engine(String folder) throws IOException {
-		int concurrency=1;
+		int concurrency=5;
 		String defineJsonrule = new String(Files.readAllBytes(Paths.get(folder)));
 		JSONArray asr_data=new JSONArray(defineJsonrule);
 		JSONArray finalASR= new JSONArray();

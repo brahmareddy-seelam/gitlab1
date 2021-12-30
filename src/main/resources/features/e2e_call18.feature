@@ -81,8 +81,8 @@ Feature: Test Offline Audio file - Call18
     #
     #	###VERIFYING ENTITIES AGAINST GOLD STANDARD
     #
-    #And entities for callId exist
-    #And the entity for callId has "Agent Name" as <agentName>
+    And entities for callId exist
+    And the entity for callId has "Agent Name" as <agentName>
     #
     #	##############################################
     #

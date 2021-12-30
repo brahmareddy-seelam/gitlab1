@@ -167,7 +167,6 @@ public class AddAgent extends BaseClass{
 		request.body(cred);
 		response=request.log().all().put("auth/admin/realms/"+port.getProperty("realm")+"/users/"+getId()+"/reset-password");
 		Assert.assertEquals(204, response.getStatusCode());
-
 	}
 	
 	
@@ -218,10 +217,10 @@ public class AddAgent extends BaseClass{
 	
 	@Given("we sync {string}")
 	public void sync_user(String username) throws IOException, URISyntaxException {
-		JSONObject jsonObj = new JSONObject();
-
-		jsonObj.put("Authorization", "Bearer " + TestCenter.getInstance().getKeycloakAccessToken());
-		jsonObj.put("X-Username", username);
+//		JSONObject jsonObj = new JSONObject();
+//
+//		jsonObj.put("Authorization", "Bearer " + TestCenter.getInstance().getKeycloakAccessToken());
+//		jsonObj.put("X-Username", username);
 
 		loadURL("KEYCLOAK_PORT");
 		
