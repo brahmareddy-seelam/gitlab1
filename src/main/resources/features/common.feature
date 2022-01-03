@@ -12,6 +12,12 @@ Feature: To set up system before any validation
       | "entityCatalogue.json" |  "asr-engine.json" |
 
       
-   @dec
-   Scenario: Test
+   @update
+   Scenario: Update the environment with Organization and Category
    	Then we update Organization and Category to new env
+   	
+   
+   @backup
+   Scenario: Backup of environment Organization and Category
+   	Then we create a backup of Organization and category
+   	
