@@ -155,14 +155,23 @@ public class CommonSteps extends BaseClass{
 		return objectMapper.readValue(string, Map.class);
 	}
 	
-	@Then("update app-profile from {string}")
-	public void update_profile(String folder) throws IOException {
-		String absoluteFolderPath = Paths.get(TestCenter.getInstance().getFile(folder).getAbsolutePath())
-				.toString();
-		String defineJsonrule = new String(Files.readAllBytes(Paths.get(absoluteFolderPath)));
-		JSONObject defineAppProfile = new JSONObject(defineJsonrule);
+	@Then("update app-profile")
+	public void update_profile() throws IOException {
 		loadURL("BACKEND_PORT");
-		request.contentType(ContentType.JSON).body(defineAppProfile.toString()).when();
+		response=request.log().all().get("app-profile");
+		JSONObject entityList=new JSONObject(response.getBody().asString()).getJSONObject("data");
+		entityList.put("tenantId", 1);
+		JSONObject feature=entityList.getJSONObject("featureFlags");
+		String featureFlags=feature.toString();
+		JSONObject newFeature=new JSONObject();
+		for (String str : featureFlags.toString().substring(1,featureFlags.length()-1).split(",")){
+			Integer indexOfSeparation = str.indexOf(":");
+			String entity = str.substring(1, indexOfSeparation-1);
+			newFeature.put(entity, true);
+		}
+		entityList.put("featureFlags", newFeature);
+		loadURL("BACKEND_PORT");
+		request.contentType(ContentType.JSON).body(entityList.toString()).when();
 		response=request.log().all().post("app-profile");
 		Assert.assertEquals(201,response.getStatusCode());
 	}
@@ -170,7 +179,7 @@ public class CommonSteps extends BaseClass{
 	
 	@Then("we update asr-engine from folder {string}")
 	public void update_asr_engine(String folder) throws IOException {
-		int concurrency=1;
+		int concurrency=5;
 		String defineJsonrule = new String(Files.readAllBytes(Paths.get(folder)));
 		JSONArray asr_data=new JSONArray(defineJsonrule);
 		JSONArray finalASR= new JSONArray();

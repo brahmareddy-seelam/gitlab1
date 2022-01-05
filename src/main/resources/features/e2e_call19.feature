@@ -107,8 +107,8 @@ Feature: Test Offline Audio file - Call19
     ##############################################
     ###DELETE ENTITIES
     #
-    Then delete all entities
-    Then delete all alerts
+    #Then delete all entities
+    #Then delete all alerts
 		#
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
