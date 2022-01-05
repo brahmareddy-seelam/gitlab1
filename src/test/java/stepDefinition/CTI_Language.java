@@ -42,9 +42,9 @@ public class CTI_Language extends BaseClass {
 			String Org = jsonArr.get(i).toString();
 			response = request.get("config/category/" + jsonArr.get(i).toString());
 			JSONObject catObj = new JSONObject(response.body().asString());
-			Iterator<String> key = catObj.keys();
+//			Iterator<String> key = catObj.keys();
 			try {
-				String status = (catObj.getJSONArray("data").isEmpty() ? "Yes" : "No");
+//				String status = (catObj.getJSONArray("data").isEmpty() ? "Yes" : "No");
 				JSONArray catArr = catObj.getJSONArray("data");
 
 				for (int j = 0; j < catArr.length(); j++) {
