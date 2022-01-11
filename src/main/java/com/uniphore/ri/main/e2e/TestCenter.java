@@ -67,37 +67,6 @@ public class TestCenter {
 	  }
 
 
-	public HostAndPort getBaseUrl(ServiceType serviceType) {
-
-		switch (serviceType) {
-		case BACKEND:
-			return new HostAndPort(backendHost, BACKEND_PORT);
-		case UI:
-			return new HostAndPort(uiHost, UI_PORT);
-		case KEYCLOAK:
-			return new HostAndPort(kecloakHost, KEYCLOAK_PORT);
-		case NLP:
-			return new HostAndPort(nlpHost, NLP_PORT);
-		case OCMS:
-			return new HostAndPort(backendHost, OCMS_PORT);
-		case SMS:
-			return new HostAndPort(backendHost, SMS_PORT);
-		case ACR:
-			return new HostAndPort(backendHost, AUDIO_CONNECTOR_PORT);
-		case APR:
-			return new HostAndPort(backendHost, APR_PORT);
-		case NWR:
-			return new HostAndPort(nlpHost, NLP_WRAPPER_PORT);
-		case UMS:
-			return new HostAndPort(platformHost, UMS_PORT);
-		case PLATFORM:
-			return new HostAndPort(platformHost, AUDIO_CONNECTOR_PORT);
-		case DATA_COLLECTOR:
-			return new HostAndPort(nlpHost, DATA_COLLECTOR_PORT);
-		default:
-			return new HostAndPort(backendHost, BACKEND_PORT);
-		}
-	}
 
 	public String getAccessToken() {
 		return accessToken;

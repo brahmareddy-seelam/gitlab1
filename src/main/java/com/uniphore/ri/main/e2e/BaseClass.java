@@ -36,6 +36,7 @@ public class BaseClass {
 		FileOutputStream out = new FileOutputStream(System.getProperty("user.dir")+"/src/test/resources/properties/env.properties");
 		prop.setProperty("Backend", System.getProperty("backend"));
 		prop.setProperty("Keycloak", System.getProperty("keycloak"));
+		prop.setProperty("Platform", System.getProperty("platform"));
 		prop.store(out, null);
 		out.close(); 
 		
@@ -68,7 +69,7 @@ public class BaseClass {
 			Log.info("Setting URL to http:"+prop.getProperty("Backend")+":"+port.getProperty("BACKEND_PORT"));
 			break;
 		case "DATA_COLLECTOR_PORT":
-			RestAssured.baseURI="http://"+prop.getProperty("Backend")+":"+port.getProperty("DATA_COLLECTOR_PORT");
+			RestAssured.baseURI="http://"+prop.getProperty("Platform")+":"+port.getProperty("DATA_COLLECTOR_PORT");
 //			Log.info("Setting URL to http:"+prop.getProperty("Backend")+":"+port.getProperty("DATA_COLLECTOR_PORT"));
 			break;
 		case "NLP_WRAPPER_PORT":

@@ -172,7 +172,7 @@ public class CommonSteps extends BaseClass{
 		entityList.put("featureFlags", newFeature);
 		loadURL("BACKEND_PORT");
 		request.contentType(ContentType.JSON).body(entityList.toString()).when();
-		response=request.log().all().post("app-profile");
+		response=request.log().all().put("app-profile");
 		Assert.assertEquals(201,response.getStatusCode());
 	}
 	

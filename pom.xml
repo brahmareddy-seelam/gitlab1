@@ -183,6 +183,7 @@
                        <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
                        <Keycloak>${keycloak}</Keycloak>
                        <Backend>${backend}</Backend>
+                       <Platform>${platform}</Platform>
            </systemPropertyVariables>
            <includes>
             <include>RunCucumberTest.java</include>

@@ -14,7 +14,7 @@
         "entityExtractionChannel": "Customer",
         "entityPosition": "suffix",
         "turnPosition": "same",
-        "fuzzyMatch": false
+        "fuzzyMatch": true
       }
     ],
     "outputParams": {

@@ -1,0 +1,23 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Hotel Booking"],
+        "level": 1,
+        "name": "Hotel Booking",
+        "bagOfKeywords": [
+            {
+                "keywordName": "room",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "hotel",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": true,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

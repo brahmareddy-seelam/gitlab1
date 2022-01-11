@@ -60,6 +60,7 @@ Feature: Test Offline Audio file - Call19
     ###SENDING OFFLINE AUDIO REQUEST
     #
     When the request with file <audio-file> is sent to the audio-connector
+    And wait for <audio-file> to get loaded
     #
     ##############################################
     ###VERIFYING TRANSCRIPT AGAINST GOLD STANDARD
@@ -73,27 +74,26 @@ Feature: Test Offline Audio file - Call19
     #
     And wait for 15 seconds
     And entities for callId exist
-    And the entity for callId has "Agent Name" as <agentName>
+    And the entity for callId has "AGNT Name" as <agentName>
     #
     ##############################################
     ###VERIFYING SUMMARY AGAINST GOLD STANDARD
     #
     And a summary for callId exists
     And a summary for callId has intent of <intent>
-    And a summary for callId has "Customer Name" <customerName>
-    And a summary for callId has "Agent Name" <agentName>
+    #And a summary for callId has "Customer Name" <customerName>
+    And a summary for callId has "AGNT Name" <agentName>
     And a summary for callId has "Room Type" <roomType>
     And a summary for callId has "Credit Card Exp Date" <creditCardExpDate>
     And a summary for callId has "Check-In Date" <checkinDate>
-    And a summary for callId has "Check-Out Date" <checkoutDate>
     And a summary for callId has "Customer Email" <customerEmail>
     #
-    Then edit "Agent Name" as "Michael Scott"
-    And edit "Check-Out Date" as "27"
+    Then edit "AGNT Name" as "MichaelScott"
+    And edit "Check-In Date" as "27"
     Then submit the edited summaries
     #
-    Then compare if "Agent Name" has "Michael Scott " for callId
-    And compare if "Check-Out Date" has "28" for callId
+    Then compare if "AGNT Name" has "MichaelScott " for callId
+    And compare if "Check-In Date" has "27" for callId
     ##############################################
     ###VERIFYING DISPOSITION AGAINST GOLD STANDARD
     #
@@ -107,8 +107,8 @@ Feature: Test Offline Audio file - Call19
     ##############################################
     ###DELETE ENTITIES
     #
-    #Then delete all entities
-    #Then delete all alerts
+    Then delete all entities
+    Then delete all alerts
 		#
     ##############################################
     ###DELETE ORGANIZATION AND AGENT
@@ -118,4 +118,4 @@ Feature: Test Offline Audio file - Call19
     ##############################################
     Examples: 
       | organization  | category | orgAgentName     | agentEmail               | role    | language   |  audio-file                | turn | phrase       | intent                        | transcript-file                           | description   | colorVR       | agentName | customerName | roomType                | creditCardExpDate | checkinDate | checkoutDate | customerEmail                        |
-      | "APITesting"    | "call19" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      |  "audio-files/call19AudioFiles/call19.wav" |    0 | "my name is" | "Hotel Booking/Deluxe/Booked" | "/transcript-jsons/call19Transcript.json" | "description" | "colorSample" | "michael" | "sarah"      | "sea view deluxe sweet" | "x/xx"            | "26"        | "27"         | "sarah dot parker and gmail dot com" |
+      | "APITesting"    | "call19" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      |  "audio-files/call19AudioFiles/call19.wav" |    0 | "my name is" | "Hotel Booking/Deluxe/Booked" | "src/test/resources/transcript-jsons/call19.json" | "description" | "colorSample" | "michael" | "sarah"      | "sea view deluxe sweet" | "x/xx/"            | "2627 of this month"        | "27"         | "sarah dot parker and gmail dot com" |

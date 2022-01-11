@@ -1,0 +1,23 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Hotel Booking,Normal,Not Booked"],
+        "level": 3,
+        "name": "Not Booked",
+        "bagOfKeywords": [
+            {
+                "keywordName": "not booked",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "cancelled",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": true,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

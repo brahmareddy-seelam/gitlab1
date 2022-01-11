@@ -14,7 +14,7 @@ public class Main extends BaseClass{
 		// TODO Auto-generated method stub
 
 		String organization = "APITesting";
-		String category = "call18";
+		String category = "UDS";
 
 		prop.setProperty("Backend", "3.17.7.15");
 		port.setProperty("BACKEND_PORT", "3360");

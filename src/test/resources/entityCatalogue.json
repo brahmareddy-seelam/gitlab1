@@ -129,16 +129,6 @@
           "name": "NUMBER_DEFAULT"
         },
         {
-          "id": 40,
-          "type": "PERSON",
-          "name": "name14sep"
-        },
-        {
-          "id": 42,
-          "type": "PERSON",
-          "name": "name1sep"
-        },
-        {
           "id": 43,
           "type": "EMAIL",
           "name": "Email"
@@ -162,11 +152,6 @@
           "id": 47,
           "type": "PERSON",
           "name": "CustName"
-        },
-        {
-          "id": 48,
-          "type": "PERSON",
-          "name": "CusName"
         }
       ]
     }
