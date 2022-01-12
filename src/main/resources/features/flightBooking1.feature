@@ -1,5 +1,5 @@
 @E2eOffline
-Feature: Test Offline Audio file - FlightBooking Calls
+Feature: Test Offline Audio file - FlightBooking1
   This will test a offline audio wav load end-to-end
 
   @flightBooking1 @Regression

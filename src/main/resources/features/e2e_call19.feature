@@ -72,7 +72,7 @@ Feature: Test Offline Audio file - Call19
     ##############################################
     ###VERIFYING ENTITIES AGAINST GOLD STANDARD
     #
-    And wait for 15 seconds
+    #And wait for 15 seconds
     And entities for callId exist
     And the entity for callId has "AGNT Name" as <agentName>
     #
@@ -85,22 +85,19 @@ Feature: Test Offline Audio file - Call19
     And a summary for callId has "AGNT Name" <agentName>
     And a summary for callId has "Room Type" <roomType>
     And a summary for callId has "Credit Card Exp Date" <creditCardExpDate>
-    And a summary for callId has "Check-In Date" <checkinDate>
+    And a summary for callId has "checkin date" <checkinDate>
     And a summary for callId has "Customer Email" <customerEmail>
     #
     Then edit "AGNT Name" as "MichaelScott"
-    And edit "Check-In Date" as "27"
+    And edit "checkin date" as "27"
     Then submit the edited summaries
     #
-    Then compare if "AGNT Name" has "MichaelScott " for callId
-    And compare if "Check-In Date" has "27" for callId
+    Then compare if "AGNT Name" has "MichaelScott" for callId
+    And compare if "checkin date" has "27" for callId
     ##############################################
     ###VERIFYING DISPOSITION AGAINST GOLD STANDARD
     #
     And disposition for callId has intent of <intent>
-    Then edit and submit disposition intent "Booked" as "Cancelled"
-    And we sync <orgAgentName>
-    Then compare if disposition has changed intent from "Booked" to "Cancelled"
     #
     Then verify that supervisor has alert "Call Duration" with type "Information Alert"
     Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
