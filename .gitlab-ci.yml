@@ -1,5 +1,5 @@
 E2e-Regression:
-stages:
+  stages:
   - test
   - report
   
