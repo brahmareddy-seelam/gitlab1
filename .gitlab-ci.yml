@@ -1,8 +1,7 @@
-E2e-Regression:
-  stages:
-    - test
-    - report
-  
+stages:
+  - test
+  - report
+test-execution:  
   stage: test
   image: maven:3.8-openjdk-8
   script:
@@ -11,10 +10,11 @@ E2e-Regression:
     - (/etc/apache-maven-3.8.4/bin/mvn clean)
     - (/etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@env" -Dbackend="3.133.195.200" -Dkeycloak="3.133.195.200" -Dplatform=”3.133.195.200” -Dcucumber.options="--plugin html:target/cucumber.html")
     - (/etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@smoke" -Dbackend="3.133.195.200" -Dkeycloak="3.133.195.200" -Dplatform=”3.133.195.200” -Dcucumber.options="--plugin html:target/cucumber.html")
-  
-  stage: report
-  artifacts:
-    name: "E2e_Report"
-    paths:
-    - target/cucumber.html
-    expire_in: 1 day
+
+# test-report:  
+#   stage: report
+#   artifacts:
+#     name: "E2e_Report"
+#     paths:
+#     - target/cucumber.html
+#     expire_in: 1 day
