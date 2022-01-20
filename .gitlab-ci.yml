@@ -9,9 +9,9 @@ test-execution:
   script:
 #    - mvn clean
 #    - mvn test
-    - (./etc/apache-maven-3.8.4/bin/mvn clean)
-    - (./etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@env" -Dbackend="3.133.195.200" -Dkeycloak="3.133.195.200" -Dplatform=”3.133.195.200” -Dcucumber.options="--plugin html:target/cucumber.html")
-    - (./etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@smoke" -Dbackend="3.133.195.200" -Dkeycloak="3.133.195.200" -Dplatform=”3.133.195.200” -Dcucumber.options="--plugin html:target/cucumber.html")
+    - (/etc/apache-maven-3.8.4/bin/mvn clean)
+    - (/etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@env" -Dbackend="3.133.195.200" -Dkeycloak="3.133.195.200" -Dplatform=”3.133.195.200” -Dcucumber.options="--plugin html:target/cucumber.html")
+    - (/etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@smoke" -Dbackend="3.133.195.200" -Dkeycloak="3.133.195.200" -Dplatform=”3.133.195.200” -Dcucumber.options="--plugin html:target/cucumber.html")
 
 # test-report:  
 #   stage: report
