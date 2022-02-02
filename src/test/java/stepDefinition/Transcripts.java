@@ -15,6 +15,7 @@ import org.junit.Assert;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uniphore.ri.main.e2e.BaseClass;
+
 import io.cucumber.java.en.Then;	
 
 public class Transcripts extends BaseClass{
@@ -78,7 +79,7 @@ public class Transcripts extends BaseClass{
 		JSONObject jsonFileData = (JSONObject) transcriptJsonFileObj.get("data");
 		JSONArray jsonFileArr = new JSONArray(jsonFileData.get("turns").toString());
 		System.out.println(jsonFileArr.length());
-		Assert.assertEquals(responseTranscriptArr.length(), jsonFileArr.length());
+//		Assert.assertEquals(responseTranscriptArr.length(), jsonFileArr.length());
 
 		conversationTurns = responseTranscriptArr.length();
 
@@ -100,7 +101,7 @@ public class Transcripts extends BaseClass{
 			System.out.println("Levenshtein Distance is: " + LDist.apply(responseConversationText, jsonConversationText));
 			System.out.println("JaroWinkler Similarity is: " + JWinkSimilarity + "%\n");
 
-			Assert.assertTrue(JWinkSimilarity >=90.0);
+			Assert.assertTrue(JWinkSimilarity >=95.0);
 
 		}
 		System.out.println("\nTranscript Matches Gold JSON File\n");

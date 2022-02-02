@@ -184,6 +184,7 @@
                        <Keycloak>${keycloak}</Keycloak>
                        <Backend>${backend}</Backend>
                        <Platform>${platform}</Platform>
+                       <ASREngine>${asrengine}</ASREngine>
            </systemPropertyVariables>
            <includes>
             <include>RunCucumberTest.java</include>

@@ -73,7 +73,7 @@ Feature: Test Offline Audio file - FlightBooking3
     #
     Then a transcript is generated for callId
     And the transcript conversation for callId for <turn> has <phrase>
-    #And the transcript conversation for callId matches the correct version <transcript-file>
+    And the transcript conversation for callId matches the correct version <transcript-file>
     #	##############################################
     #
     #	###VERIFYING ENTITIES AGAINST GOLD STANDARD

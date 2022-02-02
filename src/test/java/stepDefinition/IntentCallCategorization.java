@@ -29,7 +29,7 @@ public class IntentCallCategorization extends BaseClass{
 	public void define_and_configure_call_categorization(String folderPath) throws IOException, URISyntaxException, JSONException{
 		loadURL("BACKEND_PORT");
 		
-		String absoluteFolderPath = Paths.get(TestCenter.getInstance().getFile(folderPath).getAbsolutePath()).toString();
+		String absoluteFolderPath = Paths.get(TestCenter.getInstance().getFile(folderPath).getAbsolutePath()).toString().replace("%20", " ");
 		System.out.println(absoluteFolderPath);
 		File callCatDefinitionFolder = new File(absoluteFolderPath + "/definitions");
 		File callCatConfigFolder = new File(absoluteFolderPath + "/configurations");

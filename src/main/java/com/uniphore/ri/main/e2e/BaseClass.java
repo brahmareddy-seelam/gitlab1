@@ -1,17 +1,27 @@
 package com.uniphore.ri.main.e2e;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Properties;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.path.json.JsonPath;
 import com.uniphore.*;
+
 public class BaseClass {
 	
 	public static RequestSpecification request=null;
@@ -20,6 +30,7 @@ public class BaseClass {
 	
 	public static Properties prop=new Properties();
 	public static Properties port=new Properties();
+	
 	
 	public BaseClass() {
 	FileInputStream fis = null;
@@ -37,15 +48,19 @@ public class BaseClass {
 		prop.setProperty("Backend", System.getProperty("backend"));
 		prop.setProperty("Keycloak", System.getProperty("keycloak"));
 		prop.setProperty("Platform", System.getProperty("platform"));
+		prop.setProperty("ASREngine", System.getProperty("asrengine"));
 		prop.store(out, null);
 		out.close(); 
-		
 		port.load(portfis);
+		
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
 	
 	}
+	
+	
+	
 	
 	
 	public static RequestSpecification loadURL(String env) {

@@ -13,12 +13,12 @@ public class Main extends BaseClass{
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		// TODO Auto-generated method stub
 
-		String organization = "APITesting";
-		String category = "UDS";
+		String organization = "B And E Group Pvt Ltd";
+		String category = "AE Banking";
 
-		prop.setProperty("Backend", "3.17.7.15");
+		prop.setProperty("Backend", "52.52.125.4");
 		port.setProperty("BACKEND_PORT", "3360");
-		String pathForSaving = "C:\\Users\\murali\\workspace\\call18";
+		String pathForSaving = "C:\\Users\\murali\\workspace\\UDS";
 
 
 	    TestCenter.getInstance().setAccessToken("l!5ZElx+DJy3#9</gZA_V9q5d2=hD9");
@@ -27,7 +27,7 @@ public class Main extends BaseClass{
 	    CommonSteps.orgMap.put("category", category);
 	    
 	    PullerandWriter.saveCallConfigFiles(pathForSaving);
-//	    PullerandWriter.saveCallAlertConfigFiles(pathForSaving);
+	    PullerandWriter.saveCallAlertConfigFiles(pathForSaving);
 	    
 	}
 

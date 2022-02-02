@@ -75,7 +75,7 @@ Feature: Test Offline Audio file - Call18
     #
     Then a transcript is generated for callId
     And the transcript conversation for callId for <turn> has <phrase>
-    #And the transcript conversation for callId matches the correct version <transcript-file>
+    And the transcript conversation for callId matches the correct version <transcript-file>
     #
     #	##############################################
     #

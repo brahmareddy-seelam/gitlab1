@@ -1,6 +1,7 @@
 package stepDefinition;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
@@ -15,6 +16,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Assert;
 
@@ -23,6 +25,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uniphore.ri.main.e2e.BaseClass;
 import com.uniphore.ri.main.e2e.Log;
 import com.uniphore.ri.main.e2e.TestCenter;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -176,8 +179,17 @@ public class CommonSteps extends BaseClass{
 		Assert.assertEquals(201,response.getStatusCode());
 	}
 	
-	
 	@Then("we update asr-engine from folder {string}")
+	public void update_asr(String folder) throws JSONException, IOException {
+		String asr_engine=System.getProperty("asrengine");
+		if(asr_engine!="0") {
+			this.updateASR(asr_engine);
+			this.update_asr_engine(folder);
+		}else{
+			update_asr_engine(folder);
+		}
+	}
+	
 	public void update_asr_engine(String folder) throws IOException {
 		int concurrency=5;
 		String defineJsonrule = new String(Files.readAllBytes(Paths.get(folder)));
@@ -236,5 +248,27 @@ public class CommonSteps extends BaseClass{
 		response=request.put("asr-instance");
 		Assert.assertEquals(200, response.getStatusCode());
 	}
+	
+	
+	
+	public void updateASR(String asr_engine) throws IOException {
+		System.out.println(System.getProperty("user.dir"));
+		String backup = new String(Files.readAllBytes((Paths.get(System.getProperty("user.dir")+"/asr-engine.json").toAbsolutePath())));
+		JSONArray array=new JSONArray(backup);
+		JSONObject uniphore_us=array.getJSONObject(1).getJSONObject("UNIPHORE(en-us)");
+		JSONArray ws=uniphore_us.getJSONArray("ws");
+		ws.remove(0);ws.put(asr_engine); 
+		System.out.println(uniphore_us);
+		File f=new File(System.getProperty("user.dir")+"/asr-engine.json").getAbsoluteFile();
+		@SuppressWarnings("resource")
+		FileWriter file= new FileWriter(f);
+		file.write(array.toString());
+		file.flush();
+	}
+	
+	
+	
+	
+	
 	
 }
