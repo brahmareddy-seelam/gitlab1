@@ -36,7 +36,8 @@ public static void main(String args[]) {
 	  ExtentReports extent = new ExtentReports();
       ExtentSparkReporter spark = new ExtentSparkReporter("target/Spark/Spark.html");
       extent.attachReporter(spark);
-
+      
+      
       extent.createTest("ScreenCapture")
               .addScreenCaptureFromPath("extent.png")
               .pass(MediaEntityBuilder.createScreenCaptureFromPath("extent.png").build());

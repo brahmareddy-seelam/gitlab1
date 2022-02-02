@@ -11,7 +11,8 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
 		features={"src/main/resources/features/"},
 		glue={"stepDefinition"},
-		plugin= {"pretty","html:target/cucumber.html","json:target/cucumber.json"},
+		plugin= {"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "summary","pretty",
+				"html:target/cucumber.html","json:target/cucumber.json"},
 		stepNotifications = true,
 		monochrome=true)
 public class RunCucumberTest  {
