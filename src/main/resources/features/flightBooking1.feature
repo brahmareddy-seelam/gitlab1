@@ -34,7 +34,7 @@ Feature: Test Offline Audio file - FlightBooking1
     ###DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     #
     ##ENTITY
-    Then we add language "E" to org <organization> and category <category>
+    Then we add language "EUU" to org <organization> and category <category>
     #
     Then delete all entities
     #
@@ -77,8 +77,8 @@ Feature: Test Offline Audio file - FlightBooking1
     #
     #	###VERIFYING ENTITIES AGAINST GOLD STANDARD
     #
-    And entities for callId exist
-    And the entity for callId has "Agent Name" as <agentName>
+    #And entities for callId exist
+    #And the entity for callId has "Agent Name" as <agentName>
     #
     #	##############################################
     #

@@ -65,6 +65,7 @@ public class CacheAndTrain extends BaseClass{
 			System.out.println("API call failed! Trying for "+i+" time");
 		}
 		}
+		Assert.assertEquals(200, StatusCode);
 	}
 	
 }

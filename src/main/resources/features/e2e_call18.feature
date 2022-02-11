@@ -96,24 +96,25 @@ Feature: Test Offline Audio file - Call18
     And a summary for callId has "Claim DeadLine" <Claim Deadline>
     And a summary for callId has "Claim Amount" <Claim Amount>
     And a summary for callId has "Latest By" <Claim Resolve in>
-    #And a summary for callId has "Name Asc" "john"
-    #And a summary for callId has "Claim Amount Rule" <Claim Amount>
+    And a summary for callId has "Elapsed time" <Elapsed time>
+    And a summary for callId has "Name Asc" <Name Asc>
+    And a summary for callId has "Claim Amount Rule" <Claim Amount>
     #
     Then edit "Agent Name" as "JohnSmith"
-    And edit "Claim Amount" as "4200 dollars"
+    And edit "Claim Amount Rule" as "4200 dollars"
     Then submit the edited summaries
     #
     Then compare if "Agent Name" has "JohnSmith" for callId
-    And compare if "Claim Amount" has "4200 dollars" for callId
+    And compare if "Claim Amount Rule" has "4200 dollars" for callId
     #
     #############################################
     #
     ##VERIFYING DISPOSITION AGAINST GOLD STANDARD
     #
     And disposition for callId has intent of <intent>
-    #Then edit and submit disposition intent "Query" as "approved"
-    #And we sync <orgAgentName>
-    #Then compare if disposition has changed intent from "Query" to "approved"
+    Then edit and submit disposition intent "Query" as "approved"
+    And we sync <orgAgentName>
+    Then compare if disposition has changed intent from "Query" to "approved"
     #
     Then verify that supervisor has alert "Call Duration" with type "Information Alert"
     Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
@@ -133,8 +134,8 @@ Feature: Test Offline Audio file - Call18
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                                | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  |
-      | "APITesting" | "call18" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18TranscriptASR.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |
+      | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                                | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  | Name Asc    | Claim Amount Rule | Elapsed time |
+      | "APITesting" | "call18" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18TranscriptASR.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" | "john, jon" | "4000 dollars"    | "5 weeks"    |
 
   @catalog
   Scenario Outline: To create entity-catalog
@@ -180,10 +181,10 @@ Feature: Test Offline Audio file - Call18
   Scenario Outline: Test
     Given we create an organization called <organization> with description as <description>
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
-    Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
-    And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
-    And we sync <orgAgentName>
 
+    #Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
+    #And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
+    #And we sync <orgAgentName>
     Examples: 
       | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                | turn | phrase       | intent                  | transcript-file                                | description   | colorVR       | agentName | Repeat Customer | Claim Number | Date     | ETC               |
       | "APITesting" | "UDS"    | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/UDS/UDS.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/UDS.json" | "description" | "colorSample" | "john"    | "YES"           | "8675319"    | "a week" | "5 business days" |

@@ -35,3 +35,5 @@ Feature: To set up system before any validation
     Examples: 
       | organization            | category     |
       | "B And E Group Pvt Ltd" | "AE Banking" |
+      
+  
