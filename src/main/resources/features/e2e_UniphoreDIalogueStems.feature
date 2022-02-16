@@ -58,6 +58,10 @@ Feature: Test Offline Audio file - UniphoreDIalogueStems
     Then train call-categories
     Then refresh all caches
     #
+    Then configure complex entities "ConfigAndDefine/call18/complexEntity"
+    Then validate and configure rules in folder "ConfigAndDefine/call18/complexEntity/complexRule"
+    Then train complex rules
+    Then post summary format
     ##############################################
     ###SENDING OFFLINE AUDIO REQUEST
     When the request with file <audio-file> is sent to the audio-connector
@@ -69,7 +73,7 @@ Feature: Test Offline Audio file - UniphoreDIalogueStems
     #
     Then a transcript is generated for callId
     And the transcript conversation for callId for <turn> has <phrase>
-    And the transcript conversation for callId matches the correct version <transcript-file>
+    #And the transcript conversation for callId matches the correct version <transcript-file>
     #
     #
     #	##############################################
@@ -90,6 +94,7 @@ Feature: Test Offline Audio file - UniphoreDIalogueStems
     And a summary for callId has "Date" <Date>
     And a summary for callId has "Duration" <ETC>
     And a summary for callId has "Claim Number" <Claim Number>
+    And a summary for callId has "Rule complex" <Rule complex>
     #
     Then edit "Person" as "Johnson"
     And edit "Duration" as "7 business days"
@@ -120,8 +125,5 @@ Feature: Test Offline Audio file - UniphoreDIalogueStems
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                                                     | turn | phrase       | intent                     | transcript-file                                | description   | colorVR       | agentName | Repeat Customer | Claim Number  | Date     | ETC               |
-      | "APITesting"   | "UDS"    | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/UDS/UDS.wav" |    0 | "my name is" | "insurance/claim/Approval" | "src/test/resources/transcript-jsons/UDS.json" | "description" | "colorSample" | "john"    | "YES"           | "8675319" | "a week" | "5 business days" |
-
-  
-  
+      | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                | turn | phrase       | intent                     | transcript-file                                | description   | colorVR       | agentName | Repeat Customer | Claim Number | Date     | ETC               | Rule complex |
+      | "APITesting" | "UDS"    | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/UDS/UDS.wav" |    0 | "my name is" | "insurance/claim/Approval" | "src/test/resources/transcript-jsons/UDS.json" | "description" | "colorSample" | "john"    | "YES"           | "8675319"    | "a week" | "5 business days" | "Anna Gatling" |

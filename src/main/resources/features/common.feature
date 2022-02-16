@@ -36,4 +36,15 @@ Feature: To set up system before any validation
       | organization            | category     |
       | "B And E Group Pvt Ltd" | "AE Banking" |
       
-  
+   @complex
+  Scenario Outline: Update of environment Organization and Category
+  	Given the request organization is <organization>
+    And the request category is <category>
+  	Then configure complex entities "ConfigAndDefine/call18/complexEntity"
+  	Then validate and configure rules in folder "ConfigAndDefine/call18/complexEntity/complexRule"
+  	Then train complex rules
+    #Then validate and configure rules in folder "ConfigAndDefine/call18/complexEntity/complexRule"
+ 		Examples: 
+      | organization            | category     |
+      | "APITesting" | "UDS" |
+      

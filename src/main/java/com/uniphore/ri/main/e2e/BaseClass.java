@@ -27,7 +27,7 @@ public class BaseClass {
 	public static RequestSpecification request=null;
 	public static Response response;
 	public static JsonPath jsonPathEvaluator=null;
-	
+	public static JSONArray ruleList=new JSONArray();
 	public static Properties prop=new Properties();
 	public static Properties port=new Properties();
 	
