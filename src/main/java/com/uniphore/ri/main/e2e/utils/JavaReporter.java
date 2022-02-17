@@ -253,7 +253,7 @@ public class JavaReporter {
 
 		String from = "mmrao92@gmail.com";
 		final String username = "mmrao92@gmail.com";
-		final String password = "munuswamynaidu";
+		
 //		String host = "smtp-mail.outlook.com"; 
 		
 		Properties props = new Properties();
@@ -329,7 +329,7 @@ public class JavaReporter {
 	              + "		<th class=\"headers\">Total Skipped</th><th class=\"headers\" bgcolor=\"F9EE16\">2</th>\r\n"
 	              + "		</table>\r\n"
 	              + "		</div>\r\n"
-	              + "		<div style=“margin-top: 50px 0”>\r\n"
+	              + "		<div style=ï¿½margin-top: 50px 0ï¿½>\r\n"
 	              + "		<table>\r\n"
 	              + "		<tr><th class=\"headers\">Feature</th><th class=\"headers\"></th></tr>\r\n"
 	              + "		<tr><th class=\"headers\">Scenarios:</th><th class=\"headers\"></th></tr>\r\n"
