@@ -8,9 +8,9 @@
 			"name": "Enter name here",
 			"description": "Enter discription here",
 			"priority": 1,
-			"condition": "$.complex('Complex_Name','$.results[*].from_user_name', 'first')!=''",
+			"condition": "$.complex('Complex_Name','$.results[*].from_user_id', 'first')!=''",
 			"actions": [
-				"$.output=$.complex('Complex_Name','$.results[*].from_user_name', 'first')"
+				"$.output=$.complex('Complex_Name','$.results[*].from_user_id', 'first')"
 			]
 		}
 	],

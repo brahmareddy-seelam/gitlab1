@@ -62,6 +62,8 @@ Feature: Test Offline Audio file - Call18
     Then train call-categories
     Then refresh all caches
     #
+    Then configure complex entities "ConfigAndDefine/call18/complexEntity"
+    Then validate and configure rules in folder "ConfigAndDefine/call18/complexEntity/complexRule"
     #############################################
     #
     #		###SENDING OFFLINE AUDIO REQUEST
@@ -99,6 +101,7 @@ Feature: Test Offline Audio file - Call18
     And a summary for callId has "Elapsed time" <Elapsed time>
     And a summary for callId has "Name Asc" <Name Asc>
     And a summary for callId has "Claim Amount Rule" <Claim Amount>
+    And a summary for callId has "Rule complex" <Rule complex>
     #
     Then edit "Agent Name" as "JohnSmith"
     And edit "Claim Amount Rule" as "4200 dollars"
@@ -134,8 +137,8 @@ Feature: Test Offline Audio file - Call18
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                                | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  | Name Asc    | Claim Amount Rule | Elapsed time |
-      | "APITesting" | "call18" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18TranscriptASR.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" | "john, jon" | "4000 dollars"    | "5 weeks"    |
+      | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                                | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  | Name Asc    | Claim Amount Rule | Elapsed time | Rule complex |
+      | "APITesting" | "call18" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18TranscriptASR.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" | "john, jon" | "4000 dollars"    | "5 weeks"    | "1237619628" |
 
   @catalog
   Scenario Outline: To create entity-catalog

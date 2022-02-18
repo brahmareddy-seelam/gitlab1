@@ -253,7 +253,7 @@
 //
 //		String from = "mmrao92@gmail.com";
 //		final String username = "mmrao92@gmail.com";
-//		final String password = "munuswamynaidu";
+//		final String password =
 ////		String host = "smtp-mail.outlook.com"; 
 //		
 //		Properties props = new Properties();

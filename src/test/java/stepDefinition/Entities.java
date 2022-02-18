@@ -132,6 +132,18 @@ public class Entities extends BaseClass{
 		}
 	}
 	
+	@Then("delete all dispositions")
+	public void delete_all_dispositions() {
+		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
+		JSONObject categoryHBenRequest=new JSONObject();
+		JSONArray levels=new JSONArray();
+		JSONArray categoryBeanRequest=new JSONArray();
+		levels.put("Level-1");levels.put("Level-2");levels.put("Level-3");levels.put("Level-4");levels.put("Level-5");
+		categoryHBenRequest.put("categoryHBeanRequest", categoryBeanRequest);
+		categoryHBenRequest.put("levels", levels);
+		request.body(categoryHBenRequest.toString());
+		Assert.assertTrue((request.post("call-category/define/json").getStatusCode())==200);
+	}
 	
 	@Then("validate and configure rules in folder {string}")
 	public void validate_rule_entity(String folder) throws IOException {
