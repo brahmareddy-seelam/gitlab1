@@ -35,6 +35,7 @@ Feature: Test Offline Audio file - Call18
     Then we add language "E" to org <organization> and category <category>
     #
     Then delete all entities
+    Then delete all dispositions
     #
     Then import ai entities from "ConfigAndDefine/call18/aiEntities/aiEntity.json"
     #

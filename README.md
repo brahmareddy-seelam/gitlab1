@@ -61,10 +61,10 @@ Sample:
 
 Use the following command to setup the environment related properties.
 
-mvn test -Dcucumber.filter.tags="@env" -Dbackend="18.190.161.131" -Dkeycloak="18.190.161.131" -Dcucumber.options="--plugin html:target/cucumber.html"
+mvn test -Dcucumber.filter.tags="@env" -Dbackend="18.190.161.131" -Dkeycloak="18.190.161.131" -Dasrengine="3.18.209.241:2800" -Dcucumber.options="--plugin html:target/cucumber.html"
 
 Use the following command to run the smoke test. 
-mvn test -Dcucumber.filter.tags="@smoke" -Dbackend="18.190.161.131" -Dkeycloak="18.190.161.131" -Dcucumber.options="--plugin html:target/cucumber.html"
+mvn test -Dcucumber.filter.tags="@smoke" -Dbackend="18.190.161.131" -Dkeycloak="18.190.161.131" -Dasrengine="3.18.209.241:2800" -Dcucumber.options="--plugin html:target/cucumber.html"
 
 Report will be generated in target folder as target/cucumber.html
 
@@ -72,4 +72,4 @@ Report will be generated in target folder as target/cucumber.html
 
 ## Note: Replace the backend and keycloak values (18.190.161.131) as required for the environment.
 
-## Live call testing needs CTI Language skill to be ‘99999’ and code has been updated in the path src/test/java/stepDefinition/CTI_Language.java.(Line 97) For any new env, all categories will be created with skillcode ‘99999’ which can be changed by removing ‘99999’ and uncommenting ‘String.format("%04d",random.nextInt(10000))’.
+Live call testing needs CTI Language skill to be ‘99999’ and code has been updated in the path src/test/java/stepDefinition/CTI_Language.java.(Line 97) For any new env, atleast one category will be created with skillcode ‘99999’ which can be changed by removing ‘99999’ and uncommenting ‘String.format("%04d",random.nextInt(10000))’.

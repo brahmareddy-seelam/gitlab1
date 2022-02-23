@@ -33,6 +33,7 @@ Feature: Test Offline Audio file - verizon
     ##DEFINITION AND CONFIGURATION` FOR ENTITY AND INTENT
     #
     Then delete all entities
+    Then delete all dispositions
     #
     Then we add language "E" to org <organization> and category <category>
     #ENTITY
@@ -40,6 +41,7 @@ Feature: Test Offline Audio file - verizon
     Then define and configure entities in folder "ConfigAndDefine/verizon/entities/"
     #
     Then validate and configure rules in folder "ConfigAndDefine/verizon/ruleEntity"
+    Then validate and configure rules in folder "ConfigAndDefine/verizon/complexEntity/complexRule"
     #
     #SUMMARY FORMAT
     #
@@ -99,6 +101,7 @@ Feature: Test Offline Audio file - verizon
     And a summary for callId has "Purchase Options Rule" <Purchase Options Rule>
     #And a summary for callId has "Phone Opted" <Phone Opted>
     #And a summary for callId has "Claim Amount Rule" <Claim Amount>
+    And a summary for callId has "Rule complex" <Rule complex>
     #
     Then edit "Social Security Number" as "6789"
     And edit "Time to deliver" as "5 to 7 business days"
@@ -135,7 +138,5 @@ Feature: Test Offline Audio file - verizon
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                                | transcript-file                                              | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              | Purchase Options Rule |
-      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" | "full retail value, monthly payments" |
-
- 
+      | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                                | transcript-file                                                 | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              | Purchase Options Rule                 | Rule complex |
+      | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" | "full retail value, monthly payments" | "1237619628" |

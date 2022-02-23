@@ -1,0 +1,20 @@
+{
+	"skipOnFirstRuleApplied": true,
+	"skipOnFirstNonTriggeredRule": true,
+	"priorityThreshold": 10,
+	"delimeter": ",",
+	"components": [
+		{
+			"name": "Enter name here",
+			"description": "Enter discription here",
+			"priority": 1,
+			"condition": "$.complex('Complex_Name','$.results[*].from_user_id', 'first')!=''",
+			"actions": [
+				"$.output=$.complex('Complex_Name','$.results[*].from_user_id', 'first')"
+			]
+		}
+	],
+	"ruleName": "Rule complex",
+	"skipOnFirstFailedRule": false,
+	"type": "ENTITY"
+}

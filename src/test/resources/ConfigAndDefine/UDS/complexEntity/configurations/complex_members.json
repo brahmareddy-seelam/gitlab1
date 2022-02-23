@@ -1,0 +1,9 @@
+{
+	"entityId": 1760,
+	"configuration": {
+		"endpoint": "http://3.21.65.251:5001/members",
+		"contentType": "application/json",
+		"requestMappings": []
+	},
+	"id": 48
+}

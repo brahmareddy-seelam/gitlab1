@@ -1,0 +1,14 @@
+{
+	"name": "Complex_Members",
+	"description": "complex members",
+	"defaultValue": "",
+	"entityType": "COMPLEX",
+	"catalogReference": null,
+	"noOfChar": 0,
+	"boolTrueValue": null,
+	"entityTextIfFalse": null,
+	"sourceType": "COMPLEX",
+	"saved": true,
+	"trained": false,
+	"referenceName": "Complex"
+}
