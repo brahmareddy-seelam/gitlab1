@@ -2,7 +2,11 @@ package stepDefinition;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.hamcrest.Matchers;
@@ -14,13 +18,18 @@ import com.uniphore.ri.main.e2e.BaseClass;
 import com.uniphore.ri.main.e2e.TestCenter;
 import io.cucumber.java.en.Given;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSenderOptions;
+
 import java.util.Map;
 
 public class AddAgent extends BaseClass{
 	
 	CommonSteps cs=new CommonSteps();
 	public static HashMap<String, String>  map;
-	
+	public static String agent=null;
+	public static JSONArray JSONResponseBody;
+	public static Map<Object, Object> user;
 	
 	@Given("we create an organization called {string} with description as {string}")
 	public void we_create_an_organization_called_with_description_as(String organization, String description)
@@ -123,7 +132,7 @@ public class AddAgent extends BaseClass{
 			throws IOException, URISyntaxException, JSONException {
 		loadURL("KEYCLOAK_PORT");
 		System.out.println("(before) Order 4 function:");
-
+		agent=agentName;
 		map.put("orgName", organization);
 		JSONObject attributes = new JSONObject();
 		attributes.put("clientId", agentName);
@@ -165,7 +174,7 @@ public class AddAgent extends BaseClass{
 		loadURL("KEYCLOAK_PORT");
 		request.auth().oauth2(TestCenter.getInstance().getKeycloakAccessToken()).header("Content-Type","application/json");
 		request.body(cred);
-		response=request.log().all().put("auth/admin/realms/"+port.getProperty("realm")+"/users/"+getId()+"/reset-password");
+		response=request.log().all().put("auth/admin/realms/"+port.getProperty("realm")+"/users/"+getId(agent)+"/reset-password");
 		Assert.assertEquals(204, response.getStatusCode());
 	}
 	
@@ -203,17 +212,32 @@ public class AddAgent extends BaseClass{
 		return users;
 	}
 	
-	public String getId() {
+	public String getId(String agent) {
 		loadURL("KEYCLOAK_PORT");
 		response=request.log().all().accept(ContentType.JSON).auth()
 				.oauth2(TestCenter.getInstance().getKeycloakAccessToken())
-				.get("auth/admin/realms/"+port.getProperty("realm")+"/users?search="+port.getProperty("username"));
-		JSONArray JSONResponseBody = new  JSONArray(response.body().asString());
+				.get("auth/admin/realms/"+port.getProperty("realm")+"/users?search="+agent);
+		JSONResponseBody = new  JSONArray(response.body().asString());
 		String id=JSONResponseBody.getJSONObject(0).getString("id");
 		return id;
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	@Given("map agent {string} to supervisor {string}")
+	public void map_agent_to_supervisor(String agent, String Supervisor) throws IOException, URISyntaxException {
+		sync_user(Supervisor);
+		String supervisor_id= user.get("id").toString();
+		Object agentS= user.get("agents");
+		ArrayList<Integer> list = new ArrayList<>();list=(ArrayList<Integer>)agentS;
+		sync_user(agent);
+		String id=user.get("id").toString();int agent_id=Integer.parseInt(id);
+		list.add(agent_id);
+		JSONObject Agent=new JSONObject();Agent.put("agents", list);
+		loadURL("OCMS_PORT");
+		request.contentType(ContentType.JSON).body(Agent.toString());
+		response=request.log().all().put("configuration/sup-agent-map/"+supervisor_id+"/?tenant-id=1");
+		Assert.assertEquals(200, response.getStatusCode());
+	}
 	
 	@Given("we sync {string}")
 	public void sync_user(String username) throws IOException, URISyntaxException {
@@ -228,8 +252,8 @@ public class AddAgent extends BaseClass{
 		map=new HashMap<String, String>();
 		map.put("grant_type", "password");
 		map.put("client_id", port.getProperty("client_id"));
-		map.put("username", port.getProperty("username"));
-		map.put("password", port.getProperty("password"));
+		map.put("username", username);
+		map.put("password", (username.equalsIgnoreCase("Super")?"Uniphore@123":port.getProperty("password")));
 		
 		response=request.log().all().formParams(map).post("auth/realms/"+port.getProperty("realm")+"/protocol/openid-connect/token");
 		jsonPathEvaluator = response.jsonPath();
@@ -240,7 +264,7 @@ public class AddAgent extends BaseClass{
 		loadURL("OCMS_PORT");
 		request.auth().oauth2(access_token);
 		response=request.post("configuration/sync-user");
-		Map<Object, Object> user=response.jsonPath().getMap("user");
+		user=response.jsonPath().getMap("user");
 		String startDate = String.valueOf(user.get("creation-date"));
 		String endDate = String.valueOf(user.get("modification-date"));
 		Object id=   user.get("id");

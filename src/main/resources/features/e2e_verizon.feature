@@ -140,3 +140,17 @@ Feature: Test Offline Audio file - verizon
     Examples: 
       | organization | category  | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                 | turn | phrase       | intent                                | transcript-file                                                 | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              | Purchase Options Rule                 | Rule complex |
       | "APITesting" | "verizon" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/verizonAudioFile/verizon.wav" |    0 | "my name is" | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/verizonTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" | "full retail value, monthly payments" | "1237619628" |
+
+	@agents
+  Scenario Outline: Add agents and map to a Supervisor
+    Given we create an organization called <organization> with description as <description>
+    And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
+    Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
+    And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
+    And we sync <orgAgentName>
+    And map agent <orgAgentName> to supervisor "Super"
+
+    Examples: 
+      | organization | orgAgentName | agentEmail             | description   | colorVR       | category  |
+      | "APITesting" | "Agent03"    | "Agent03@uniphore.com" | "description" | "colorSample" | "verizon" |
+      
