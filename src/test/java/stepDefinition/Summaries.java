@@ -45,7 +45,7 @@ public class Summaries extends BaseClass{
 	  for (String str : entitiesStr.toString().substring(1,entitiesStr.length()-1).split(",\"")){
 		  Integer indexOfSeparation = str.indexOf(":");
 		  String entity = str.substring(0, indexOfSeparation);
-		  String entityVal = str.substring(indexOfSeparation + 2, str.length()-1);
+		  String entityVal = (indexOfSeparation + 2<str.length()?str.substring(indexOfSeparation + 2, str.length()-1):str.substring(indexOfSeparation + 2, str.length()-0));
 		  entitiesMap.put(entity.replaceAll("\"", ""), entityVal.trim());
 	  }
 	  
