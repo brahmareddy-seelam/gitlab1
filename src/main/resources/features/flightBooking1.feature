@@ -61,6 +61,8 @@ Feature: Test Offline Audio file - FlightBooking1
     Then train call-categories
     Then refresh all caches
     #
+    Then configure complex entities "ConfigAndDefine/call18/complexEntity"
+    Then validate and configure rules in folder "ConfigAndDefine/call18/complexEntity/complexRule"
     ##############################################
     ###SENDING OFFLINE AUDIO REQUEST
     When the request with file <audio-file> is sent to the audio-connector
@@ -90,6 +92,7 @@ Feature: Test Offline Audio file - FlightBooking1
     And a summary for callId has "Flight Number" <Flight Number>
     And a summary for callId has "Departure Date" <Departure  Date>
     #And a summary for callId has "Type " <Type>
+    And a summary for callId has "Rule complex" <Rule complex>
     #
     Then edit "Agent Name" as "McKenna"
     And edit "Flight Number" as "1836"
@@ -121,5 +124,5 @@ Feature: Test Offline Audio file - FlightBooking1
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category  | orgAgentName | agentEmail                | role    | language | audio-file                                      | turn | phrase                  | intent                                     | transcript-file                                           | description   | colorVR       | agentName | Flight Number | Departure  Date | Type         |
-      | "APITesting" | "flight1" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking1/flightBooking1.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Departure" | "src/test/resources/transcript-jsons/flightBooking1.json" | "description" | "colorSample" | "mckenna"   | "2534"        | "8/30/"         | "round trip" |
+      | organization | category  | orgAgentName | agentEmail                | role    | language | audio-file                                      | turn | phrase                  | intent                                     | transcript-file                                           | description   | colorVR       | agentName | Flight Number | Departure  Date | Type         |Rule complex|
+      | "APITesting" | "flight1" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/flightBooking1/flightBooking1.wav" |    0 | "thank you for calling" | "Flight_Booking/Book/Round Trip/Departure" | "src/test/resources/transcript-jsons/flightBooking1.json" | "description" | "colorSample" | "mckenna"   | "2534"        | "8/30/"         | "round trip" |"1237619628"|

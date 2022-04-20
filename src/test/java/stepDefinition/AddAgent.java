@@ -136,7 +136,7 @@ public class AddAgent extends BaseClass{
 		map.put("orgName", organization);
 		JSONObject attributes = new JSONObject();
 		attributes.put("clientId", agentName);
-		attributes.put("stationCode", "110");
+		attributes.put("stationCode", "1876");
 
 		JSONArray groups = new JSONArray();
 		groups.put("uniphore-agent-group");
@@ -263,7 +263,7 @@ public class AddAgent extends BaseClass{
 		
 		loadURL("OCMS_PORT");
 		request.auth().oauth2(access_token);
-		response=request.post("configuration/sync-user");
+		response=request.log().all().post("configuration/sync-user");
 		user=response.jsonPath().getMap("user");
 		String startDate = String.valueOf(user.get("creation-date"));
 		String endDate = String.valueOf(user.get("modification-date"));

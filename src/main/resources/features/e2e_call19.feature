@@ -56,6 +56,8 @@ Feature: Test Offline Audio file - Call19
     Then train call-categories
     Then refresh all caches
     #
+    Then configure complex entities "ConfigAndDefine/call18/complexEntity"
+    Then validate and configure rules in folder "ConfigAndDefine/call18/complexEntity/complexRule"
     ##############################################
     ###SENDING OFFLINE AUDIO REQUEST
     #
@@ -87,6 +89,7 @@ Feature: Test Offline Audio file - Call19
     And a summary for callId has "Credit Card Exp Date" <creditCardExpDate>
     And a summary for callId has "checkin date" <checkinDate>
     And a summary for callId has "Customer Email" <customerEmail>
+    And a summary for callId has "Rule complex" <Rule complex>
     #
     Then edit "AGNT Name" as "MichaelScott"
     And edit "checkin date" as "27"
@@ -114,5 +117,5 @@ Feature: Test Offline Audio file - Call19
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization  | category | orgAgentName     | agentEmail               | role    | language   |  audio-file                | turn | phrase       | intent                        | transcript-file                           | description   | colorVR       | agentName | customerName | roomType                | creditCardExpDate | checkinDate | checkoutDate | customerEmail                        |
-      | "APITesting"    | "call19" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      |  "audio-files/call19AudioFiles/call19.wav" |    0 | "my name is" | "Hotel Booking/Deluxe/Booked" | "src/test/resources/transcript-jsons/call19.json" | "description" | "colorSample" | "michael" | "sarah"      | "sea view deluxe sweet" | "x/xx/"            | "2627 of this month"        | "27"         | "sarah dot parker and gmail dot com" |
+      | organization  | category | orgAgentName     | agentEmail               | role    | language   |  audio-file                | turn | phrase       | intent                        | transcript-file                           | description   | colorVR       | agentName | customerName | roomType                | creditCardExpDate | checkinDate | checkoutDate | customerEmail                        |Rule complex|
+      | "APITesting"    | "call19" | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      |  "audio-files/call19AudioFiles/call19.wav" |    0 | "my name is" | "Hotel Booking/Deluxe/Booked" | "src/test/resources/transcript-jsons/call19.json" | "description" | "colorSample" | "michael" | "sarah"      | "sea view deluxe sweet" | "x/xx/"            | "2627 of this month"        | "27"         | "sarah dot parker and gmail dot com" |"1237619628"|

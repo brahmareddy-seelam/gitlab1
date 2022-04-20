@@ -15,7 +15,7 @@ import io.cucumber.java.en.Then;
 public class Dispositions extends BaseClass{
 	
 	CommonSteps cs=new CommonSteps();
-	
+	Summaries sm=new Summaries();
 	public static HashMap<String, String> orgMap=new HashMap<>();
 	
 	public static String data=null;
@@ -53,12 +53,18 @@ public class Dispositions extends BaseClass{
 				  String entity = str.substring(1, indexOfSeparation);
 				  status=(str.contains("level")?true:false);
 				  if(!entity.contains("rawTurnIds")) {
-					  String entityVal = str.substring(indexOfSeparation +1 , str.length()-1);
+					  String entityVal=null;
+					  if(indexOfSeparation +1<=str.length()-1) {
+						   entityVal = str.substring(indexOfSeparation +1 , str.length()-1);
+					  }else {
+						   entityVal = str.substring(indexOfSeparation , str.length()-1);
+					  }
 					  dataMap.put(entity.replaceAll("\"", ""), entityVal.trim());
 					  String key=entity.replaceAll("\"", "");
 					  String value=entityVal.replaceAll("\"", "").trim();
 					  finalValue=(status?finalValue.append("{\""+key+"\":\""+value+"\","):finalValue.append("\""+key+"\":\""+value+"\"},"));
-				  }else {}
+				  }
+				  else {}
 			  } else {}
 			}
 			finalValue=finalValue.append("]");
@@ -66,7 +72,7 @@ public class Dispositions extends BaseClass{
 			System.out.println(payload);
 		HashMap<String, String> data=new HashMap<>();
 		data.put("sessionId", CommonSteps.commonMap.get("callId"));
-		data.put("userId", cs.getUserid());
+		data.put("userId", sm.getUserId());
 		loadURL("BACKEND_PORT");
 		request.log().all().header("Authorization", "Bearer "+TestCenter.accesstoken).header("Content-Type","application/json")
 		.queryParams(data);

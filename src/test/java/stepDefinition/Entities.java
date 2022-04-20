@@ -258,17 +258,19 @@ public class Entities extends BaseClass{
 	
 	
 	@Then("configure complex entities {string}")
-	public void complex_entities(String folderPath) throws IOException {
-		String absoluteFolderPath = Paths.get(TestCenter.getInstance().getFile(folderPath).getAbsolutePath())
+	public void complex_entities(String filefolderPath) throws IOException {
+		String folderPath = Paths.get(TestCenter.getInstance().getFile(filefolderPath).getAbsolutePath())
 				.toString();
 		
-		File entityDefinitionFolder = new File(absoluteFolderPath + "/entity-definitions");
-		File entityConfigFolder = new File(absoluteFolderPath + "/configurations");
+		File entityDefinitionFolder = new File(folderPath + "/entity-definitions");
+		File entityConfigFolder = new File(folderPath + "/configurations");
 		
 		System.out.println("orgMap " +CommonSteps.orgMap);
 
 		for (File defineFile : entityDefinitionFolder.listFiles()) {
-			String path=defineFile.toString();int index = path.lastIndexOf("\\");
+			String path=defineFile.toString();
+			boolean specialChar=path.contains("\\");
+			int index = (specialChar ? path.lastIndexOf("\\") : path.lastIndexOf("/"));
 			String fileName = path.substring(index + 1);
 			loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
 			String defineJsonString = new String(Files.readAllBytes(Paths.get(defineFile.getAbsolutePath())));
@@ -282,13 +284,24 @@ public class Entities extends BaseClass{
 				JSONObject data=new JSONObject(response.getBody().asString());
 				JSONObject datas=data.getJSONObject("data"); 
 				int id=(int) datas.get("id");
-				File name=new File(absoluteFolderPath+"/configurations/"+fileName);
-				String defineJsonString1 = new String(Files.readAllBytes(Paths.get(name.getAbsolutePath()))); 
-				JSONObject defineJsonFileObj1 = new JSONObject(defineJsonString1);defineJsonFileObj1.put("entityId", id);
-				String folders=name.getAbsolutePath();
+				File name = null;
+				String defineJsonString1 =null;
+				try {
+				name=new File(entityConfigFolder+"/"+fileName);
+				System.out.println(name.getAbsolutePath());
+				defineJsonString1= new String(Files.readAllBytes(Paths.get(name.getAbsolutePath()))); 
+				}catch(Exception e) {
+					name=new File(fileName);
+					System.out.println(name.getAbsolutePath());
+					defineJsonString1= new String(Files.readAllBytes(Paths.get(name.getAbsolutePath())));
+				}
+				File fileOutput=new File(entityConfigFolder+"/"+fileName);
+				JSONObject defineJsonFileObj1 = new JSONObject(defineJsonString1);
+				defineJsonFileObj1.put("entityId", id);
+				String folders=fileOutput.getAbsolutePath();
 				FileWriter file = new FileWriter(folders);
-				file.write(defineJsonFileObj1.toString());file.flush();
-				file.close();
+				file.write(defineJsonFileObj1.toString());
+				file.flush();file.close();
 			}
 		}
 		
@@ -304,7 +317,6 @@ public class Entities extends BaseClass{
 				response=request.delete("entity"+name);
 				}
 			Assert.assertEquals(200,response.getStatusCode());
-		
 		}
 	}
 	

@@ -1,13 +1,13 @@
 Feature: Test Offline Audio file - Call18
 
-  @call18 @Regression @smoke
+  @call18 @Regression 
   Scenario Outline: To test offline load of call18 and validate the summary and Feedbackloop
     ###CREATION OF ORGANIZATION, CATEGORY, AND AGENT
     Given we create an organization called <organization> with description as <description>
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
     Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
     And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
-    And we sync <orgAgentName>
+    #And we sync <orgAgentName>
     #
     #	###############################################
     #
@@ -65,6 +65,8 @@ Feature: Test Offline Audio file - Call18
     #
     Then configure complex entities "ConfigAndDefine/call18/complexEntity"
     Then validate and configure rules in folder "ConfigAndDefine/call18/complexEntity/complexRule"
+    Then train complex rules
+    Then post summary format
     #############################################
     #
     #		###SENDING OFFLINE AUDIO REQUEST
@@ -78,7 +80,7 @@ Feature: Test Offline Audio file - Call18
     #
     Then a transcript is generated for callId
     And the transcript conversation for callId for <turn> has <phrase>
-    And the transcript conversation for callId matches the correct version <transcript-file>
+    #And the transcript conversation for callId matches the correct version <transcript-file>
     #
     #	##############################################
     #
@@ -100,16 +102,16 @@ Feature: Test Offline Audio file - Call18
     And a summary for callId has "Claim Amount" <Claim Amount>
     And a summary for callId has "Latest By" <Claim Resolve in>
     And a summary for callId has "Elapsed time" <Elapsed time>
-    And a summary for callId has "Name Asc" <Name Asc>
-    And a summary for callId has "Claim Amount Rule" <Claim Amount>
-    And a summary for callId has "Rule complex" <Rule complex>
+    #And a summary for callId has "Name Asc" <Name Asc>
+    #And a summary for callId has "Claim Amount Rule" <Claim Amount>
+    #And a summary for callId has "Rule complex" <Rule complex>
     #
     Then edit "Agent Name" as "JohnSmith"
-    And edit "Claim Amount Rule" as "4200 dollars"
+    And edit "Claim Amount" as "4200 dollars"
     Then submit the edited summaries
     #
     Then compare if "Agent Name" has "JohnSmith" for callId
-    And compare if "Claim Amount Rule" has "4200 dollars" for callId
+    And compare if "Claim Amount" has "4200 dollars" for callId
     #
     #############################################
     #
@@ -162,7 +164,7 @@ Feature: Test Offline Audio file - Call18
 
     Examples: 
       | organization | category | orgAgentName | agentEmail                | catalogue file         | role    | language | audio-file                                | turn | phrase       | intent                  | transcript-file                                             | description   | colorVR       | agentName | customerName | Claim ID   | Claim Date | Claim Deadline | Claim Amount   | Claim Resolve in  |
-      | "APITesting" | "call18" | "APITesting" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18Transcript.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |
+      | "APITesting" | "call18" | "APITesting1" | "APITesting@uniphore.com" | "entityCatalogue.json" | "Agent" | "E"      | "audio-files/call18AudioFiles/call18.wav" |    0 | "my name is" | "insurance/claim/Query" | "src/test/resources/transcript-jsons/call18Transcript.json" | "description" | "colorSample" | "john"    | "stanley"    | "20084798" | "2/13"     | "2/23/"        | "4000 dollars" | "5 business days" |
 
   @cti
   Scenario Outline: To add lnaguage to Org

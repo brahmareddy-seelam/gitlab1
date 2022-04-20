@@ -152,6 +152,11 @@
           "id": 47,
           "type": "PERSON",
           "name": "CustName"
+        },
+        {
+          "id": 48,
+          "type": "INTENT",
+          "name": "day1_cricket_20"
         }
       ]
     }

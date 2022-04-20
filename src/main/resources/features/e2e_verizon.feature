@@ -8,7 +8,7 @@ Feature: Test Offline Audio file - verizon
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
     Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
     And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
-    And we sync <orgAgentName>
+    #And we sync <orgAgentName>
     #
     #	###############################################
     #
@@ -41,7 +41,6 @@ Feature: Test Offline Audio file - verizon
     Then define and configure entities in folder "ConfigAndDefine/verizon/entities/"
     #
     Then validate and configure rules in folder "ConfigAndDefine/verizon/ruleEntity"
-    Then validate and configure rules in folder "ConfigAndDefine/verizon/complexEntity/complexRule"
     #
     #SUMMARY FORMAT
     #
@@ -64,6 +63,11 @@ Feature: Test Offline Audio file - verizon
     Then train call-categories
     Then refresh all caches
     #
+    Then configure complex entities "ConfigAndDefine/verizon/complexEntity"
+    
+    Then validate and configure rules in folder "ConfigAndDefine/verizon/complexEntity/complexRule"
+    Then train complex rules
+    Then post summary format
     #############################################
     #
     #		###SENDING OFFLINE AUDIO REQUEST
@@ -101,7 +105,7 @@ Feature: Test Offline Audio file - verizon
     And a summary for callId has "Purchase Options Rule" <Purchase Options Rule>
     #And a summary for callId has "Phone Opted" <Phone Opted>
     #And a summary for callId has "Claim Amount Rule" <Claim Amount>
-    And a summary for callId has "Rule complex" <Rule complex>
+    #And a summary for callId has "Rule complex" <Rule complex>
     #
     Then edit "Social Security Number" as "6789"
     And edit "Time to deliver" as "5 to 7 business days"
@@ -143,12 +147,15 @@ Feature: Test Offline Audio file - verizon
 
 	@agents
   Scenario Outline: Add agents and map to a Supervisor
-    Given we create an organization called <organization> with description as <description>
-    And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
-    Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
-    And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
-    And we sync <orgAgentName>
-    And map agent <orgAgentName> to supervisor "Super"
+    #Given we create an organization called <organization> with description as <description>
+    #And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
+    #Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
+    #And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
+    #And we sync <orgAgentName>
+    #And map agent <orgAgentName> to supervisor "Super"
+    
+    Then configure complex entities "ConfigAndDefine/UDS/complexEntity"
+    Then validate and configure rules in folder "ConfigAndDefine/UDS/complexEntity/complexRule"
 
     Examples: 
       | organization | orgAgentName | agentEmail             | description   | colorVR       | category  |

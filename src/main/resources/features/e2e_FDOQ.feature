@@ -59,6 +59,8 @@ Feature: Test Offline Audio file - FDOQ
     Then train call-categories
     Then refresh all caches
     #
+    Then configure complex entities "ConfigAndDefine/call18/complexEntity"
+    Then validate and configure rules in folder "ConfigAndDefine/call18/complexEntity/complexRule"
     ##############################################
     ###SENDING OFFLINE AUDIO REQUEST
     When the request with file <audio-file> is sent to the audio-connector
@@ -87,6 +89,7 @@ Feature: Test Offline Audio file - FDOQ
     And a summary for callId has "Member Id" <Member Id>
     And a summary for callId has "Customer Name" <Customer Name>
     And a summary for callId has "Date of Birth" <DOB>
+    And a summary for callId has "Rule complex" <Rule complex>
     #
     Then edit "Customer Name" as "John"
     Then edit "Member Id" as "16"
@@ -119,5 +122,5 @@ Feature: Test Offline Audio file - FDOQ
     #And we delete an organization called <organization>
     ##############################################
     Examples: 
-      | organization | category | orgAgentName | agentEmail                | role    | language | callId                   | audio-file                                    | turn | phrase                     | intent                   | transcript-file                                 | description   | colorVR       | Member Id | Customer Name | DOB         |
-      | "APITests"   | "FDOQ"   | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "1633515436608tgtqqoc02" | "audio-files/FDOQ/FDOQ.wav" |    0 | "how can i help you today" | "insurance/cover/active" | "src/test/resources/transcript-jsons/FDOQ.json" | "description" | "colorSample" | "12"      | "john"        | "1/10/1980" | 
+      | organization | category | orgAgentName | agentEmail                | role    | language | callId                   | audio-file                                    | turn | phrase                     | intent                   | transcript-file                                 | description   | colorVR       | Member Id | Customer Name | DOB         |Rule complex|
+      | "APITests"   | "FDOQ"   | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "1633515436608tgtqqoc02" | "audio-files/FDOQ/FDOQ.wav" |    0 | "how can i help you today" | "insurance/cover/active" | "src/test/resources/transcript-jsons/FDOQ.json" | "description" | "colorSample" | "12"      | "john"        | "1/10/1980" | "1237619628"|
