@@ -15,8 +15,8 @@ test-execution:
 
 # test-report:  
 #   stage: report
-#   artifacts:
-#     name: "E2e_Report"
-#     paths:
-#     - target/cucumber.html
-#     expire_in: 1 day
+  artifacts:
+    name: "E2e_Report"
+    paths:
+    - target/cucumber.html
+    expire_in: 5 day
