@@ -11,7 +11,7 @@ test-execution:
 #    - mvn test
     - (/etc/apache-maven-3.8.4/bin/mvn clean)
     - (/etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@env" -Dbackend="3.140.55.216" -Dkeycloak="3.140.55.216" -Dplatform=”3.140.55.216” -Dcucumber.options="--plugin html:target/cucumber.html")
-    - (/etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@smoke" -Dbackend="3.140.55.216" -Dkeycloak="3.140.55.216" -Dplatform=”3.140.55.216” -Dcucumber.options="--plugin html:target/cucumber.html")
+#    - (/etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@smoke" -Dbackend="3.140.55.216" -Dkeycloak="3.140.55.216" -Dplatform=”3.140.55.216” -Dcucumber.options="--plugin html:target/cucumber.html")
 
 # test-report:  
 #   stage: report
