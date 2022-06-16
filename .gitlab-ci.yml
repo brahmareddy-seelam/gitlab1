@@ -10,7 +10,7 @@ test-execution:
 #    - mvn clean
 #    - mvn test
     - (/etc/apache-maven-3.8.4/bin/mvn clean)
-    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@smoke" -Dbackend="3.140.55.216" -Dkeycloak="3.140.55.216" -Dplatform="3.140.55.216" -Dasrengine="3.137.94.4:2800" -Dcucumber.options="--plugin html:target/cucumber.html"")
+    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@smoke" -Dbackend="3.140.55.216" -Dkeycloak="3.140.55.216" -Dplatform="3.140.55.216" -Dasrengine="3.137.94.4:2800" -Dcucumber.options="--plugin html:target/cucumber.html")
 
   stage: report
   artifacts:
