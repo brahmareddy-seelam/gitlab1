@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "",
+    "description": "SSN",
+    "noOfChar": 4,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "Social Security Number",
+    "referenceName": "Social Security Number",
+    "entityTextIfFalse": null
+}

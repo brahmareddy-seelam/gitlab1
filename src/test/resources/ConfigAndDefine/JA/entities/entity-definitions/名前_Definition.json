@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "PERSON",
+    "defaultValue": "Failed",
+    "description": "名前",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Person",
+    "sourceType": "NLP",
+    "name": "名前",
+    "referenceName": "名前",
+    "entityTextIfFalse": null
+}

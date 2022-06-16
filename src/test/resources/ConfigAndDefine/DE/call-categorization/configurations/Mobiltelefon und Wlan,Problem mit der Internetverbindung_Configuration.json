@@ -1,0 +1,23 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Mobiltelefon und Wlan,Problem mit der Internetverbindung"],
+        "level": 2,
+        "name": "Problem mit der Internetverbindung",
+        "bagOfKeywords": [
+            {
+                "keywordName": "problem nur zu hause",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "nicht das handy mit dem w lan verbunden hab",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

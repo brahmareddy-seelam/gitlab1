@@ -1,12 +1,12 @@
 package stepDefinition;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,6 +24,7 @@ public class Entities extends BaseClass{
 	CommonSteps cs=new CommonSteps();
 	
 	public static JSONArray entityListArray ;
+	
 	
 	
 	@Then("define and configure entities in folder {string}")
@@ -131,6 +132,18 @@ public class Entities extends BaseClass{
 		}
 	}
 	
+	@Then("delete all dispositions")
+	public void delete_all_dispositions() {
+		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
+		JSONObject categoryHBenRequest=new JSONObject();
+		JSONArray levels=new JSONArray();
+		JSONArray categoryBeanRequest=new JSONArray();
+		levels.put("Level-1");levels.put("Level-2");levels.put("Level-3");levels.put("Level-4");levels.put("Level-5");
+		categoryHBenRequest.put("categoryHBeanRequest", categoryBeanRequest);
+		categoryHBenRequest.put("levels", levels);
+		request.body(categoryHBenRequest.toString());
+		Assert.assertTrue((request.post("call-category/define/json").getStatusCode())==200);
+	}
 	
 	@Then("validate and configure rules in folder {string}")
 	public void validate_rule_entity(String folder) throws IOException {
@@ -142,7 +155,6 @@ public class Entities extends BaseClass{
 		File[] listFile=ruleEntityFolder.listFiles();
 		int i=0;
 		for (File defineFile : listFile) {
-			
 			
 			String ruler="Rule"+i;
 			HashMap<String, String> rule=new HashMap<>();
@@ -168,6 +180,8 @@ public class Entities extends BaseClass{
 		if(ruleValidation.exists()) {
 			loadURL("BACKEND_PORT");
 			JSONObject defineJsonFileObj = new JSONObject(defineJson);
+			String name=defineJsonFileObj.getString("name");
+			ruleList.put(name);
 			System.out.println("defineJsonFileObj >>>>>> " + defineJsonFileObj);
 			request=RestAssured.given().log().all().header("Content-Type","application/json").header("Authorization", "Bearer "+TestCenter.accesstoken).queryParams(CommonSteps.orgMap);
 			request.body(defineJsonFileObj.toString()).when();
@@ -241,4 +255,78 @@ public class Entities extends BaseClass{
 		response=request.log().all().post("/ai-entity/import");
 		Assert.assertEquals(200,response.getStatusCode());
 	}
+	
+	
+	@Then("configure complex entities {string}")
+	public void complex_entities(String filefolderPath) throws IOException {
+		String folderPath = Paths.get(TestCenter.getInstance().getFile(filefolderPath).getAbsolutePath())
+				.toString();
+		
+		File entityDefinitionFolder = new File(folderPath + "/entity-definitions");
+		File entityConfigFolder = new File(folderPath + "/configurations");
+		
+		System.out.println("orgMap " +CommonSteps.orgMap);
+
+		for (File defineFile : entityDefinitionFolder.listFiles()) {
+			String path=defineFile.toString();
+			boolean specialChar=path.contains("\\");
+			int index = (specialChar ? path.lastIndexOf("\\") : path.lastIndexOf("/"));
+			String fileName = path.substring(index + 1);
+			loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
+			String defineJsonString = new String(Files.readAllBytes(Paths.get(defineFile.getAbsolutePath())));
+			boolean status=(defineJsonString.contains("COMPLEX")?true:false);
+			JSONObject defineJsonFileObj = new JSONObject(defineJsonString);
+			System.out.println("defineJsonFileObj >>>>>> " + defineJsonFileObj);
+			request.body(defineJsonFileObj.toString()).when();
+			response=request.log().all().post("define/entity");
+			Assert.assertEquals(200,response.getStatusCode());
+			if(status) {
+				JSONObject data=new JSONObject(response.getBody().asString());
+				JSONObject datas=data.getJSONObject("data"); 
+				int id=(int) datas.get("id");
+				File name = null;
+				String defineJsonString1 =null;
+				try {
+				name=new File(entityConfigFolder+"/"+fileName);
+				System.out.println(name.getAbsolutePath());
+				defineJsonString1= new String(Files.readAllBytes(Paths.get(name.getAbsolutePath()))); 
+				}catch(Exception e) {
+					name=new File(fileName);
+					System.out.println(name.getAbsolutePath());
+					defineJsonString1= new String(Files.readAllBytes(Paths.get(name.getAbsolutePath())));
+				}
+				File fileOutput=new File(entityConfigFolder+"/"+fileName);
+				JSONObject defineJsonFileObj1 = new JSONObject(defineJsonString1);
+				defineJsonFileObj1.put("entityId", id);
+				String folders=fileOutput.getAbsolutePath();
+				FileWriter file = new FileWriter(folders);
+				file.write(defineJsonFileObj1.toString());
+				file.flush();file.close();
+			}
+		}
+		
+		for (File configFile : entityConfigFolder.listFiles()) {
+			loadURL("BACKEND_PORT");
+			String configJsonString = new String(Files.readAllBytes(Paths.get(configFile.getAbsolutePath())));
+			JSONObject defineJsonFileObj = new JSONObject(configJsonString);
+			request.contentType(ContentType.JSON).body(defineJsonFileObj.toString()).when();
+			response=request.log().all().post("/api-config/"+CommonSteps.orgMap.get("organization")+"/"+CommonSteps.orgMap.get("category"));
+			if(response.getStatusCode()==409) {
+				String name=defineJsonFileObj.getString("name");
+				loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
+				response=request.delete("entity"+name);
+				}
+			Assert.assertEquals(200,response.getStatusCode());
+		}
+	}
+	
+	
+	@Then("train complex rules")
+	public void train_complex_rules() {
+		loadURL("BACKEND_PORT"); loadQueryparams(CommonSteps.orgMap);
+		request.contentType(ContentType.JSON).body(ruleList.toString());
+		response=request.log().all().post("/train/entity-selected");
+		Assert.assertEquals(200, response.getStatusCode());
+	}
+	
 }

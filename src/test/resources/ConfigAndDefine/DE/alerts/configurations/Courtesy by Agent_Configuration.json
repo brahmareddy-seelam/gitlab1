@@ -1,0 +1,37 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "wie kann ich ihnen helfen",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "was ist denn da passiert",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 2,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Courtesy by Agent",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The agent is showing courtesy",
+    "message": "The agent is showing courtesy",
+    "type": "Information Alert",
+    "referenceName": "Courtesy by Agent"
+}

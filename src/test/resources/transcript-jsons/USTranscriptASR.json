@@ -1,0 +1,77 @@
+{
+  "data": {
+    "sessionId": "1636987599119bkujew3a2",
+    "lang": "en-us",
+    "turns": [
+      {
+        "speaker": "Agent",
+        "text": "welcome to premier communications john my name is michelle how can i help you today"
+      },
+      {
+        "speaker": "Customer",
+        "text": "hi michelle i'm calling to check on my wireless phone upgrade options"
+      },
+      {
+        "speaker": "Agent",
+        "text": "i can help you with that can you verify your ten digit wireless number"
+      },
+      {
+        "speaker": "Customer",
+        "text": "sure four zero eight five five five one two one two"
+      },
+      {
+        "speaker": "Agent",
+        "text": "can you please also verify the last four digits of your social security number thank you"
+      },
+      {
+        "speaker": "Customer",
+        "text": "aah one two three four"
+      },
+      {
+        "speaker": "Agent",
+        "text": "i see that you're eligible for an upgrade to any of the latest models you'd like you have to upgrade off since you can buy the phone outright at its full retail value with no minimum contract or you gonna be able to pay an echo monthly payments for the next twenty four or thirty months need to be with premier communications for the entire duration of the contract with the monthly payment option which would you like to choose great thanks"
+      },
+      {
+        "speaker": "Customer",
+        "text": "i'll go with the monthly payment option for twenty four months"
+      },
+      {
+        "speaker": "Agent",
+        "text": "lemme go ahead and start the upgrade process which phone would you like to upgrade two"
+      },
+      {
+        "speaker": "Customer",
+        "text": "all going for the two hundred and fifty six gigabyte iphone twelve"
+      },
+      {
+        "speaker": "Agent",
+        "text": "great thanks for twenty four months the four monthly payment option is thirty one sixty seven which will be added to your monthly bill do you want to proceed with this option"
+      },
+      {
+        "speaker": "Customer",
+        "text": "yes"
+      },
+      {
+        "speaker": "Agent",
+        "text": "thanks i'll go ahead and process the order would you like to add any accessories to the order"
+      },
+      {
+        "speaker": "Customer",
+        "text": "aah no thanks"
+      },
+      {
+        "speaker": "Agent",
+        "text": "thanks the order has been processed the phone will be shipped to your home address on file and you'll receive a new phone and the next seven to ten business days please follow the instructions to activate your phone is there anything else i can help you with"
+      },
+      {
+        "speaker": "Customer",
+        "text": "no this is great thank you for your help"
+      },
+      {
+        "speaker": "Agent",
+        "text": "hmm you're welcome thank you for being a loyal customer premier mm okay cents"
+      }
+    ]
+  },
+  "errors": ""
+}

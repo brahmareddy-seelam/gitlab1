@@ -1,0 +1,27 @@
+{
+    "categoryHBeanRequest": [{
+        "children": [{
+            "configured": true,
+            "levelOrderNo": 2,
+            "hitCount": 0,
+            "children": [{
+                "configured": true,
+                "levelOrderNo": 3,
+                "hitCount": 0,
+                "children": [],
+                "name": "Lösung",
+                "id": 79
+            }],
+            "name": "Problem mit der Internetverbindung",
+            "id": 78
+        }],
+        "name": "Mobiltelefon und Wlan"
+    }],
+    "levels": [
+        "Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+    ]
+}

@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>ri-e2e-api</groupId>
-  <artifactId>ri-e2e-api</artifactId>
+  <groupId>e2eAPIAutomation</groupId>
+  <artifactId>e2eAPIAutomation</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
 	<properties>
@@ -88,7 +88,7 @@
 	<dependency>
     <groupId>net.masterthought</groupId>
     <artifactId>cucumber-reporting</artifactId>
-    <version>5.6.0</version>
+    <version>5.6.1</version>
 </dependency>
 
 	<dependency>
@@ -115,18 +115,36 @@
     <version>2.14.1</version>
 </dependency>
 
+<dependency>
+    <groupId>org.freemarker</groupId>
+    <artifactId>freemarker</artifactId>
+    <version>2.3.31</version>
+</dependency>
+
  <dependency>
     <groupId>com.aventstack</groupId>
     <artifactId>extentreports</artifactId>
-    <version>5.0.9</version>
+    <version>5.0.8</version>
 </dependency>  
 
 <dependency>
-   <groupId>tech.grasshopper</groupId>
-   <artifactId>extentreports-cucumber7-adapter</artifactId>
-   <version>1.1.0</version>
+     <groupId>tech.grasshopper</groupId>
+     <artifactId>extentreports-cucumber7-adapter</artifactId>
+     <version>1.1.0</version>
+     <scope>test</scope>
 </dependency>
 
+<dependency>
+        <groupId>xerces</groupId>
+        <artifactId>xerces</artifactId>
+        <version>2.4.0</version>
+    </dependency>
+    <dependency>
+        <groupId>xerces</groupId>
+        <artifactId>xercesImpl</artifactId>
+        <version>2.11.0</version>
+    </dependency>
+    
 <dependency>
     <groupId>org.jsoup</groupId>
     <artifactId>jsoup</artifactId>
@@ -152,6 +170,11 @@
     <version>1.6.2</version>
 </dependency>
 
+ <dependency>
+      <groupId>com.opencsv</groupId>
+      <artifactId>opencsv</artifactId>
+      <version>5.3</version>
+ </dependency>
 
 </dependencies>
 
@@ -183,6 +206,8 @@
                        <cucumber.filter.tags>${cucumber.filter.tags}</cucumber.filter.tags>
                        <Keycloak>${keycloak}</Keycloak>
                        <Backend>${backend}</Backend>
+                       <Platform>${platform}</Platform>
+                       <ASREngine>${asrengine}</ASREngine>
            </systemPropertyVariables>
            <includes>
             <include>RunCucumberTest.java</include>

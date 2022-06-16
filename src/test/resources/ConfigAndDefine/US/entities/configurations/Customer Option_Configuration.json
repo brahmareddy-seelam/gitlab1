@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Customer Option",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "i'll go with the",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

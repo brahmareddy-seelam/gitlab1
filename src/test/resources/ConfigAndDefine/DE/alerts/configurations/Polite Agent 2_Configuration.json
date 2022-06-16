@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "hallo",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "guten tag",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "wie kann ich ihnen denn weiter helfen",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Polite Agent 2",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The agent is very polite",
+    "message": "The agent is very polite",
+    "type": "Information Alert",
+    "referenceName": "Polite Agent 2"
+}

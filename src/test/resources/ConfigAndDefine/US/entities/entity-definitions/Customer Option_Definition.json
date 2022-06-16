@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "DURATION",
+    "defaultValue": "",
+    "description": "Customer Option",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Duration",
+    "sourceType": "NLP",
+    "name": "Customer Option",
+    "referenceName": "Customer Option",
+    "entityTextIfFalse": null
+}

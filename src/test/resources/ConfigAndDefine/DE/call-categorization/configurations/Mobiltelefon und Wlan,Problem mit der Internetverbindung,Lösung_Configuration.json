@@ -1,0 +1,23 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Mobiltelefon und Wlan,Problem mit der Internetverbindung,Lösung"],
+        "level": 3,
+        "name": "Lösung",
+        "bagOfKeywords": [
+            {
+                "keywordName": "router ein bisschen zentraler zu positionieren",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "einen signalverstärker kaufen",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

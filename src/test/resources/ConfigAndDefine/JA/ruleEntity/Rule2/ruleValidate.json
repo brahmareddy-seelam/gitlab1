@@ -1,0 +1,35 @@
+{
+	"skipOnFirstRuleApplied": true,
+	"skipOnFirstNonTriggeredRule": false,
+	"priorityThreshold": 10,
+	"delimeter": ",",
+	"components": [
+		{
+			"name": "型式A",
+			"description": "型式",
+			"priority": 1,
+			"condition": "$.entity('型式A').isTrue()",
+			"actions": [
+				"$.output=$.valueOf('型式A')"
+			]
+		},
+		{
+			"name": "型式N",
+			"description": "型式",
+			"priority": 2,
+			"condition": "$.entity('型式N').isTrue()",
+			"actions": [
+				"$.output=$.valueOf('型式N')"
+			]
+		},
+		{
+			"name": "型式ANext",
+			"description": "型式",
+			"priority": 3,
+			"condition": "$.entity('型式ANext').isTrue()",
+			"actions": [
+				"$.output=$.valueOf('型式ANext')"
+			]
+		}
+	]
+}

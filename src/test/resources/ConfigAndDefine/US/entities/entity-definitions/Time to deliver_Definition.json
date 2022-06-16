@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "DURATION",
+    "defaultValue": "",
+    "description": "Time to deliver",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Duration",
+    "sourceType": "NLP",
+    "name": "Time to deliver",
+    "referenceName": "Time to deliver",
+    "entityTextIfFalse": null
+}

@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "wunderbar",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "entschuldigung",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "perfekt",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Co-operative customer",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The customer is very cooperative",
+    "message": "The customer is cooperative and satisfied",
+    "type": "Information Alert",
+    "referenceName": "Co-operative customer"
+}

@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "ALPHANUMERIC",
+    "defaultValue": "",
+    "description": "車台番号",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Alphanumeric",
+    "sourceType": "NLP",
+    "name": "車台番号A",
+    "referenceName": "車台番号A",
+    "entityTextIfFalse": null
+}

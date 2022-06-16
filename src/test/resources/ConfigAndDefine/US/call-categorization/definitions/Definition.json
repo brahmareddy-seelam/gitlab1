@@ -1,0 +1,47 @@
+{
+    "categoryHBeanRequest": [{
+        "children": [{
+            "children": [
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "name": "Debit card"
+                        },
+                        {
+                            "children": [],
+                            "name": "Credit card"
+                        }
+                    ],
+                    "name": "Full Payment"
+                },
+                {
+                    "children": [
+                        {
+                            "children": [],
+                            "name": "36 Months"
+                        },
+                        {
+                            "children": [],
+                            "name": "12 Months"
+                        },
+                        {
+                            "children": [],
+                            "name": "24 Months"
+                        }
+                    ],
+                    "name": "EMI"
+                }
+            ],
+            "name": "Payment"
+        }],
+        "name": "Phone Upgrade"
+    }],
+    "levels": [
+        "Level-1",
+        "Level-2",
+        "Level-3",
+        "Level-4",
+        "Level-5"
+    ]
+}

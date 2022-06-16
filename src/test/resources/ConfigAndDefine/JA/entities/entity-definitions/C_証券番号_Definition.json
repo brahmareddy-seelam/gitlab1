@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "ALPHANUMERIC",
+    "defaultValue": "",
+    "description": "customer keyphrase in customer channel",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Alphanumeric",
+    "sourceType": "NLP",
+    "name": "C_証券番号",
+    "referenceName": "C_証券番号",
+    "entityTextIfFalse": null
+}

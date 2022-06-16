@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "weiterhefen",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "wie kann ich ihnen helfen",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "danke auch für ihren anruf",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "hoffe es war alles zu ihrer zufriedenheit",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Help by Agent",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The agent is helpful",
+    "message": "The agent is helpful",
+    "type": "Information Alert",
+    "referenceName": "Help by Agent"
+}

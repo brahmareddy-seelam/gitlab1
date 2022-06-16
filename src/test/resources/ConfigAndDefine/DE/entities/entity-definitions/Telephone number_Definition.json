@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "",
+    "description": "Telephone number",
+    "noOfChar": 11,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "Telephone number",
+    "referenceName": "Telephone number",
+    "entityTextIfFalse": null
+}

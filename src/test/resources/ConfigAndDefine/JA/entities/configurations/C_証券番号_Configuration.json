@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "C_証券番号",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "証券番号は",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

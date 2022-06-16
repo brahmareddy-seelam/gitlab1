@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "ALPHANUMERIC",
+    "defaultValue": "Failed",
+    "description": "証券番号",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Alphanumeric",
+    "sourceType": "NLP",
+    "name": "証券番号",
+    "referenceName": "証券番号",
+    "entityTextIfFalse": null
+}

@@ -1,0 +1,14 @@
+{
+	"name": "Purchase Options Rule",
+	"description": "Rule Purchase Options",
+	"defaultValue": "",
+	"entityType": "RULE",
+	"catalogReference": null,
+	"noOfChar": 0,
+	"boolTrueValue": null,
+	"entityTextIfFalse": null,
+	"sourceType": "RULE",
+	"saved": true,
+	"trained": false,
+	"referenceName": "Purchase Options"
+}

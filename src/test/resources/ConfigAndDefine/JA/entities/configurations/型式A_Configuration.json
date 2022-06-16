@@ -1,0 +1,51 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "型式A",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "お車の型式",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "左上から四段目",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "型式",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "メーカー名の右側",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "上から四段目",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "上から四段目左端",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "車台番号の下",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

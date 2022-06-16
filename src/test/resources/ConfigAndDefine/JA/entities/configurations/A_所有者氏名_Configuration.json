@@ -1,0 +1,31 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "A_所有者氏名",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "所有者の氏名",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "所有者のお名前",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "所有者様",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "",
+        "turnPosition": "Same",
+        "fuzzyMatch": true,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

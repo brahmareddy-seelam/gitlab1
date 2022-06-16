@@ -1,0 +1,66 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "登録番号",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "登録番号",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "ナンバアップデト",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "ナンバブレット",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "ナンバー",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "車両番号",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "一番左上",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "ナンバープレート",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "自動車登録番号",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "一番上の段の左端",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "登録ナンバー",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

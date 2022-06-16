@@ -1,0 +1,29 @@
+{
+	"skipOnFirstRuleApplied": true,
+	"skipOnFirstNonTriggeredRule": false,
+	"priorityThreshold": 10,
+	"delimeter": ",",
+	"components": [
+		{
+			"name": "車台番号A",
+			"description": "車台番号",
+			"priority": 1,
+			"condition": "$.entity('車台番号A').isTrue()",
+			"actions": [
+				"$.output=$.valueOf('車台番号A')"
+			]
+		},
+		{
+			"name": "車台番号N",
+			"description": "車台番号",
+			"priority": 2,
+			"condition": "$.entity('車台番号N').isTrue()",
+			"actions": [
+				"$.output=$.valueOf('車台番号N')"
+			]
+		}
+	],
+	"ruleName": "車台番号",
+	"skipOnFirstFailedRule": false,
+	"type": "ENTITY"
+}

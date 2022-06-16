@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "PERSON",
+    "defaultValue": "",
+    "description": "car owners name",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Person",
+    "sourceType": "NLP",
+    "name": "A_所有者氏名",
+    "referenceName": "A_所有者氏名",
+    "entityTextIfFalse": null
+}

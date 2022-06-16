@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Phone Upgrade,Payment,EMI,12 Months"],
+        "level": 4,
+        "name": "12 Months",
+        "bagOfKeywords": [{
+            "keywordName": "tweleve months",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Customer"]
+    }]
+}

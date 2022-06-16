@@ -1,25 +1,36 @@
 package com.uniphore.ri.main.e2e;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Properties;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.path.json.JsonPath;
 import com.uniphore.*;
+
 public class BaseClass {
 	
 	public static RequestSpecification request=null;
 	public static Response response;
 	public static JsonPath jsonPathEvaluator=null;
-	
+	public static JSONArray ruleList=new JSONArray();
 	public static Properties prop=new Properties();
 	public static Properties port=new Properties();
+	
 	
 	public BaseClass() {
 	FileInputStream fis = null;
@@ -34,17 +45,23 @@ public class BaseClass {
 		prop.load(fis);
 		fis.close();
 		FileOutputStream out = new FileOutputStream(System.getProperty("user.dir")+"/src/test/resources/properties/env.properties");
+		prop.setProperty("Tag", System.getProperty("cucumber.filter.tags"));
 		prop.setProperty("Backend", System.getProperty("backend"));
 		prop.setProperty("Keycloak", System.getProperty("keycloak"));
+		prop.setProperty("Platform", System.getProperty("platform"));
+		prop.setProperty("ASREngine", System.getProperty("asrengine"));
 		prop.store(out, null);
 		out.close(); 
-		
 		port.load(portfis);
+		
 	} catch (IOException e) {
 		e.printStackTrace();
 	}
 	
 	}
+	
+	
+	
 	
 	
 	public static RequestSpecification loadURL(String env) {
@@ -68,7 +85,7 @@ public class BaseClass {
 			Log.info("Setting URL to http:"+prop.getProperty("Backend")+":"+port.getProperty("BACKEND_PORT"));
 			break;
 		case "DATA_COLLECTOR_PORT":
-			RestAssured.baseURI="http://"+prop.getProperty("Backend")+":"+port.getProperty("DATA_COLLECTOR_PORT");
+			RestAssured.baseURI="http://"+prop.getProperty("Platform")+":"+port.getProperty("DATA_COLLECTOR_PORT");
 //			Log.info("Setting URL to http:"+prop.getProperty("Backend")+":"+port.getProperty("DATA_COLLECTOR_PORT"));
 			break;
 		case "NLP_WRAPPER_PORT":

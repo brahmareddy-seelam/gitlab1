@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Phone Upgrade,Payment,Full Payment,Debit card"],
+        "level": 4,
+        "name": "Debit card",
+        "bagOfKeywords": [{
+            "keywordName": "Debit card",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

@@ -37,6 +37,8 @@ public class PullerandWriter extends BaseClass{
 		JSONObject dataObj = jsonObj.getJSONObject("data");
 		
 		dataObj.remove("id");
+//		dataObj.remove("entityTextIfTrue");
+//		dataObj.remove("displayText");
 		dataObj.put("trained", false);
 		dataObj.put("entityType", dataObj.get("entityType").toString().toUpperCase().replace(" ", "_"));
 		
@@ -57,7 +59,7 @@ public class PullerandWriter extends BaseClass{
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
 		response=request.get("call-category/download/");
 		String csvString = response.getBody().asString();
-		Integer indexOfFirstLevel = csvString.lastIndexOf('¿');
+		Integer indexOfFirstLevel = csvString.lastIndexOf('?');
 		return csvString.substring(indexOfFirstLevel+1,csvString.length());
 		 //return csvString;
 	}
@@ -66,18 +68,23 @@ public class PullerandWriter extends BaseClass{
 	public static JSONObject saveIntentAsJSON() throws IOException, URISyntaxException{
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
 		response=request.get("call-category/download/json");
-		JSONArray jsonArr = new JSONObject(response.getBody().asString()).getJSONArray("data");
 		JSONObject levelsCategoryHBeans = new JSONObject();
+		JSONObject object=new JSONObject(response.getBody().asString());
+		if(object.get("data").toString() != "" ) {
+		JSONArray jsonArr = new JSONObject(response.getBody().asString()).getJSONArray("data");
+		
 		levelsCategoryHBeans.put("levels", jsonArr.getJSONArray(0));
 		
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
 		response=request.get("call-category/load/hierarchy");
+		if(new JSONObject(response.getBody().asString()).get("data").toString() != "") {
 		JSONObject hierarchyJsonObj = new JSONObject(response.getBody().asString()).getJSONObject("data");
 
 		hierarchyJsonObj.put("hierarchyJsonObj", childrenNodeCleanup(hierarchyJsonObj.getJSONArray("children"),0));
 		
 		levelsCategoryHBeans.put("categoryHBeanRequest", hierarchyJsonObj.getJSONArray("children"));
-		
+		}
+		}
 		return levelsCategoryHBeans;
 	}
 	
@@ -96,7 +103,7 @@ public class PullerandWriter extends BaseClass{
 			
 			JSONArray currChildrenJSONArray = currJSONObj.getJSONArray("children");
 			if(!(currChildrenJSONArray.isEmpty())) {
-				if(currChildrenJSONArray.getJSONObject(arrayIndex).has("id")) {
+				if(currChildrenJSONArray.length()<arrayIndex && currChildrenJSONArray.getJSONObject(arrayIndex).has("id")) {
 				childrenNodeCleanup(childJSONArray.getJSONObject(arrayIndex).getJSONArray("children"),0);
 				}
 			}
@@ -148,12 +155,14 @@ public class PullerandWriter extends BaseClass{
 //				callCategoryPath.replace(" ", "%20").replace(",", "%2C") + "/" +
 //				categoryName.replace(" ", "%20").replace(",", "%2C") + "/", 
 //				TestCenter.getInstance().getRestRequest().getMap(), true);
-		
+		JSONObject retJSONObj = new JSONObject();
 		JSONObject jsonObj = new JSONObject(response.getBody().asString());
-		JSONObject dataObj = jsonObj.getJSONObject("data");
+		JSONObject dataObj=new JSONObject();
+		if(jsonObj.get("data").toString() != "") {
+			dataObj= jsonObj.getJSONObject("data");
 		
 		//MAIN JSON Object
-		JSONObject retJSONObj = new JSONObject();
+		
 		
 		retJSONObj.put("saved", true);
 		retJSONObj.put("trained", false);
@@ -184,19 +193,21 @@ public class PullerandWriter extends BaseClass{
 		
 		retJSONObj.put("callCategoryBeans", callCategoryBeanJSONArr);
 		
-		
+		}
 		return retJSONObj;
-	}
 	
+	}
 ////	
 	public static JSONArray getAlerts() throws IOException, URISyntaxException {
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
 		response=request.get("allalert");
-		
+		JSONArray data=new JSONArray();
 		JSONObject jsonObj = new JSONObject(response.getBody().asString());
-		
-		return jsonObj.getJSONArray("data");
+		if(jsonObj.get("data")!="") {
+			data=jsonObj.getJSONArray("data");
 	}
+		return data;
+}
 ////	
 	public static JSONObject getAlertJSON(String alertName) throws IOException, URISyntaxException {
 		
@@ -204,7 +215,9 @@ public class PullerandWriter extends BaseClass{
 		response=request.get("alert/configure/"+alertName);
 		
 		JSONObject jsonObj = new JSONObject(response.getBody().asString());
-		JSONObject dataObj = jsonObj.getJSONObject("data");
+		JSONObject dataObj=new JSONObject();
+		if(jsonObj.has("data")&&jsonObj.get("data")!="") {
+		 dataObj = jsonObj.getJSONObject("data");
 		
 		dataObj.put("trained", false);
 		dataObj.put("draft", false);
@@ -216,6 +229,7 @@ public class PullerandWriter extends BaseClass{
 		}
 		else if((dataObj.getJSONArray("alertAttributes").getJSONObject(0).get("attributeType")).equals("call_attribute")){
 			
+		}
 		}
 		return dataObj;
 	}
@@ -387,23 +401,23 @@ public class PullerandWriter extends BaseClass{
 	public static void saveCallConfigFiles(String directoryPath) throws IOException, URISyntaxException {
 		String organization = CommonSteps.orgMap.get("organization");
 		
-		File orgDirectory = new File(directoryPath+"/"+organization);
+		File orgDirectory = new File(directoryPath);
 		if (!orgDirectory.exists()){
 			orgDirectory.mkdirs();
 		}
 		
-		saveEntitiesandIntent(directoryPath+"/"+organization);
+		saveEntitiesandIntent(directoryPath);
 	}
 //	
 	public static void saveCallAlertConfigFiles(String directoryPath) throws IOException, URISyntaxException {
 		String organization = CommonSteps.orgMap.get("organization");
 		
-		File orgDirectory = new File(directoryPath+"/"+organization);
+		File orgDirectory = new File(directoryPath);
 		if (!orgDirectory.exists()){
 			orgDirectory.mkdirs();
 		}
 		
-		saveAlerts(directoryPath+"/"+organization);
+		saveAlerts(directoryPath);
 	}
 	
 	

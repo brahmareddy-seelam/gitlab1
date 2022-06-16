@@ -1,17 +1,1 @@
-[
-{
-    "GOOGLE(en-us)":{
-                "http":[
-                    "localhost:7010"
-                ]
-        }
- },
- {
-    "UNIPHORE(en-us)":{
-            "ws":[
-                "3.137.94.4:2800"
-             ]
-        }  
-        
-}
-]
+[{"GOOGLE(en-us)":{"http":["localhost:7010"]}},{"UNIPHORE(en-us)":{"ws":["us-eng-asr-streaming-gpu-api:2700"]}}]

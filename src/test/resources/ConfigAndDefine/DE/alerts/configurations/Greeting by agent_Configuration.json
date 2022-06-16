@@ -1,0 +1,52 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "vielen dank",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "einen wunderschönen guten abend",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "guten tag",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "herzlich willkommen",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "wie kann ich ihnen denn weiterhelfen",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Greeting by agent",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The agent greeted politely",
+    "message": "The agent greeted politely",
+    "type": "Information Alert",
+    "referenceName": "Greeting by agent"
+}

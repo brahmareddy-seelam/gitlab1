@@ -1,0 +1,52 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "vielen dank",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "zufriedenheit",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "das passt perfekt",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "gerne",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "klingt sehr gut",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Customer satisfied",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Customer is satisfied with the call",
+    "message": "Customer is satisfied with the call",
+    "type": "Information Alert",
+    "referenceName": "Customer satisfied"
+}

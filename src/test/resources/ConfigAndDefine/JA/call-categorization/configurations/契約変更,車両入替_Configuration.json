@@ -1,0 +1,28 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["契約変更,車両入替"],
+        "level": 2,
+        "name": "車両入替",
+        "bagOfKeywords": [
+            {
+                "keywordName": "車を変更したい",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "六の変更したい",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "これはもう変更したい",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

@@ -1,0 +1,31 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "名前",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "所有者様のお名前",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "お名前からお願いいたします",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "お客様のお名前",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

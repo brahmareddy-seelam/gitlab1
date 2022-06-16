@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "sie mir die informationen so genau erklärt haben",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "wunderbar",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "zufriedenheit gewesen",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Happy Customer",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The customer is satisfied",
+    "message": "The customer is happy",
+    "type": "Information Alert",
+    "referenceName": "Happy Customer"
+}

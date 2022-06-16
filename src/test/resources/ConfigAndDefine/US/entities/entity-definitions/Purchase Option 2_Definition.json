@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "STRING",
+    "defaultValue": "",
+    "description": "Purchase Option 2",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "String",
+    "sourceType": "NLP",
+    "name": "Purchase Option 2",
+    "referenceName": "Purchase Option 2",
+    "entityTextIfFalse": null
+}

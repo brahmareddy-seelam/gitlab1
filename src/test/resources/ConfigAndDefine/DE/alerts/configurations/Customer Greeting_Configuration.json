@@ -1,0 +1,37 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "auf wiederhören",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "grüss gott",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Customer Greeting",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Greet",
+    "message": "Greetings by Customer",
+    "type": "Information Alert",
+    "referenceName": "Customer Greeting"
+}

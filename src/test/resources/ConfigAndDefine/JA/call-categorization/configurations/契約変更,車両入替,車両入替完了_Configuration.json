@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["契約変更,車両入替,車両入替完了"],
+        "level": 3,
+        "name": "車両入替完了",
+        "bagOfKeywords": [{
+            "keywordName": "ご登録情報",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

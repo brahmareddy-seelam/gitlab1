@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Email",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "an die",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Agent",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

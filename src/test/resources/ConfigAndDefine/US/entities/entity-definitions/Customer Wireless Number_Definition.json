@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "",
+    "description": "Customer Wireless Number",
+    "noOfChar": 10,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "Customer Wireless Number",
+    "referenceName": "Customer Wireless Number",
+    "entityTextIfFalse": null
+}

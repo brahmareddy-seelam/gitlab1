@@ -1,0 +1,37 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "vielen dank",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "perfekt",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Customer is happy",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The customer is happy",
+    "message": "The customer is happy",
+    "type": "Information Alert",
+    "referenceName": "Customer is happy"
+}
