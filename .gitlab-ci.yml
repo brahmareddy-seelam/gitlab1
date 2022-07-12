@@ -25,7 +25,7 @@ test-smoke:
     - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@US" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800" -Dcucumber.options="--plugin html:target/cucumber.html")
     
   artifacts:
-    name: "e2e_smoke_report"
+    name: "$CI_COMMIT_REF_NAME"
     paths:
-    - target/cucumber.html
+      - target/cucumber.html
     expire_in: 2 day
