@@ -3,7 +3,7 @@ stages:
   - test-smoke
   - test-reports
   - deploy
-.test-setup: 
+test-setup: 
   stage: test-setup
   tags:
     - aws-gitlab-runner
