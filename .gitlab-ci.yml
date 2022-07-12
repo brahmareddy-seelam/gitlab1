@@ -11,11 +11,11 @@ test-setup:
 #    - mvn clean
 #    - mvn test
     - (/etc/apache-maven-3.8.4/bin/mvn clean)
-    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@envUS" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800" -Dcucumber.options="--plugin html:target/cucumber.html")
+    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@envUS" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800" -Dcucumber.options="--plugin html:target/env_setup.html")
   artifacts:
     name: "e2e_env_setup_report"
     paths:
-    - target/cucumber.html
+    - target/env_setup.html
     expire_in: 1 day
 
 
@@ -26,9 +26,9 @@ test-smoke:
   image: maven:3.8-openjdk-8
   script:
 
-    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@US" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800" -Dcucumber.options="--plugin html:target/cucumber.html")
+    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@US" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800" -Dcucumber.options="--plugin html:target/smoke.html")
   artifacts:
     name: "e2e_smoke_report"
     paths:
-    - target/cucumber.html
+    - target/smoke.html
     expire_in: 1 day
