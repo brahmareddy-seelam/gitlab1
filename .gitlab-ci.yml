@@ -2,7 +2,7 @@ stages:
   - test-setup
   - test-smoke
   - test-reports
-test-setup: 
+.test-setup: 
   stage: test-setup
   tags:
     - aws-gitlab-runner
@@ -22,8 +22,9 @@ test-smoke:
   script:
 
     - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@US" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800" -Dcucumber.options="--plugin html:target/cucumber.html")
+    - pwd
   artifacts:
     name: "e2e_smoke_report"
     paths:
     - target/cucumber.html
-    expire_in: 1 day
+    expire_in: 2 day
