@@ -27,5 +27,5 @@ test-smoke:
   artifacts:
     name: "$CI_COMMIT_REF_NAME"
     paths:
-      - target/cucumber.html
+      - target/
     expire_in: 2 day
