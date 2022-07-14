@@ -2,6 +2,7 @@ stages:
   - test-setup
   - test-smoke
   - test-reports
+  - deploy-artifacts
 
 test-setup: 
   stage: test-setup
@@ -28,6 +29,11 @@ test-smoke:
     paths:
       - target/cucumber.html
     expire_in: 5 day
+
+deploy-artifacts:
+  stage: deploy-artifacts
+  script:
+    - curl -ueliyaspraveen@uniphore.com:AP8CvHAdgvxyawWP5ETJd8SVvdz -T target/cucumber.html "https://qabuilds.jfrog.io/artifactory/default-generic-local/cucumber.html"
 
 
 
