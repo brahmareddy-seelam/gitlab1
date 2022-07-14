@@ -2,7 +2,7 @@ stages:
   - test-setup
   - test-smoke
   - test-reports
-  - deploy
+
 test-setup: 
   stage: test-setup
   tags:
@@ -29,14 +29,5 @@ test-smoke:
       - target/cucumber.html
     expire_in: 5 day
 
-pages:
-  stage: deploy
-  script:
-    - mkdir .public
-    - cp -r target/cucumber.html .public
-    - rm -rf public
-    - mv .public public
-  artifacts:
-    paths:
-      - public
+
 
