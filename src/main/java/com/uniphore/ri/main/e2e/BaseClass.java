@@ -45,6 +45,7 @@ public class BaseClass {
 		prop.load(fis);
 		fis.close();
 		FileOutputStream out = new FileOutputStream(System.getProperty("user.dir")+"/src/test/resources/properties/env.properties");
+		prop.setProperty("Tag", System.getProperty("cucumber.filter.tags"));
 		prop.setProperty("Backend", System.getProperty("backend"));
 		prop.setProperty("Keycloak", System.getProperty("keycloak"));
 		prop.setProperty("Platform", System.getProperty("platform"));

@@ -1,0 +1,30 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [{
+            "keywordName": "اهلا فيك",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 2,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 5,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "welcome_1",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "welcome_1",
+    "message": "welcome_1",
+    "type": "Information Alert",
+    "referenceName": "welcome_1"
+}

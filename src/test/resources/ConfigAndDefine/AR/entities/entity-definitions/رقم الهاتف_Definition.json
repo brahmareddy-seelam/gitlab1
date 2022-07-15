@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": null,
+    "description": "رقم الهاتف",
+    "noOfChar": 2,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "رقم الهاتف",
+    "referenceName": "رقم الهاتف",
+    "entityTextIfFalse": null
+}

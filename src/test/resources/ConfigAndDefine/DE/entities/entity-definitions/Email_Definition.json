@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "EMAIL",
+    "defaultValue": "",
+    "description": "Email",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Email",
+    "sourceType": "NLP",
+    "name": "Email",
+    "referenceName": "Email",
+    "entityTextIfFalse": null
+}

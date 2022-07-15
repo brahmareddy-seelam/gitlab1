@@ -1,0 +1,30 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [{
+            "keywordName": "ألو",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Greet",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Greet",
+    "message": "Greet",
+    "type": "Information Alert",
+    "referenceName": "Greet"
+}

@@ -1,0 +1,31 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "اسم العميل",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "ايش رقم ال البريد",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "مرحبا معك",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "موجود جنب مح",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

@@ -6,8 +6,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.hamcrest.Matchers;
 import org.json.JSONArray;
@@ -136,7 +138,7 @@ public class AddAgent extends BaseClass{
 		map.put("orgName", organization);
 		JSONObject attributes = new JSONObject();
 		attributes.put("clientId", agentName);
-		attributes.put("stationCode", "1876");
+		attributes.put("stationCode", "110");
 
 		JSONArray groups = new JSONArray();
 		groups.put("uniphore-agent-group");
@@ -228,10 +230,17 @@ public class AddAgent extends BaseClass{
 		sync_user(Supervisor);
 		String supervisor_id= user.get("id").toString();
 		Object agentS= user.get("agents");
-		ArrayList<Integer> list = new ArrayList<>();list=(ArrayList<Integer>)agentS;
+		Set<Integer> list = new HashSet<Integer>();
+		if(agentS!=null) {
+		list.addAll((Collection<? extends Integer>) agentS);
+		}
 		sync_user(agent);
-		String id=user.get("id").toString();int agent_id=Integer.parseInt(id);
-		list.add(agent_id);
+		String id=user.get("id").toString();
+		int agent_id=Integer.parseInt(id);
+		boolean status=(list!=null?true:false);
+		if(status) {list.add(agent_id);}
+		else {list=new HashSet<Integer>();
+		list.add(agent_id);}
 		JSONObject Agent=new JSONObject();Agent.put("agents", list);
 		loadURL("OCMS_PORT");
 		request.contentType(ContentType.JSON).body(Agent.toString());
@@ -253,8 +262,8 @@ public class AddAgent extends BaseClass{
 		map.put("grant_type", "password");
 		map.put("client_id", port.getProperty("client_id"));
 		map.put("username", username);
-		map.put("password", (username.equalsIgnoreCase("Super")?"Uniphore@123":port.getProperty("password")));
-		
+//		map.put("password", ((username.equalsIgnoreCase("Super"))?"Uniphore@123":port.getProperty("password")));
+		map.put("password", superPassword(username));
 		response=request.log().all().formParams(map).post("auth/realms/"+port.getProperty("realm")+"/protocol/openid-connect/token");
 		jsonPathEvaluator = response.jsonPath();
 		String access_token = jsonPathEvaluator.get("access_token");
@@ -271,6 +280,22 @@ public class AddAgent extends BaseClass{
 		cs.setUserId(id.toString());
 		cs.setStartDate(startDate);
 		cs.setEndDate(endDate);
+	}
+	
+	public String superPassword(String supervisor) {
+		String password=null;
+		switch(supervisor) {
+		case "Super":
+			password= "Uniphore@123";
+			break;
+		case "default-supervisor":
+			password= "Welcome123";
+			break;
+		 default:
+			password=port.getProperty("password");
+			break;
+		}
+		return password;
 	}
 
 	

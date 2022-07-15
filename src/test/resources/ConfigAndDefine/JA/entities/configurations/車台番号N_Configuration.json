@@ -1,0 +1,51 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "車台番号N",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "支払い番号",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "再番号こちらも車検しょうに記載",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "車台番号",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "型式の一つ上の段",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "上から二段目",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "型式のすぐ上の段",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "最大番号",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

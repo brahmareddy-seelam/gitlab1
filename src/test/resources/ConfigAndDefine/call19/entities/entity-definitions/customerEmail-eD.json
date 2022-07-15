@@ -1,9 +1,0 @@
-{
-  "catalogReference": "Free_form",
-  "defaultValue": "NA",
-  "description": "Desc Customer Email",
-  "entityType": "FREE_FORM",
-  "name": "Customer Email",
-  "saved": true,
-  "trained": true
-}

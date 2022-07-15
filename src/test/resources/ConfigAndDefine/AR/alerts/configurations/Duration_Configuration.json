@@ -1,0 +1,26 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": false,
+        "keyPhrases": [],
+        "attributeOperator": "",
+        "attributeDurationType": "ongoing",
+        "attributeType": "call_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 2,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 100,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": ""
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Duration",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Duration",
+    "message": "duration",
+    "type": "Information Alert",
+    "referenceName": "Duration"
+}

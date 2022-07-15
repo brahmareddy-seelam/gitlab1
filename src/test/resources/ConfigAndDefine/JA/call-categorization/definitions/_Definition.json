@@ -1,0 +1,47 @@
+{
+    "categoryHBeanRequest": [{
+        "children": [
+            {
+                "configured": true,
+                "levelOrderNo": 2,
+                "hitCount": 0,
+                "children": [
+                    {
+                        "configured": true,
+                        "levelOrderNo": 3,
+                        "hitCount": 0,
+                        "children": [],
+                        "name": "車両入替完了",
+                        "id": 1200
+                    },
+                    {
+                        "configured": true,
+                        "levelOrderNo": 3,
+                        "hitCount": 0,
+                        "children": [],
+                        "name": "車両入替未完了（案内）",
+                        "id": 1201
+                    }
+                ],
+                "name": "車両入替",
+                "id": 1198
+            },
+            {
+                "configured": true,
+                "levelOrderNo": 2,
+                "hitCount": 0,
+                "children": [],
+                "name": "その他",
+                "id": 1199
+            }
+        ],
+        "name": "契約変更"
+    }],
+    "levels": [
+        "﻿Call Type",
+        "Service Type",
+        "Issue Type",
+        "Status",
+        "Level-5"
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Bill Amount",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "my bill online amount",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "i have submitted my bill online amount",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

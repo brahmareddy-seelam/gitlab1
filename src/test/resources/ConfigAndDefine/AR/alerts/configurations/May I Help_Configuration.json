@@ -1,0 +1,30 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [{
+            "keywordName": "كيف ممكن اقدر اخدمك اليوم",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "May I Help",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "May I Help",
+    "message": "May I Help",
+    "type": "Information Alert",
+    "referenceName": "May I Help"
+}

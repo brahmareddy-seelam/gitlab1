@@ -1,0 +1,34 @@
+{
+    "categoryHBeanRequest": [{
+        "children": [{
+            "configured": true,
+            "levelOrderNo": 2,
+            "hitCount": 0,
+            "children": [{
+                "configured": true,
+                "levelOrderNo": 3,
+                "hitCount": 0,
+                "children": [{
+                    "configured": true,
+                    "levelOrderNo": 4,
+                    "hitCount": 0,
+                    "children": [],
+                    "name": "إضافة نقاط مكافأة على الحساب",
+                    "id": 120
+                }],
+                "name": "مرفوض",
+                "id": 112
+            }],
+            "name": "امتداد الصلاحية",
+            "id": 108
+        }],
+        "name": "استعلم عن قسيمه"
+    }],
+    "levels": [
+        "﻿Level 1",
+        "Level 2",
+        "Level 3",
+        "Level 4",
+        "Level 5"
+    ]
+}

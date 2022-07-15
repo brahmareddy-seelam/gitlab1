@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "شنطه ظهر",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "مطابق ه الاسعار",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "سعر السلعه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "نسويلك عاد الطرق نحول علا حسابك المصرفي",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Key Phrase_4",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Key Phrase_4",
+    "message": "key Phrase_4",
+    "type": "Information Alert",
+    "referenceName": "Key Phrase_4"
+}

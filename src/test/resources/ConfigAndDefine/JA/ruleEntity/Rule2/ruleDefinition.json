@@ -1,0 +1,14 @@
+{
+	"name": "型式",
+	"description": "型式",
+	"defaultValue": "Failed",
+	"entityType": "RULE",
+	"catalogReference": null,
+	"noOfChar": 0,
+	"boolTrueValue": null,
+	"entityTextIfFalse": null,
+	"sourceType": "RULE",
+	"saved": true,
+	"trained": false,
+	"referenceName": "型式"
+}

@@ -1,0 +1,30 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [{
+            "keywordName": "الحمدلل ه",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Thank to God",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Thank to God",
+    "message": "Thank to God",
+    "type": "Information Alert",
+    "referenceName": "Thank to God"
+}

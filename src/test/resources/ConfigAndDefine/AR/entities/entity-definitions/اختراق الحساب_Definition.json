@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "FREE_FORM",
+    "defaultValue": null,
+    "description": "اختراق الحساب",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Free_form",
+    "sourceType": "NLP",
+    "name": "اختراق الحساب",
+    "referenceName": "اختراق الحساب",
+    "entityTextIfFalse": null
+}

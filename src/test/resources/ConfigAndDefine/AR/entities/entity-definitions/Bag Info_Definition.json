@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "FREE_FORM",
+    "defaultValue": "",
+    "description": "Bag info",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Free_form",
+    "sourceType": "NLP",
+    "name": "Bag Info",
+    "referenceName": "Bag Info",
+    "entityTextIfFalse": null
+}

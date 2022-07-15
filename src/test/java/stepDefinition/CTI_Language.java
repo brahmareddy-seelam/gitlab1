@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -33,6 +34,7 @@ public class CTI_Language extends BaseClass {
 	Entities entity=new Entities();
 	
 	Random random = new Random();
+	public static HashMap<String,String> language;
 	
 	JSONObject Organization=new JSONObject();
 	JSONArray data=new JSONArray();
@@ -81,11 +83,12 @@ public class CTI_Language extends BaseClass {
 
 	
 	
-	@Given("we add language {string} to org {string} and category {string}")
-	public void addLanguage(String lang, String Org, String cat) {
+	@Given("we add language to org {string} and category {string}")
+	public void addLanguage(String Org, String cat) {
 		boolean status = false;
 		loadURL("BACKEND_PORT");
 		response = request.get("/cti-language");
+		CTI_Language.ctiLang();
 		JSONArray langObj = new JSONArray(response.body().asString());
 		boolean skillCode=(langObj.toString().contains("99999")?true:false);
 		for (int i = 0; i < langObj.length(); i++) {
@@ -93,7 +96,7 @@ public class CTI_Language extends BaseClass {
 			if (item.has("organizationName")) {
 				if (item.get("organizationName").toString().equalsIgnoreCase(Org)
 						&& item.get("categoryName").toString().equalsIgnoreCase(cat)) {
-					item.put("ctiLanguageCode", lang);
+					item.put("ctiLanguageCode", language.get("cti"));
 					status=true;
 				}
 			} 
@@ -101,9 +104,9 @@ public class CTI_Language extends BaseClass {
 		}
 		if(status!=true) {
 			JSONObject payload = new JSONObject();
-			payload.put("ctiLanguageCode", lang);
+			payload.put("ctiLanguageCode", language.get("cti"));
 			payload.put("skillGroupCode", (skillCode?Integer.parseInt(String.format("%04d", random.nextInt(10000))):99999));
-			payload.put("isoLanguageCode", "en-us");
+			payload.put("isoLanguageCode", language.get("iso"));
 			payload.put("categoryName", cat);
 			payload.put("organizationName", Org);
 			payload.put("engineName", "UNIPHORE");
@@ -226,6 +229,56 @@ public class CTI_Language extends BaseClass {
 			}
 		  }
 		}
+	}
+	
+	
+	public static HashMap<String,String> ctiLang() {
+		language=new HashMap<>();
+		String lang= prop.getProperty("Tag").replaceAll("[^A-Z]", "");
+		switch(lang) {
+		case "US":
+			language.put("cti","EUU");
+			language.put("iso","en-us");
+			break;
+		case "UK":
+			language.put("cti","EUB");
+			language.put("iso","en-gb");
+			break;
+		case "PH":
+			language.put("cti","EUP");
+			language.put("iso","fil-en");
+			break;
+		case "IN":
+			language.put("cti","EUI");
+			language.put("iso","en-in");
+			break;
+		case "DE":
+			language.put("cti","EUD");
+			language.put("iso","de");
+			break;
+		case "HE":
+			language.put("cti","UHE");
+			language.put("iso","hi-en-in");
+			break;
+		case "SE":
+			language.put("cti","EUS");
+			language.put("iso","es-us");
+			break;
+		case "SM":
+			language.put("cti","EUM");
+			language.put("iso","es-mx");
+			break;
+		case "JA":
+			language.put("cti","JUE");
+			language.put("iso","ja");
+			break;
+		case "AR":
+			language.put("cti","AUE");
+			language.put("iso","ar");
+			break;
+		}
+		return language;
+		
 	}
 	
 	

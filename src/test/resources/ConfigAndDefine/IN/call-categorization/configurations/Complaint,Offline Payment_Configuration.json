@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Complaint,Offline Payment"],
+        "level": 2,
+        "name": "Offline Payment",
+        "bagOfKeywords": [{
+            "keywordName": "Direct payment",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

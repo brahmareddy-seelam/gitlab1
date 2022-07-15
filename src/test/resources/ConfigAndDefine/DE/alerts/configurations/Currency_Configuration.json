@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "im monat bezahlen",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "euro",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "pro monat",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "menge",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Currency",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Amount mentioned in transcript",
+    "message": "Amount mentioned in transcript",
+    "type": "Information Alert",
+    "referenceName": "Currency"
+}

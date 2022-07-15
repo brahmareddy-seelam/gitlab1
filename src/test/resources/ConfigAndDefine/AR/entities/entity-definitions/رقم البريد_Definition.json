@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": null,
+    "description": "رقم البريد",
+    "noOfChar": 2,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "رقم البريد",
+    "referenceName": "رقم البريد",
+    "entityTextIfFalse": null
+}

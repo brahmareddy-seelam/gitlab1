@@ -50,7 +50,13 @@ public class Dispositions extends BaseClass{
 		  for (String str : new_data.toString().substring(1,data.length()-2).split(",")){
 			  if(!str.contains("]")&&!str.matches("^[1-9][0-9]?$|^100$")&&!str.equals("}")){
 				  Integer indexOfSeparation = str.indexOf(":");
-				  String entity = str.substring(1, indexOfSeparation);
+				  String entity=null;
+				  if(indexOfSeparation<0) {
+					  entity= str.substring(1, str.length());
+				  }
+				  else {
+				  entity= str.substring(1, indexOfSeparation);
+				  }
 				  status=(str.contains("level")?true:false);
 				  if(!entity.contains("rawTurnIds")) {
 					  String entityVal=null;
@@ -62,6 +68,7 @@ public class Dispositions extends BaseClass{
 					  dataMap.put(entity.replaceAll("\"", ""), entityVal.trim());
 					  String key=entity.replaceAll("\"", "");
 					  String value=entityVal.replaceAll("\"", "").trim();
+					  
 					  finalValue=(status?finalValue.append("{\""+key+"\":\""+value+"\","):finalValue.append("\""+key+"\":\""+value+"\"},"));
 				  }
 				  else {}

@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "vielen dank",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "hallo",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "schönen guten abend",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Customer greeting 2",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The customer greets politely",
+    "message": "The customer greets politely",
+    "type": "Information Alert",
+    "referenceName": "Customer greeting 2"
+}

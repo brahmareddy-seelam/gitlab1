@@ -23,7 +23,9 @@ public class Transcripts extends BaseClass{
 	CommonSteps cs = new CommonSteps();
 	ObjectMapper mapper = new ObjectMapper();
 	int conversationTurns=0;
-
+	JSONArray responseTranscriptArray;
+	public static JSONArray jsonFileArr;
+	
 	@Then("a transcript is generated for callId")
 	public void a_transcript_is_generated_for_callid() throws IOException, URISyntaxException {
 		HashMap<String, String> map = new HashMap<>();
@@ -64,7 +66,7 @@ public class Transcripts extends BaseClass{
 		loadURL("BACKEND_PORT");loadQueryparams(map);
 		
 
-		Map<?, ?> jsonToMap=(request.log().all().get("conversations")).as(Map.class);
+		Map<?, ?> jsonToMap=(request.log().all().contentType("application/json; charset=utf-8").get("conversations")).as(Map.class);
 		
 		System.out.println("jsonToMap "+jsonToMap);
 
@@ -77,17 +79,43 @@ public class Transcripts extends BaseClass{
 		System.out.println("jsonFileString "+jsonFileString);
 		JSONObject transcriptJsonFileObj = new JSONObject(jsonFileString);
 		JSONObject jsonFileData = (JSONObject) transcriptJsonFileObj.get("data");
-		JSONArray jsonFileArr = new JSONArray(jsonFileData.get("turns").toString());
+		jsonFileArr = new JSONArray(jsonFileData.get("turns").toString());
 		System.out.println(jsonFileArr.length());
 //		Assert.assertEquals(responseTranscriptArr.length(), jsonFileArr.length());
 
-		conversationTurns = responseTranscriptArr.length();
+		verify_similarity(responseTranscriptArr, jsonFileArr);
+	}
+	
+	
+	@Then("verify transcript turns for supervisor")
+	public void verify_transcript_supervisor() throws JsonProcessingException, IOException {
+		loadURL("SMS_PORT");
+		request.queryParam("sessionId", CommonSteps.commonMap.get("callId"));
+		Map<?, ?> jsonToMap=(request.log().all().get("/supervisor/api/transcript")).as(Map.class);
+		
+		System.out.println("jsonToMap "+jsonToMap);
+
+		Map<String, Object> tempMap = CommonSteps
+				.jsonStringToMap(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonToMap.get("data")));
+		JSONArray responseTranscriptArr = new JSONArray(
+				mapper.writerWithDefaultPrettyPrinter().writeValueAsString(tempMap.get("data")));
+//		Assert.assertEquals(responseTranscriptArr.length(),conversationTurns);
+		verify_similarity(responseTranscriptArr, jsonFileArr);
+	}
+	
+	
+	public void verify_similarity(JSONArray recieved, JSONArray jsonFileArr) {
+		conversationTurns = recieved.length();
 
 		for (int i = 0; i < conversationTurns; i++) {
-
-			JSONObject responseConversationTurn = responseTranscriptArr.getJSONObject(i);
-			String responseConversationText = responseConversationTurn.get("text").toString();
-
+			String responseConversationText=null;
+			JSONObject responseConversationTurn = recieved.getJSONObject(i);
+			if(responseConversationTurn.has("text")) {
+				responseConversationText = responseConversationTurn.get("text").toString();
+			}
+			else {
+				responseConversationText = responseConversationTurn.get("keyPhrase").toString();
+			}
 			JSONObject jsonFileConversationTurn = jsonFileArr.getJSONObject(i);
 			String jsonConversationText = jsonFileConversationTurn.get("text").toString();
 
@@ -105,20 +133,6 @@ public class Transcripts extends BaseClass{
 
 		}
 		System.out.println("\nTranscript Matches Gold JSON File\n");
-	}
 	
-	
-	@Then("verify transcript turns for supervisor")
-	public void verify_transcript_supervisor() throws JsonProcessingException, IOException {
-		loadURL("BACKEND_PORT");request.queryParam("sessionId", CommonSteps.commonMap.get("callId"));
-		Map<?, ?> jsonToMap=(request.log().all().get("/supervisor/api/transcript")).as(Map.class);
-		
-		System.out.println("jsonToMap "+jsonToMap);
-
-		Map<String, Object> tempMap = CommonSteps
-				.jsonStringToMap(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonToMap.get("data")));
-		JSONArray responseTranscriptArr = new JSONArray(
-				mapper.writerWithDefaultPrettyPrinter().writeValueAsString(tempMap.get("data")));
-		Assert.assertEquals(responseTranscriptArr.length(),conversationTurns);
 	}
 }

@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["استعلم عن قسيمه,امتداد الصلاحية,مرفوض,إضافة نقاط مكافأة على الحساب"],
+        "level": 4,
+        "name": "إضافة نقاط مكافأة على الحساب",
+        "bagOfKeywords": [{
+            "keywordName": "إضافة نقاط مكافأة على الحساب",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

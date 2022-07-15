@@ -1,15 +1,28 @@
 package stepDefinition;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.TimeZone;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -22,6 +35,9 @@ import org.junit.Assert;
 
 import com.aventstack.extentreports.GherkinKeyword;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.itextpdf.text.pdf.codec.Base64.InputStream;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
 import com.uniphore.ri.main.e2e.BaseClass;
 import com.uniphore.ri.main.e2e.Log;
 import com.uniphore.ri.main.e2e.TestCenter;
@@ -30,12 +46,17 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
+import io.restassured.internal.util.IOUtils;
+import io.restassured.response.Response;
+import io.restassured.response.ResponseBodyData;
 
 public class CommonSteps extends BaseClass{
 	
+
+	
 	public static HashMap<String, String>  commonMap=new HashMap<String, String>();
 	public static HashMap<String, String> orgMap=new HashMap<String, String>();
-	
+	public static HashMap<String, String> map=new HashMap<>();
 	public static String userId;
 	public static String startDate;
 	public static String endDate;
@@ -69,7 +90,8 @@ public class CommonSteps extends BaseClass{
 
 	 @And("the request language is {string}")
 	  public void the_request_language_is(String language) {
-	    commonMap.put("language", language);
+		CTI_Language.ctiLang();
+	    commonMap.put("language", CTI_Language.language.get("cti"));
 	  }
 
 	 @And("the request agentId is {string}")
@@ -170,7 +192,7 @@ public class CommonSteps extends BaseClass{
 		for (String str : featureFlags.toString().substring(1,featureFlags.length()-1).split(",")){
 			Integer indexOfSeparation = str.indexOf(":");
 			String entity = str.substring(1, indexOfSeparation-1);
-			newFeature.put(entity, true);
+			newFeature.put(entity, (entity.equalsIgnoreCase("inCall")?false:true));
 		}
 		entityList.put("featureFlags", newFeature);
 		loadURL("BACKEND_PORT");
@@ -204,7 +226,14 @@ public class CommonSteps extends BaseClass{
 	       
 	       
 	        JSONObject parent=new JSONObject();
-	        parent.put("languageCode", k.substring(k.indexOf("(")+1, k.indexOf(")")));
+//	        String language=prop.getProperty("Tag").replace("@env", "");
+	        CTI_Language.ctiLang();
+	        if(jsonObj.has("GOOGLE(en-us)")) {
+		        parent.put("languageCode", "en-us");
+		        }
+	        else {
+	        parent.put("languageCode", CTI_Language.language.get("iso"));
+	        }
 	        parent.put("engineName", k.substring(0, k.indexOf('(')));
 	        JSONArray endpoint=new JSONArray();
 	        
@@ -267,8 +296,77 @@ public class CommonSteps extends BaseClass{
 	}
 	
 	
+	@Then("I get time")
+	public String getTime(int timeInSeconds) throws IOException {
+		String time;
+		Instant instant = Instant.now();  
+		time = instant.minus(timeInSeconds, ChronoUnit.SECONDS).toString();  
+		time = time.replaceAll("[a-zA-Z]", " ");
+		System.out.println(time.split("\\.")[0]);
+		return (time.split("\\.")[0]);
+		
+	}
 	
 	
+	@Then("I get summary report for {string}")
+	public void getReport(String summaryType) throws IOException, CsvException {
+		loadURL("BACKEND_PORT");
+		HashMap<String, String> data=new HashMap<>();
+//		map.put("startDate", getTime(120));
+//		map.put("endDate", getTime(0));
+		map.put("startDate", "2022-06-16 09:15:12");
+		map.put("endDate", "2022-06-17 09:15:12");
+		byte[] dowloadedFile = request.log().all().contentType("application/zip").params(map).get("/report/csv/aggregation/summary").then().extract().asByteArray();
+		System.out.println("Download File Size : "+dowloadedFile.length);
+		FileOutputStream os = new FileOutputStream(new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Summary results\\results.csv"));
+		os.write(dowloadedFile);
+		os.close();
+		 try (CSVReader reader = new CSVReader(new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\Summary results\\results.csv"))) {
+//			 String[] lineInArray;
+			 String [] nextLine;
+
+			  //Read one line at a time
+			  while ((nextLine = reader.readNext()) != null)
+			  {
+			    //Use the tokens as required
+				  List<String> value=new ArrayList<>();
+				  value.add(Arrays.toString(nextLine));
+			    System.out.println(Arrays.toString(nextLine));
+			  }
+			 
+			 List<List<String>> records = new ArrayList<>();
+			 List<String[]> r = reader.readAll();
+			 
+//			 for(int i=0;i<r.size();i++) {
+//				 data.put(Arrays.toString(r), summaryType)
+//			 }
+//		      r.forEach(x -> System.out.println(Arrays.asList(x)));
+		      r.forEach(x -> records.add(Arrays.asList(x)));
+		      
+		      
+//		      }
+			 
+//		      while ((lineInArray = reader.readNext()) != null) {
+//		          System.out.println(lineInArray[0] + lineInArray[1] + "etc...");
+//		      }
+//			 String[] nextLine;
+//		     while ((nextLine = reader.readNext()) != null)  
+//		     {  
+//		     for(String token : nextLine)  
+//		     {  
+//		     System.out.print(token);  
+//		     }  
+//		     System.out.print("\n");  
+//		     }  
+//			 List<String[]> r = reader.readAll();
+//			 for(int i=0;i<r.size();i++) {
+//				 data.put(Arrays.toString(r), summaryType)
+//			 }
+//		      r.forEach(x -> System.out.println(Arrays.toString(x)));
+		      System.out.println(records);
+		      }
+		  }
+	}
 	
 	
-}
+

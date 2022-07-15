@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "",
+    "description": "Account Number",
+    "noOfChar": 16,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "Account Number",
+    "referenceName": "Account Number",
+    "entityTextIfFalse": null
+}

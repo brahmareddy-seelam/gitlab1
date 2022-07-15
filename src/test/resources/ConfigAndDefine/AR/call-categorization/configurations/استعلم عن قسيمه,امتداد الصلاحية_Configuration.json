@@ -1,0 +1,23 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["استعلم عن قسيمه,امتداد الصلاحية"],
+        "level": 2,
+        "name": "امتداد الصلاحية",
+        "bagOfKeywords": [
+            {
+                "keywordName": "ايوه ايوه",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "امتداد الصلاحية",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

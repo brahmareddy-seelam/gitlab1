@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "العفو لا شكر علا واجب",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "العفو منك",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "انا اسف",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "شكرا لك",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Thanks_Sorry",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Thanks_Sorry",
+    "message": "Thanks_Sorry",
+    "type": "Information Alert",
+    "referenceName": "Thanks_Sorry"
+}

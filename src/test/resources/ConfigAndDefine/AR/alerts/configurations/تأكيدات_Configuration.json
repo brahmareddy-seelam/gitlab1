@@ -1,0 +1,52 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "طيب",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "اكيد",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "ايوه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "كويس",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "ممتاز",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "تأكيدات",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "تأكيدات",
+    "message": "تأكيدات",
+    "type": "Information Alert",
+    "referenceName": "تأكيدات"
+}

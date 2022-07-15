@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["契約変更,その他"],
+        "level": 2,
+        "name": "その他",
+        "bagOfKeywords": [{
+            "keywordName": "住所変更",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

@@ -1,0 +1,30 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [{
+            "keywordName": "الله و يعافيك",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Courteous Words",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Courteous Words",
+    "message": "Courteous Words",
+    "type": "Information Alert",
+    "referenceName": "Courteous Words"
+}

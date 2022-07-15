@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": null,
+    "description": "رقم الطلب_1",
+    "noOfChar": 2,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "رقم الطلب_1",
+    "referenceName": "رقم الطلب_1",
+    "entityTextIfFalse": null
+}

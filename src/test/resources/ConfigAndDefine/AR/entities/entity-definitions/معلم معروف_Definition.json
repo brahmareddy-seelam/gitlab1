@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "PERSON",
+    "defaultValue": "",
+    "description": "معلم معروف",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Person",
+    "sourceType": "NLP",
+    "name": "معلم معروف",
+    "referenceName": "معلم معروف",
+    "entityTextIfFalse": null
+}

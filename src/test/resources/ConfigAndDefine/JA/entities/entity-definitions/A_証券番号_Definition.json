@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "ALPHANUMERIC",
+    "defaultValue": "",
+    "description": "agent keyphrase in agent channel",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Alphanumeric",
+    "sourceType": "NLP",
+    "name": "A_証券番号",
+    "referenceName": "A_証券番号",
+    "entityTextIfFalse": null
+}

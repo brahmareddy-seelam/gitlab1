@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "اختراق الحساب",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "انا حسابي اخترقوا صارت في",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Prefix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

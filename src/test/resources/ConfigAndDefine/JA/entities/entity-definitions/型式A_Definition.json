@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "ALPHANUMERIC",
+    "defaultValue": "",
+    "description": "型式",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Alphanumeric",
+    "sourceType": "NLP",
+    "name": "型式A",
+    "referenceName": "型式A",
+    "entityTextIfFalse": null
+}

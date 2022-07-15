@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "تحديد موعد التسليم",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "لو سمحت تساعديني في",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

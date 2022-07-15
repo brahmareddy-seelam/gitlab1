@@ -1,0 +1,67 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "شكرا",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "مع السلامه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "اتفضل",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "عفوا",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "الحمدلل",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "العفو",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "لا شكر",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "علا واجب",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "كلمات الشكر",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "كلمات الشكر",
+    "message": "كلمات الشكر",
+    "type": "Information Alert",
+    "referenceName": "كلمات الشكر"
+}

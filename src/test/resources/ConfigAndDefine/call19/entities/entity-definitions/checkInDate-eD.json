@@ -1,9 +1,0 @@
-{
-"catalogReference": "Free_form",
-"defaultValue": "NA",
-"description": "Desc checkin date",
-"entityType": "FREE_FORM",
-"name": "checkin date",
-"saved": true,
-"trained": true
-}

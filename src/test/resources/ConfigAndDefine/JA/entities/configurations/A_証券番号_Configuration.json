@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "A_証券番号",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "証券番号教えていただけますか",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Agent",
+        "entityPosition": "",
+        "turnPosition": "Next",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

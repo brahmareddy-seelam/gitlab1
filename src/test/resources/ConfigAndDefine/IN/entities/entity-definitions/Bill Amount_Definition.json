@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "MONEY",
+    "defaultValue": "",
+    "description": "Bill Amount",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Money",
+    "sourceType": "NLP",
+    "name": "Bill Amount",
+    "referenceName": "Bill Amount",
+    "entityTextIfFalse": null
+}

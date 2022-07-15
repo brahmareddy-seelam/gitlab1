@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "معلم معروف",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "موجود جنب محل",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

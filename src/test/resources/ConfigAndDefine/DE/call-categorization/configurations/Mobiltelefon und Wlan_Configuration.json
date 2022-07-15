@@ -1,0 +1,23 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Mobiltelefon und Wlan"],
+        "level": 1,
+        "name": "Mobiltelefon und Wlan",
+        "bagOfKeywords": [
+            {
+                "keywordName": "probleme mobiltelefon mit dem wlan zu verbinden",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "nicht wieder verbinden können",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

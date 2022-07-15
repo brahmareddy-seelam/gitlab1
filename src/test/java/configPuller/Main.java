@@ -13,12 +13,12 @@ public class Main extends BaseClass{
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		// TODO Auto-generated method stub
 
-		String organization = "テスト組織";
-		String category = "ビジネス プロセス";
+		String organization = "APITesting";
+		String category = "AR";
 
-		prop.setProperty("Backend", "3.14.57.18");
+		prop.setProperty("Backend", "18.117.56.81");
 		port.setProperty("BACKEND_PORT", "3360");
-		String pathForSaving = "C:\\Users\\murali\\workspace\\UDS";
+		String pathForSaving = "C:\\Users\\murali\\workspace\\ArabicLangs";
 
 
 	    TestCenter.getInstance().setAccessToken("l!5ZElx+DJy3#9</gZA_V9q5d2=hD9");

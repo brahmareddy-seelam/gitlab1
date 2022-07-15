@@ -1,0 +1,57 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "رقم الشنطه",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "رقم المنتج",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "شنطه معينه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "المخزن",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "متوفر",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "عندكم",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "query of product",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "query of product",
+    "message": "query of product",
+    "type": "Coaching Alert",
+    "referenceName": "query of product"
+}

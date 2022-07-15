@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Colour",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "اللون في عندنا ف",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Agent",
+        "entityPosition": "Prefix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

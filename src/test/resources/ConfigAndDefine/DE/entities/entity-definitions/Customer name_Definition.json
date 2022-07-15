@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "PERSON",
+    "defaultValue": "",
+    "description": "Customer name",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Person",
+    "sourceType": "NLP",
+    "name": "Customer name",
+    "referenceName": "Customer name",
+    "entityTextIfFalse": null
+}

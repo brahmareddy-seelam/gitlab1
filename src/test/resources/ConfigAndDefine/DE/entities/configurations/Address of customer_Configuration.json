@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Address of customer",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "wohne in der",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

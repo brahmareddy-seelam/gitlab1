@@ -1,0 +1,145 @@
+{
+  "data": {
+    "sessionId": "1654142101700kefwqtjlh",
+    "lang": "de",
+    "turns": [
+      {
+        "speaker": "Agent",
+        "text": "hallo schönen guten tag hier ist schneider am apparat vielen dank für ihren anruf bei der vodafone gmbh wie kann ich ihnen denn heute helfen"
+      },
+      {
+        "speaker": "Customer",
+        "text": "guten tag ich hatte zurzeit immer wieder probleme mobiltelefon mit dem wlan zu verbinden also immer wieder ist die verbinde auf einmal abgebrochen und ich konnte auch nicht wieder verbinden können sie mir da weiterhelfen"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ja das können wir telefonisch mal überprüfen was da das problem sein könnte ich bräuchte dafür nur ihre telefonnummer zunächst einmal"
+      },
+      {
+        "speaker": "Customer",
+        "text": "ja das ist die null eins sieben neun sechs sieben"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ja"
+      },
+      {
+        "speaker": "Customer",
+        "text": "fünf zwei"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ja ja"
+      },
+      {
+        "speaker": "Customer",
+        "text": "vier drei eins"
+      },
+      {
+        "speaker": "Agent",
+        "text": "vier drei eins okay vielen dank und dann bräuchte ich noch ihren vollständigen namen"
+      },
+      {
+        "speaker": "Customer",
+        "text": "ja ich bin sophie braun"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay frau braun und wann sind sie denn geboren"
+      },
+      {
+        "speaker": "Customer",
+        "text": "am dreizehnten april dritte neunzehndreiundneunzig"
+      },
+      {
+        "speaker": "Agent",
+        "text": "dreiundneunzig vielen dank und dann würde ich sie bitten mir noch kurz die adresse zu bestätigen die wir bei uns im system gespeichert habe eben"
+      },
+      {
+        "speaker": "Customer",
+        "text": "ja ich wohne in der hauptstrasse für dreiundzwanzig in heidelberg"
+      },
+      {
+        "speaker": "Agent",
+        "text": "heidi berg okay vielen dank ich habe ihr konto jetzt verifiziert und würde sie bitten noch einmal ganz kurz die frage zu wiederholen die sie hatten"
+      },
+      {
+        "speaker": "Customer",
+        "text": "ja ja ich habe vor kurzem mir ein neues handy geholt und immer wieder seitdem nicht das handy mit dem w lan verbunden hab bricht immer wieder die die verbindung ab also ich habe hier auch ganz grauseligen empfang selbst wenn der empfang mal zu ende kommt"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay haben sie das problem denn nur zu hause oder auch ausserhalb ihrer wohnung"
+      },
+      {
+        "speaker": "Customer",
+        "text": "ich habe das problem nur zu hause beim in anderen wohnungen funktioniert das mit der verbindung"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay und haben sie sonst schwierigkeiten bei anderen geräten das diese sich nicht richtig mit dem wlan verbinden oder handelt es sich nur um mit telefon"
+      },
+      {
+        "speaker": "Customer",
+        "text": "also ich habe in meiner wohnung auch noch meinen computer schreibtisch stehen und mit dem hatte ich ne echt gute internetverbindung"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay also ich würde zunächst mal kurz schauen ob es gerade irgendwelche wlan ausfälle oder probleme bei ihnen in der region heidelberg gibt okay also ich habe das jetzt mal überprüft da gibt es momentan eigentlich keiner pro lena wo steht denn ihr wifi router also ist der vielleicht zu weit vom telefon entfernt kann das sein"
+      },
+      {
+        "speaker": "Customer",
+        "text": "also mein router steht unten im wo zimmer und mein handy benutze ich normalerweise oben in meinem schlafzimmer"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay also dann vermutlich tatsächlich passt es einfach ihr wlan signal zu schwach ist für das telefon"
+      },
+      {
+        "speaker": "Customer",
+        "text": "okay und kann ich da was dagegen machen weil ich möchte nicht unbedingt jede mal runter ins wohnzimmer gehen müssen nur wenn ich was von meinem handy machen möchte"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ja das verstehe ich natürlich aber wir haben da zwei ob schon die ich ihnen jetzt hier so spontan anbieten kann zum einen könnten sie versuchen ihren router ein bisschen zentraler zu positionieren dass eben aus allen bereichen dann guter aus guter empfang möglich ist oder eine weitere option wäre dass sie sich einen signalverstärker kaufen"
+      },
+      {
+        "speaker": "Customer",
+        "text": "wie wäre es wenn ich ne ein signalverstärker kauf übernehmen sie dann die kosten dafür ich meine es liegt ja an ihm das signal zu schwach ist"
+      },
+      {
+        "speaker": "Agent",
+        "text": "ja so es ist so dass wir die option für diesen signalverstärker leider nicht übernehmen können da das problem eben nicht bei einem produkt liegt das von uns hergestellt wurde sondern eben vom anbieter dieses routers und was ich ihn allerdings anbieten kann oder ja was ich ihnen empfehle wenn sie jetzt nicht sofort geld für ein signalverstärker ausgeben möchte ein dass sie ihren router einfach mal neu starten nach dem neustart sucht er dann in der regel nach updates die dann häufig das problem schon lösen können"
+      },
+      {
+        "speaker": "Customer",
+        "text": "okay vielen dank für die tipps ich werde versuchen rauszufinden woran es jetzt lag"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay was ich ihnen noch empfehlen ja was ich ihnen noch anbieten kann viel mehr dass es vielleicht ein bisschen einfacher für sie wird wir haben eine schritt für schritt anleitung die sowohl den geschwindigkeitstest als auch das zurücksetzen und aktualisieren des modems betr christ und auch die installation des wlan verstärkers wenn sie sich dann für eine entscheiden sollten und das könnte ich ihnen gerne per e mail zuschicken"
+      },
+      {
+        "speaker": "Customer",
+        "text": "gerne das klingt sehr gut"
+      },
+      {
+        "speaker": "Agent",
+        "text": "okay dann würde ich das an die sophie punkt braun at g m x punkt net schicken ist das noch aktuell elf"
+      },
+      {
+        "speaker": "Customer",
+        "text": "ja das ist noch aktuell vielen dank für ihre hilfe"
+      },
+      {
+        "speaker": "Agent",
+        "text": "sehr gerne kann ich ihnen denn sonst noch weiterhelfen"
+      },
+      {
+        "speaker": "Customer",
+        "text": "nein das war alles weshalb ich angerufen habe schönen abend noch"
+      }
+    ]
+  },
+  "errors": ""
+}

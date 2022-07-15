@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "Failed",
+    "description": "電話番号",
+    "noOfChar": 11,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "電話番号",
+    "referenceName": "電話番号",
+    "entityTextIfFalse": null
+}

@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Expiry Date of card",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "the expiration date is",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "expiration date",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

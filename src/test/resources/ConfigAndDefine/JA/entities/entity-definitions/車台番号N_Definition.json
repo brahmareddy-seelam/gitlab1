@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "",
+    "description": "車台番号",
+    "noOfChar": 11,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "車台番号N",
+    "referenceName": "車台番号N",
+    "entityTextIfFalse": null
+}

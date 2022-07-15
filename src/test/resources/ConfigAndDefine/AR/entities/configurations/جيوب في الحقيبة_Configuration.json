@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "جيوب في الحقيبة",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "جيوب",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

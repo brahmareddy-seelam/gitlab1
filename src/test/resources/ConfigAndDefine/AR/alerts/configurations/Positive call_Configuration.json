@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "يا سلام",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "حلو",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "يا الله",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "والله",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Positive call",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Positive call",
+    "message": "Positive Call",
+    "type": "Information Alert",
+    "referenceName": "Positive call"
+}

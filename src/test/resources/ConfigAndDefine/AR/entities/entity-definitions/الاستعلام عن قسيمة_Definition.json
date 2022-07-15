@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "FREE_FORM",
+    "defaultValue": null,
+    "description": "الاستعلام عن قسيمة",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Free_form",
+    "sourceType": "NLP",
+    "name": "الاستعلام عن قسيمة",
+    "referenceName": "الاستعلام عن قسيمة",
+    "entityTextIfFalse": null
+}

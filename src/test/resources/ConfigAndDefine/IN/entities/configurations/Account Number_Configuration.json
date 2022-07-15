@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Account Number",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "your account number please",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

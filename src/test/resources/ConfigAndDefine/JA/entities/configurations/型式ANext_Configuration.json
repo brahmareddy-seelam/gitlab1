@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "型式ANext",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "お車の型式",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "お車の型式を",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Agent",
+        "entityPosition": "",
+        "turnPosition": "Next",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Agent"
+    }]
+}

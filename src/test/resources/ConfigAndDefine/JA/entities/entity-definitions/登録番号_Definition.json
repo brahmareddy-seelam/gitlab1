@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "FREE_FORM",
+    "defaultValue": "Failed",
+    "description": "登録番号",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Free_form",
+    "sourceType": "NLP",
+    "name": "登録番号",
+    "referenceName": "登録番号",
+    "entityTextIfFalse": null
+}

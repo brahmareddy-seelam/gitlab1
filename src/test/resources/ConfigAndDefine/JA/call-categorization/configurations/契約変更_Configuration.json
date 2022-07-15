@@ -1,0 +1,28 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["契約変更"],
+        "level": 1,
+        "name": "契約変更",
+        "bagOfKeywords": [
+            {
+                "keywordName": "受付担当",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "変更担当",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "担当",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Agent"]
+    }]
+}

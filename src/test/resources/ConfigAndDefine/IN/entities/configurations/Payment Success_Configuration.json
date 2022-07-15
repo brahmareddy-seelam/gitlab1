@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Payment Success",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "payment for this account was successful",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

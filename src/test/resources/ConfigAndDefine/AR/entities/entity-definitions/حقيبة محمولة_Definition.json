@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "STRING",
+    "defaultValue": "",
+    "description": "حقيبة محمولة",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "String",
+    "sourceType": "NLP",
+    "name": "حقيبة محمولة",
+    "referenceName": "حقيبة محمولة",
+    "entityTextIfFalse": null
+}

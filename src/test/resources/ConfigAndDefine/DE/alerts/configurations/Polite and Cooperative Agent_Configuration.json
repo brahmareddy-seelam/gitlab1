@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "wunderbar",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "was kann ich denn für sie tun",
+                "isNew": false,
+                "categoryId": 1
+            },
+            {
+                "keywordName": "ch frage einfach mal ganz nett und höflich ob es sonst noch etwas gibt was ich für sie tun kann",
+                "isNew": false,
+                "categoryId": 1
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Polite and Cooperative Agent",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "The agent is very polite and cooperative",
+    "message": "The agent is very polite and cooperative",
+    "type": "Information Alert",
+    "referenceName": "Polite and Cooperative Agent"
+}

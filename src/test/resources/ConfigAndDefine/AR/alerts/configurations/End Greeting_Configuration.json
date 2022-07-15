@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "في امان الله",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "وداعا في امان الله",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "و الله يعطيك العافي ه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "مع السلامه",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 2,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "End Greeting",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "End Greeting",
+    "message": "End Greeting",
+    "type": "Information Alert",
+    "referenceName": "End Greeting"
+}

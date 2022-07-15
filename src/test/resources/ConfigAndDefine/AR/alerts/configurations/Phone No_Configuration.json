@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "صفر خمسه",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "تسعه ثمانيه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "تسعه ثماني",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "سبعه اربع تسعه اربعه",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Phone No",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Phone No",
+    "message": "Phone No",
+    "type": "Critical Alert",
+    "referenceName": "Phone No"
+}

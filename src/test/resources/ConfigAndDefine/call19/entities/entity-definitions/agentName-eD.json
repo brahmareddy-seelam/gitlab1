@@ -1,9 +1,0 @@
-{
-  "catalogReference": "Person",
-  "defaultValue": "NA",
-  "description": "Desc AGNT Name",
-  "entityType": "PERSON",
-  "name": "AGNT Name",
-  "saved": true,
-  "trained": true
-}

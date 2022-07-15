@@ -1,0 +1,16 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["Complaint,Offline Payment,Payment Failed"],
+        "level": 3,
+        "name": "Payment Failed",
+        "bagOfKeywords": [{
+            "keywordName": "unsuccessful",
+            "isNew": true,
+            "categoryId": 0
+        }],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

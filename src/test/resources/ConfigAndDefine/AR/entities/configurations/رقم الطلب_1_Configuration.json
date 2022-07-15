@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "رقم الطلب_1",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "الطلب",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "رقم",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}
