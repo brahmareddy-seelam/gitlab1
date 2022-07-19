@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "الاستعلام عن قسيمة",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "ابغا استعلم عن",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Prefix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "شكرا",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "طيب",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "تمام",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Polite Conversation",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Polite Conversation",
+    "message": "Polite Conversation",
+    "type": "Information Alert",
+    "referenceName": "Polite Conversation"
+}

@@ -1,0 +1,31 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Bag Info",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "عبد الله ايش رقم ال البريد",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "طيب شوفي شوفي يا شكل ه كذا زي بين المستطيل مربع",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "عبد الله ايش رقم ال البريد ح",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

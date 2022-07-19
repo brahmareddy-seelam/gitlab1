@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "السلام علي كم",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "عليكم السلام",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "اهلا",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "سلامات",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "سلامات",
+    "message": "سلامات",
+    "type": "Information Alert",
+    "referenceName": "سلامات"
+}

@@ -1,0 +1,64 @@
+{
+    "categoryHBeanRequest": [{
+        "children": [
+            {
+                "configured": true,
+                "levelOrderNo": 2,
+                "hitCount": 0,
+                "children": [
+                    {
+                        "configured": true,
+                        "levelOrderNo": 3,
+                        "hitCount": 0,
+                        "children": [],
+                        "name": "Payment Failed",
+                        "id": 18
+                    },
+                    {
+                        "configured": true,
+                        "levelOrderNo": 3,
+                        "hitCount": 0,
+                        "children": [],
+                        "name": "Payment Success",
+                        "id": 17
+                    }
+                ],
+                "name": "Online Payment",
+                "id": 16
+            },
+            {
+                "configured": true,
+                "levelOrderNo": 2,
+                "hitCount": 0,
+                "children": [
+                    {
+                        "configured": true,
+                        "levelOrderNo": 3,
+                        "hitCount": 0,
+                        "children": [],
+                        "name": "Payment Failed",
+                        "id": 20
+                    },
+                    {
+                        "configured": true,
+                        "levelOrderNo": 3,
+                        "hitCount": 0,
+                        "children": [],
+                        "name": "Payment Success",
+                        "id": 19
+                    }
+                ],
+                "name": "Offline Payment",
+                "id": 15
+            }
+        ],
+        "name": "Complaint"
+    }],
+    "levels": [
+        "Level-1",
+        "Level-2",
+        "Level-3",
+        "Level-4",
+        "Level-5"
+    ]
+}

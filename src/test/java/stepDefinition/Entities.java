@@ -160,9 +160,9 @@ public class Entities extends BaseClass{
 			HashMap<String, String> rule=new HashMap<>();
 			rule.put("ruleName", ruler);
 			if (defineFile.isDirectory()) {
-		File ruleValidation=new File(defineFile+"/ruleValidate.json");
-		String defineJsonString = new String(Files.readAllBytes(Paths.get(ruleValidation.getAbsolutePath())));
-		if(ruleValidation.exists()) {
+			File ruleValidation=new File(defineFile+"/ruleValidate.json");
+			String defineJsonString = new String(Files.readAllBytes(Paths.get(ruleValidation.getAbsolutePath())));
+			if(ruleValidation.exists()) {
 			loadURL("BACKEND_PORT");
 			JSONObject defineJsonFileObj = new JSONObject(defineJsonString);
 			System.out.println("defineJsonFileObj >>>>>> " + defineJsonFileObj);

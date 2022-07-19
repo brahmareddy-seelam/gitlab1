@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "رقم الهاتف",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "رقم",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "الهاتف",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

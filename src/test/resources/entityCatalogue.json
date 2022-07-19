@@ -157,6 +157,11 @@
           "id": 48,
           "type": "INTENT",
           "name": "day1_cricket_20"
+        },
+        {
+          "id": 49,
+          "type": "INTENT",
+          "name": "cricket_intent"
         }
       ]
     }

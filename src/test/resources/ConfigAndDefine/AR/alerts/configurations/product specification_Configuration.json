@@ -1,0 +1,67 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "توصفلي",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "الشنطه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "المنتج",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "دقيت",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "صنع الشركه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "لون ها",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "شكل ها",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "حجم ها",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "product specification",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "product specification",
+    "message": "product specification",
+    "type": "Coaching Alert",
+    "referenceName": "product specification"
+}

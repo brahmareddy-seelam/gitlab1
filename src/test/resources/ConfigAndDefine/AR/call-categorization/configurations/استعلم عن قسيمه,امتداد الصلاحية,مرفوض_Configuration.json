@@ -1,0 +1,23 @@
+{
+    "trained": false,
+    "saved": true,
+    "callCategoryBeans": [{
+        "callCategoryPath": ["استعلم عن قسيمه,امتداد الصلاحية,مرفوض"],
+        "level": 3,
+        "name": "مرفوض",
+        "bagOfKeywords": [
+            {
+                "keywordName": "ايوه ايوه",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "مرفوض",
+                "isNew": true,
+                "categoryId": 0
+            }
+        ],
+        "fuzzyMatch": false,
+        "keyPhraseMatchingChannel": ["Both"]
+    }]
+}

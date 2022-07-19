@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "FREE_FORM",
+    "defaultValue": null,
+    "description": "تحديد موعد التسليم",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Free_form",
+    "sourceType": "NLP",
+    "name": "تحديد موعد التسليم",
+    "referenceName": "تحديد موعد التسليم",
+    "entityTextIfFalse": null
+}

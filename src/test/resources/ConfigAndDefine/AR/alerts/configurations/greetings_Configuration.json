@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "السلام عليكم",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "كيف الحال",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "الحمد لله",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 10,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "greetings",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "greetings",
+    "message": "Greetings",
+    "type": "Information Alert",
+    "referenceName": "greetings"
+}

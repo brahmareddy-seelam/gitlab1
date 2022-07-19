@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "الاستفسار عن مطابقة الاسعار",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "ابغا استفسر و استعلم عن",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Suffix",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

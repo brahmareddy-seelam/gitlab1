@@ -1,0 +1,77 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "جوتشي",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "رقم الشنطه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "رقم المنتج",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "شنطه معينه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "المخزن",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "موديل",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "علامات الشركه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "شنطه المحموله",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "المحلات",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "السواق",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "initial",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Key Phrase",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Key Phrase",
+    "message": "Key Phrase",
+    "type": "Information Alert",
+    "referenceName": "Key Phrase"
+}

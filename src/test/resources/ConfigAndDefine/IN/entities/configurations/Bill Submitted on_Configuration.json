@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "Bill Submitted on",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "yeah i submitted it on",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "i submitted it on",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Customer"
+    }]
+}

@@ -385,7 +385,7 @@ public class PullerandWriter extends BaseClass{
 			callCategoryDirectory.mkdirs();
 		}
 		
-		saveEntityConfigandDefinitions(directoryPath+"/entities");
+//		saveEntityConfigandDefinitions(directoryPath+"/entities");
 		saveIntentCategoryConfigandDefinitions(directoryPath+"/call-categorization");
 	}
 //	

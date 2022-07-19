@@ -1,0 +1,42 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "سياس ه الارجاع",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "المده المسموح الارجاع بعد الشراء هي ثلاثين يوم",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "ارجاع المال بياخذ تقريبا العشره ايام",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "key phrase_6",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "key phrase_6",
+    "message": "Key phrase_6",
+    "type": "Information Alert",
+    "referenceName": "key phrase_6"
+}

@@ -1,6 +1,6 @@
 Feature: Test Offline Audio file - DE
 
-  @DE @smoke @Regression
+  @HE @smoke @Regression
   Scenario Outline: Validate Entity,Disposition and Alert Creation and Training.
     ###CREATION OF ORGANIZATION, CATEGORY, AND AGENT
     #Given a "backbone setup request" organization creation exists
@@ -64,10 +64,10 @@ Feature: Test Offline Audio file - DE
     #Then post summary format
     Examples: 
       | organization | category | orgAgentName | agentEmail                | role    | language | audio-file                       | description   | colorVR       |
-      | "APITesting" | "DE1"     | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/DEAudioFile/DE.wav" | "description" | "colorSample" |
+      | "APITesting" | "HE"     | "APITesting" | "APITesting@uniphore.com" | "Agent" | "E"      | "audio-files/DEAudioFile/DE.wav" | "description" | "colorSample" |
 
   #############################################
-  @DE @smoke @Regression
+   @smoke @Regression
   Scenario Outline: Validate Audio offline processing and compare generated Transcripts with Golden Std.
     Then the request with file <audio-file> is sent to the audio-connector
     And wait for <audio-file> to get loaded
@@ -84,7 +84,7 @@ Feature: Test Offline Audio file - DE
       | audio-file                       | turn | phrase                         | transcript-file                               |
       | "audio-files/DEAudioFile/DE.wav" |    0 | "hallo schönen guten tag hier" | "src/test/resources/transcript-jsons/DE.json" |
 
-  @DE @smoke @Regression
+ @smoke @Regression
   Scenario Outline: Validate Summary.
     And a summary for callId exists
     And a summary for callId has intent of <intent>
@@ -98,7 +98,7 @@ Feature: Test Offline Audio file - DE
       | intent                                                            | Email                                   | Date of birth | Customer name  | Address of customer | Telephone number |
       | "Mobiltelefon und Wlan/Problem mit der Internetverbindung/Lösung" | "sophie punkt braun at g m x punkt net" | "04/13/1993"  | "sophie braun" | "hauptstrasse"      | "01796752431"    |
 
-  @DE @smoke @Regression
+  @smoke @Regression
   Scenario Outline: Validate Feedback loop for Summary and Disposition.
     Then edit "Email" as "sophie braun at g m x punkt net"
     Then submit the edited summaries
@@ -109,7 +109,7 @@ Feature: Test Offline Audio file - DE
       | intent                                                            |
       | "Mobiltelefon und Wlan/Problem mit der Internetverbindung/Lösung" |
 
-  @DE @smoke @Regression
+  @smoke @Regression
   Scenario Outline: Validate Alerts for Supervisor.
     Then verify that supervisor has alert "Call Duration" with type "Information Alert"
     Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"
@@ -118,7 +118,7 @@ Feature: Test Offline Audio file - DE
       | organization |
       | "APITesting" |
 
-  @DE @smoke @Regression
+ @smoke @Regression
   Scenario Outline: Validate Transcripts for Supervisor.
     Then verify transcript turns for supervisor
     Then verify that supervisor has alert "Coaching alert" with type "Coaching Alert"

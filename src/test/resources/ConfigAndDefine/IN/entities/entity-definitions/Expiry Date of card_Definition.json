@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "FREE_FORM",
+    "defaultValue": "",
+    "description": "Expiry Date",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Free_form",
+    "sourceType": "NLP",
+    "name": "Expiry Date of card",
+    "referenceName": "Expiry Date of card",
+    "entityTextIfFalse": null
+}

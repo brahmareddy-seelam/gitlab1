@@ -1,0 +1,52 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "علام جوتشي ماركه فيكي",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "علام ه معينه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "علامات جوتشي",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "جاكيت الجديد من قوتشي",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "الملابس الخارجيه و الملابس الرجاليه والاكسسوارات",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Key Phrase_5",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Key Phrase_5",
+    "message": "Key Phrase_5",
+    "type": "Information Alert",
+    "referenceName": "Key Phrase_5"
+}

@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "شرك ه",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "نون",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "ل البيع",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "التجزء",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "إسم الشركة",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "إسم الشركة",
+    "message": "إسم الشركة",
+    "type": "Information Alert",
+    "referenceName": "إسم الشركة"
+}

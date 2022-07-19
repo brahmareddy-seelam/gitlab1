@@ -1,0 +1,20 @@
+{
+	"skipOnFirstRuleApplied": true,
+	"skipOnFirstNonTriggeredRule": true,
+	"priorityThreshold": 10,
+	"delimeter": ",",
+	"components": [
+		{
+			"name": "Enter name here",
+			"description": "Enter discription here",
+			"priority": 1,
+			"condition": "$.entity('Payment Success').isTrue()",
+			"actions": [
+				"$.output=$.valueOf('Payment Success')"
+			]
+		}
+	],
+	"ruleName": "Payment Status",
+	"skipOnFirstFailedRule": false,
+	"type": "ENTITY"
+}

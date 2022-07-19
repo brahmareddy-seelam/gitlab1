@@ -1,0 +1,37 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "سعيد الف و تسعمي ه وثمانين",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "ات جيميل دوت كوم",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Email ID",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Email ID",
+    "message": "Email ID",
+    "type": "Critical Alert",
+    "referenceName": "Email ID"
+}

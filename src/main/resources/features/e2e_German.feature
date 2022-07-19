@@ -1,6 +1,6 @@
 Feature: Test Offline Audio file - DE
 
-  @DE @smoke @Regression @AR
+  @DE @smoke @Regression
   Scenario Outline: Validate Entity,Disposition and Alert Creation and Training.
     ###CREATION OF ORGANIZATION, CATEGORY, AND AGENT
     #Given a "backbone setup request" organization creation exists

@@ -1,0 +1,37 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "مرحبا",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "هلا",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 5,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Welcome",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Welcome",
+    "message": "Welcome",
+    "type": "Information Alert",
+    "referenceName": "Welcome"
+}

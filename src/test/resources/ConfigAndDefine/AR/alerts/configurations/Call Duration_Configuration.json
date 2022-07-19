@@ -1,0 +1,37 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "Call during is more than 1 minute",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "in fact it is more than 32 mints long",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "initial",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 2,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Agent"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Call Duration",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Call Duration",
+    "message": "Call Duration",
+    "type": "Information Alert",
+    "referenceName": "Call Duration"
+}

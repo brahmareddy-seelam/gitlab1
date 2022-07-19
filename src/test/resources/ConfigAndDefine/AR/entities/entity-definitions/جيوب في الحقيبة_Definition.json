@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "CARDINAL",
+    "defaultValue": "",
+    "description": "جيوب في الحقيبة",
+    "noOfChar": 1,
+    "boolTrueValue": null,
+    "catalogReference": "NUMBER_DEFAULT",
+    "sourceType": "NLP",
+    "name": "جيوب في الحقيبة",
+    "referenceName": "جيوب في الحقيبة",
+    "entityTextIfFalse": null
+}

@@ -1,0 +1,19 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "حقيبة محمولة",
+    "inputParams": [{
+        "keyPhrases": [{
+            "keywordName": "شنطه المحموله",
+            "isNew": null,
+            "categoryId": 0
+        }],
+        "entityExtractionChannel": "Both",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

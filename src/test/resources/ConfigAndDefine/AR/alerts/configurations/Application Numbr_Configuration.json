@@ -1,0 +1,47 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "واحد واحد",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "تسعه ثلاث ه سته",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "صفر صفر",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "واحد اثنين اربعه",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Application Numbr",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Application Numbr",
+    "message": "Application Numbr",
+    "type": "Critical Alert",
+    "referenceName": "Application Numbr"
+}

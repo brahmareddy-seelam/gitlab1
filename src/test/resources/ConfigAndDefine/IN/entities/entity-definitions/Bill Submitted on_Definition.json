@@ -1,0 +1,14 @@
+{
+    "trained": false,
+    "saved": true,
+    "entityType": "DATE",
+    "defaultValue": "",
+    "description": "Bill Submitted on",
+    "noOfChar": 0,
+    "boolTrueValue": null,
+    "catalogReference": "Date",
+    "sourceType": "NLP",
+    "name": "Bill Submitted on",
+    "referenceName": "Bill Submitted on",
+    "entityTextIfFalse": null
+}

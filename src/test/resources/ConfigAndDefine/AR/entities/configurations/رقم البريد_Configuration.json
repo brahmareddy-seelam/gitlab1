@@ -1,0 +1,26 @@
+{
+    "outputParams": {
+        "entityPosition": null,
+        "keyPhrase": null
+    },
+    "name": "رقم البريد",
+    "inputParams": [{
+        "keyPhrases": [
+            {
+                "keywordName": "الرقم",
+                "isNew": null,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "رقم ال البريد",
+                "isNew": null,
+                "categoryId": 0
+            }
+        ],
+        "entityExtractionChannel": "Customer",
+        "entityPosition": "Both",
+        "turnPosition": "Same",
+        "fuzzyMatch": false,
+        "keyphraseMatchingChannel": "Both"
+    }]
+}

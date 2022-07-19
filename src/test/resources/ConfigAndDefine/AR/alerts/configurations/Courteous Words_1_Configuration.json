@@ -1,0 +1,62 @@
+{
+    "alertAttributes": [{
+        "occurrenceOperator": "GE",
+        "inclusionContains": true,
+        "keyPhrases": [
+            {
+                "keywordName": "لو سمحت",
+                "isNew": true,
+                "categoryId": 0
+            },
+            {
+                "keywordName": "الله يعافيك",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "و الله يعطيكي العافيه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "الله يسعدك",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "الله يعطيكي العافيه",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "يلا الله يعافيكي و بالتوفيق",
+                "isNew": false,
+                "categoryId": 4
+            },
+            {
+                "keywordName": "من عيوني من عيوني",
+                "isNew": false,
+                "categoryId": 4
+            }
+        ],
+        "attributeOperator": "",
+        "attributeDurationType": "entire",
+        "attributeType": "keyphrase_attribute",
+        "attributeOrder": 0,
+        "occurrenceCount": 1,
+        "alertAttributeGroupOrder": 0,
+        "attributeDurationSecs": 1,
+        "alertAttributeGroupOperator": "",
+        "attributeSpeaker": "Customer"
+    }],
+    "trained": false,
+    "displayCount": 1,
+    "draft": false,
+    "name": "Courteous Words_1",
+    "icon": "string",
+    "recipient": "agent",
+    "description": "Courteous Words_1",
+    "message": "Courteous Words_1",
+    "type": "Information Alert",
+    "referenceName": "Courteous Words_1"
+}
