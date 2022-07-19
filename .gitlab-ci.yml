@@ -1,19 +1,39 @@
-E2e-Regression:
 stages:
-  - test
-  - report
-  
-  stage: test
+  - test-setup
+  - test-smoke
+  - test-reports
+  - deploy-artifacts
+
+test-setup: 
+  stage: test-setup
+  tags:
+    - aws-gitlab-runner
   image: maven:3.8-openjdk-8
   script:
 #    - mvn clean
 #    - mvn test
     - (/etc/apache-maven-3.8.4/bin/mvn clean)
-    - (/etc/apache-maven-3.8.4/bin/mvn test -Dcucumber.filter.tags="@call18" -Dbackend="3.17.7.15" -Dkeycloak="3.17.40.22" -Dcucumber.options="--plugin html:target/cucumber.html")
+    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@envUS" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800")
 
-  stage: report
+
+test-smoke: 
+  stage: test-smoke
+  tags:
+    - aws-gitlab-runner
+  image: maven:3.8-openjdk-8
+  script:
+    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@US" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800" -Dcucumber.options="--plugin html:target/cucumber.html")
+    
   artifacts:
-    name: "E2e_Report"
+    name: "$CI_COMMIT_REF_NAME"
     paths:
-    - target/cucumber.html
-    expire_in: 1 day
+      - target/cucumber.html
+    expire_in: 5 day
+
+deploy-artifacts:
+  stage: deploy-artifacts
+  script:
+    - curl -ueliyaspraveen@uniphore.com:AP8CvHAdgvxyawWP5ETJd8SVvdz -T target/cucumber.html "https://qabuilds.jfrog.io/artifactory/default-generic-local/cucumber.html"
+
+
+
