@@ -22,11 +22,12 @@ public class IntentCallCategorization extends BaseClass{
 	CommonSteps cs=new CommonSteps();
 	
 	public static HashMap<String, String> orgMap=new HashMap<>();
-	
+	public static String token=null;
 
 	
 	@Then("define and configure call categorization with folder {string}")
 	public void define_and_configure_call_categorization(String folderPath) throws IOException, URISyntaxException, JSONException{
+		token=cs.getToken("default-analyst");
 		loadURL("BACKEND_PORT");
 		
 		String absoluteFolderPath = Paths.get(TestCenter.getInstance().getFile(folderPath).getAbsolutePath()).toString().replace("%20", " ");
@@ -40,7 +41,7 @@ public class IntentCallCategorization extends BaseClass{
 //			System.out.println("Path is "+Paths.get(defineFile.getAbsolutePath()).toString());
 			loadQueryparams(CommonSteps.orgMap);
 			request.body(defineJson.toString()).when();
-			response=request.post("call-category/define/json");
+			response=request.auth().oauth2(token).post("call-category/define/json");
 			
 		    Assert.assertEquals(200,response.getStatusCode());
 		}
@@ -51,7 +52,7 @@ public class IntentCallCategorization extends BaseClass{
 		    loadURL("BACKEND_PORT");
 		    loadQueryparams(CommonSteps.orgMap);
 		    request.body(defineJsonFileObj.toString()).when();
-			response=request.post("call-category/configure");
+			response=request.auth().oauth2(token).post("call-category/configure");
 			Assert.assertEquals(200,response.getStatusCode());
 		}
 	}

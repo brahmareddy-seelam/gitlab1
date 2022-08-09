@@ -8,7 +8,7 @@ Feature: Test Offline Audio file - US
     And we create a business process called <category> with colorVR as <colorVR> and description as <description> for <organization>
     Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
     And we can add keycloak <orgAgentName> with email <agentEmail> as an agent to <organization>
-    And map agent <orgAgentName> to supervisor "default-supervisor"
+    #And map agent <orgAgentName> to supervisor "default-supervisor"
     #And we sync <orgAgentName>
     #
     #	###############################################

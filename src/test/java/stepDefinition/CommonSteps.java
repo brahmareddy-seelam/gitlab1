@@ -60,6 +60,7 @@ public class CommonSteps extends BaseClass{
 	public static String userId;
 	public static String startDate;
 	public static String endDate;
+	public static String token=null;
 	
 	@And("a {string} file exists")
 	  public void the_call19_wav_file_exists(String audioFile) throws IOException, ClassNotFoundException {
@@ -166,10 +167,11 @@ public class CommonSteps extends BaseClass{
 	@When("the request with file {string} is sent to the audio-connector")
 	  public void the_request_with_is_sent_to_the_audio_connector(String filePath)
 	      throws IOException, URISyntaxException {
+		token=getToken(port.getProperty("username"));
 		loadURL("AUDIO_CONNECTOR_PORT");loadQueryParams(CommonSteps.commonMap);
 		String absoluteFolderPath = Paths.get(TestCenter.getInstance().getFile(filePath).getAbsolutePath()).toString();
 		request.multiPart("file",new File(absoluteFolderPath),"audio/wav").when();
-		response=request.post("offline/data");
+		response=request.auth().oauth2(token).post("offline/data");
 		Assert.assertEquals(200, response.getStatusCode());
 	  }
 	
@@ -180,10 +182,37 @@ public class CommonSteps extends BaseClass{
 		return objectMapper.readValue(string, Map.class);
 	}
 	
+	
+	
+	public String getToken(String user) {
+		String access_token=null;
+		loadURL("KEYCLOAK_PORT");
+		map=new HashMap<String, String>();
+		map.put("grant_type", "password");
+		map.put("client_id", "service-client");
+		map.put("username", user);
+		map.put("password", user.equalsIgnoreCase("APITesting")?"Welcome@123":"Welcome123");
+		map.put("client_secret", "58e85b73-aaaa-41a9-b3c3-5e1d81d01a33");
+
+		response=request.log().all().formParams(map).post("auth/realms/uniphore/protocol/openid-connect/token");
+	
+		jsonPathEvaluator = response.jsonPath();
+	
+		access_token = jsonPathEvaluator.get("access_token");
+	
+		System.out.println("access token : "+access_token);
+		
+//		TestCenter.getInstance().setKeycloakAccessToken(access_token);
+
+		return access_token;
+		
+	}
+	
 	@Then("update app-profile")
 	public void update_profile() throws IOException {
+		token=getToken("default-admin");
 		loadURL("BACKEND_PORT");
-		response=request.log().all().get("app-profile");
+		response=request.log().all().auth().oauth2(token).get("app-profile");
 		JSONObject entityList=new JSONObject(response.getBody().asString()).getJSONObject("data");
 		entityList.put("tenantId", 1);
 		JSONObject feature=entityList.getJSONObject("featureFlags");
@@ -197,7 +226,7 @@ public class CommonSteps extends BaseClass{
 		entityList.put("featureFlags", newFeature);
 		loadURL("BACKEND_PORT");
 		request.contentType(ContentType.JSON).body(entityList.toString()).when();
-		response=request.log().all().put("app-profile");
+		response=request.log().all().auth().oauth2(token).put("admin/app-profile");
 		Assert.assertEquals(201,response.getStatusCode());
 	}
 	
@@ -213,6 +242,7 @@ public class CommonSteps extends BaseClass{
 	}
 	
 	public void update_asr_engine(String folder) throws IOException {
+		token=getToken("default-admin");
 		int concurrency=5;
 		String defineJsonrule = new String(Files.readAllBytes(Paths.get(folder)));
 		JSONArray asr_data=new JSONArray(defineJsonrule);
@@ -273,8 +303,9 @@ public class CommonSteps extends BaseClass{
 		concurrency++;
 		System.out.println(finalASR.toString());
 		loadURL("BACKEND_PORT");
+		loadQueryBasic();
 		request.log().all().contentType(ContentType.JSON).body(finalASR.toString());
-		response=request.put("asr-instance");
+		response=request.auth().oauth2(token).put("asr-instance");
 		Assert.assertEquals(200, response.getStatusCode());
 	}
 	

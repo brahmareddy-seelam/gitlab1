@@ -1,6 +1,6 @@
 Feature: To set up system before any validation
 
-  @envUS @envUK @envAR @envIN @envHE @envJA @envDE @Common
+  @envUS @envUK @envAR @envIN @envHE @envJA @envDE @envAU @Common
   Scenario Outline: Setup entity catalog, app-profile and asr-engine
     Then update app-profile
     Then we update asr-engine from folder <asr-engine>

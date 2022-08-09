@@ -137,4 +137,10 @@ public class BaseClass {
 		return request;
 	}
 	
+	public static RequestSpecification loadQueryBasic() {
+		request.log().all().header("X-Username", port.getProperty("X-Username"));
+		return request;
+	}
+	
+	
 }

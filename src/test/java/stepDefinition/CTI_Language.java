@@ -32,7 +32,7 @@ public class CTI_Language extends BaseClass {
 	IntentCallCategorization ic=new IntentCallCategorization();
 	AddAgent addAgent=new AddAgent();
 	Entities entity=new Entities();
-	
+	public static String token=null;
 	Random random = new Random();
 	public static HashMap<String,String> language;
 	
@@ -85,9 +85,10 @@ public class CTI_Language extends BaseClass {
 	
 	@Given("we add language to org {string} and category {string}")
 	public void addLanguage(String Org, String cat) {
+		token=cs.getToken("default-admin");
 		boolean status = false;
 		loadURL("BACKEND_PORT");
-		response = request.get("/cti-language");
+		response = request.auth().oauth2(token).get("/cti-language");
 		CTI_Language.ctiLang();
 		JSONArray langObj = new JSONArray(response.body().asString());
 		boolean skillCode=(langObj.toString().contains("99999")?true:false);
@@ -115,7 +116,7 @@ public class CTI_Language extends BaseClass {
 		loadURL("BACKEND_PORT");
 		request.contentType(ContentType.JSON);
 		request.body(langObj.toString());
-		response = request.log().all().put("cti-language");
+		response = request.log().all().auth().oauth2(token).headers("X-Username",port.getProperty("X-Username")).put("cti-language");
 		System.out.println(response.asString());
 		Assert.assertEquals(200, response.getStatusCode());
 	}
@@ -275,6 +276,10 @@ public class CTI_Language extends BaseClass {
 		case "AR":
 			language.put("cti","AUE");
 			language.put("iso","ar");
+			break;
+		case "AU":
+			language.put("cti","AUE");
+			language.put("iso","en-au");
 			break;
 		}
 		return language;

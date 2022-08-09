@@ -15,10 +15,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 
 public class Alerts extends BaseClass{
-
+ 
+	CommonSteps cs=new CommonSteps();
+	
+	public static String token=null;
+	
 	@Given("configure alerts in folder {string}")
 	public void define_and_configure_entities_in_folder(String folderPath) throws IOException, URISyntaxException {
     
+	token=cs.getToken("default-analyst");
 	String absoluteFolderPath = Paths.get(TestCenter.getInstance().getFile(folderPath).getAbsolutePath())
 			.toString();
 	
@@ -32,7 +37,7 @@ public class Alerts extends BaseClass{
 		JSONObject defineJsonFileObj = new JSONObject(defineJsonString);
 		
 		request.body(defineJsonFileObj.toString()).when();
-		response=request.log().all().post("alert/configure");
+		response=request.log().all().auth().oauth2(token).post("alert/configure");
 		
 		Assert.assertTrue((response.getStatusCode())==200||(response.getStatusCode())==409);
 		}
@@ -51,8 +56,9 @@ public class Alerts extends BaseClass{
 	
 	@Then("train Alerts")
 	public void train_all_alerts() {
+		token=cs.getToken("default-analyst");
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
-		response=request.get("allalertObjects");
+		response=request.auth().oauth2(token).get("allalertObjects");
 
 		JSONArray alertList=new JSONObject(response.getBody().asString()).getJSONArray("data");
 		JSONArray payload=new JSONArray();
@@ -63,15 +69,16 @@ public class Alerts extends BaseClass{
 
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
 		request.body(payload.toString());
-		Assert.assertEquals(200, (request.post("train/alert-selected")).getStatusCode());
+		Assert.assertEquals(200, (request.auth().oauth2(token).post("train/alert-selected")).getStatusCode());
 	}
 	
 	
 	@Given("verify that supervisor has alert {string} with type {string}")
 	public void supervisor_alerts(String alert, String alert_type) {
+		token=cs.getToken("default-analyst");
 		loadURL("SMS_PORT");
 		request.queryParams("sessionId",CommonSteps.commonMap.get("callId"));
-		response=request.log().all().get("/supervisor/api/alert");
+		response=request.log().all().auth().oauth2(token).get("/supervisor/api/alert");
 		JSONArray langObj = new JSONArray(response.body().asString());
 		for (int i = 0; i < langObj.length(); i++) {
 			JSONObject item = langObj.getJSONObject(i);
@@ -86,8 +93,9 @@ public class Alerts extends BaseClass{
 	
 	@Then("delete all alerts")
 	public void delete_all_entites() throws IOException, URISyntaxException {
+		token=cs.getToken("default-analyst");
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
-		response=request.get("allalertObjects");
+		response=request.auth().oauth2(token).get("allalertObjects");
 	
 		JSONArray alertList=new JSONObject(response.getBody().asString()).getJSONArray("data");
 		

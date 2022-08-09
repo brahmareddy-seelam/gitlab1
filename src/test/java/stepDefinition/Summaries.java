@@ -28,6 +28,7 @@ public class Summaries extends BaseClass{
 	public static String sessionId=null;
 	public static String startDate=null;
 	public static String endDate=null;
+	public static String token=null;
 	
 	@Then("a summary for callId exists") 
 	public void a_summary_for_callid_exists_with_intent()throws IOException, URISyntaxException, JSONException {
@@ -93,8 +94,9 @@ public class Summaries extends BaseClass{
 	
 	@Then("post summary format")
 	  public void post_summary_format() throws IOException, URISyntaxException, JSONException {
+		token=cs.getToken("default-analyst");
 		loadURL("BACKEND_PORT");loadQueryparams(CommonSteps.orgMap);
-		Map<?, ?> jsonToMap=request.get("entitylist").as(Map.class);
+		Map<?, ?> jsonToMap=request.auth().oauth2(token).get("entitylist").as(Map.class);
 		JSONObject entityListArray = new JSONObject(jsonToMap);
 		JSONArray entityList=entityListArray.optJSONArray("data");
 	  String entitiesStr = new String();
@@ -118,9 +120,9 @@ public class Summaries extends BaseClass{
 
 	  System.out.println("summaryFormat "+summaryFormat);
 	  request=RestAssured.given();
-	  request.log().all().header("Content-Type","application/json").header("Authorization", "Bearer "+TestCenter.accesstoken).queryParams(CommonSteps.commonMap);
+	  request.log().all().auth().oauth2(token).header("Content-Type","application/json").header("Authorization", "Bearer "+TestCenter.accesstoken).queryParams(CommonSteps.commonMap);
 	  request.body(summaryFormat.toString());
-	  response=request.post("save-summary-format");
+	  response=request.auth().oauth2(token).post("save-summary-format");
 
 	  Assert.assertEquals(200,response.getStatusCode());
 	  System.out.println(response.getBody().toString());

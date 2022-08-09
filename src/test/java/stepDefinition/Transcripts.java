@@ -25,13 +25,15 @@ public class Transcripts extends BaseClass{
 	int conversationTurns=0;
 	JSONArray responseTranscriptArray;
 	public static JSONArray jsonFileArr;
+	public static String token=null;
 	
 	@Then("a transcript is generated for callId")
 	public void a_transcript_is_generated_for_callid() throws IOException, URISyntaxException {
+		token=cs.getToken("default-analyst");
 		HashMap<String, String> map = new HashMap<>();
 		map.put("contactId", CommonSteps.commonMap.get("callId"));
 		loadURL("BACKEND_PORT");loadQueryparams(map);
-		response=request.get("transcripts");
+		response=request.auth().oauth2(token).get("transcripts");
 		Assert.assertEquals(200,response.getStatusCode());
 	}
 	
@@ -39,11 +41,12 @@ public class Transcripts extends BaseClass{
 	@Then("the transcript conversation for callId for {int} has {string}")
 	public void the_transcript_conversation_for_callid_has(Integer turnNum, String correctString)
 			throws IOException, URISyntaxException, JSONException {
+		token=cs.getToken("default-analyst");
 		HashMap<String, String> map = new HashMap<>();
 		map.put("contactId", CommonSteps.commonMap.get("callId"));
 		loadURL("BACKEND_PORT");loadQueryparams(map);
 		ObjectMapper mapper = new ObjectMapper();
-		Map<?, ?> jsonToMap=request.get("conversations").as(Map.class);
+		Map<?, ?> jsonToMap=request.auth().oauth2(token).get("conversations").as(Map.class);
 		jsonToMap.keySet().forEach(k->System.out.println(k));
 		System.out.println(jsonToMap.get("turns"));
 
@@ -61,12 +64,13 @@ public class Transcripts extends BaseClass{
 	@Then("the transcript conversation for callId matches the correct version {string}")
 	public void the_transcript_conversation_for_callid_matches(String jsonFilePath)
 			throws IOException, URISyntaxException, JSONException {
+		token=cs.getToken("default-analyst");
 		HashMap<String, String> map = new HashMap<>();
 		map.put("contactId", CommonSteps.commonMap.get("callId"));
 		loadURL("BACKEND_PORT");loadQueryparams(map);
 		
 
-		Map<?, ?> jsonToMap=(request.log().all().contentType("application/json; charset=utf-8").get("conversations")).as(Map.class);
+		Map<?, ?> jsonToMap=(request.log().all().auth().oauth2(token).contentType("application/json; charset=utf-8").get("conversations")).as(Map.class);
 		
 		System.out.println("jsonToMap "+jsonToMap);
 
@@ -89,9 +93,10 @@ public class Transcripts extends BaseClass{
 	
 	@Then("verify transcript turns for supervisor")
 	public void verify_transcript_supervisor() throws JsonProcessingException, IOException {
+		token=cs.getToken(port.getProperty("username"));
 		loadURL("SMS_PORT");
 		request.queryParam("sessionId", CommonSteps.commonMap.get("callId"));
-		Map<?, ?> jsonToMap=(request.log().all().get("/supervisor/api/transcript")).as(Map.class);
+		Map<?, ?> jsonToMap=(request.log().all().auth().oauth2(token).get("/supervisor/api/transcript")).as(Map.class);
 		
 		System.out.println("jsonToMap "+jsonToMap);
 

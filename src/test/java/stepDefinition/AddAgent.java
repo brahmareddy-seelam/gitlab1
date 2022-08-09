@@ -32,6 +32,7 @@ public class AddAgent extends BaseClass{
 	public static String agent=null;
 	public static JSONArray JSONResponseBody;
 	public static Map<Object, Object> user;
+	public static String token=null;
 	
 	@Given("we create an organization called {string} with description as {string}")
 	public void we_create_an_organization_called_with_description_as(String organization, String description)
@@ -42,10 +43,9 @@ public class AddAgent extends BaseClass{
 		JSONObject jsonObj = new JSONObject();
 		jsonObj.put("description", description);
 		jsonObj.put("organization", organization);
-
+		token=cs.getToken("default-admin");
 		loadURL("OCMS_PORT");
-		request.log().all().contentType(ContentType.JSON).body(jsonObj.toString()).post("config/organization");
-
+		request.log().all().auth().oauth2(token).contentType(ContentType.JSON).body(jsonObj.toString()).post("config/organization");
 //		System.out.println("Organization: " + response.getBody()); Commenting the lines since successful response is not returning any body!
 //		Assert.assertEquals("200 OK", response.getStatusLine() );
 
@@ -55,7 +55,7 @@ public class AddAgent extends BaseClass{
 	@Given("we create a business process called {string} with colorVR as {string} and description as {string} for {string}")
 	public void add_business_process_to_organization(String businessProcess, String colorVR, String description,
 			String organization) throws IOException, URISyntaxException {
-
+		token=cs.getToken("default-admin");
 		loadURL("OCMS_PORT");
 		System.out.println("(before) Order 3 function:");
 
@@ -66,7 +66,7 @@ public class AddAgent extends BaseClass{
 
 		JSONArray jsonArr = new JSONArray();
 		jsonArr.put(jsonObj);
-		request.log().all().contentType(ContentType.JSON).body(jsonArr.toString()).post("config/category/" + organization );
+		request.log().all().auth().oauth2(token).contentType(ContentType.JSON).body(jsonArr.toString()).post("config/category/" + organization );
 
 //		System.out.println("Business Process: " + businessProcess);
 //		Assert.assertEquals("200 OK", response.getStatusLine());
@@ -77,7 +77,7 @@ public class AddAgent extends BaseClass{
 	@Given("we can add {string} with email {string} as an agent to {string}")
 	public void add_agent_to_organization(String agentName, String email, String organization)
 			throws IOException, URISyntaxException {
-
+		token=cs.getToken("default-admin");
 		loadURL("UMS_PORT");
 		System.out.println("(before) Order 4 function:");
 
@@ -227,6 +227,7 @@ public class AddAgent extends BaseClass{
 	@SuppressWarnings("unchecked")
 	@Given("map agent {string} to supervisor {string}")
 	public void map_agent_to_supervisor(String agent, String Supervisor) throws IOException, URISyntaxException {
+		token=cs.getToken("default-admin");
 		sync_user(Supervisor);
 		String supervisor_id= user.get("id").toString();
 		Object agentS= user.get("agents");
@@ -244,7 +245,7 @@ public class AddAgent extends BaseClass{
 		JSONObject Agent=new JSONObject();Agent.put("agents", list);
 		loadURL("OCMS_PORT");
 		request.contentType(ContentType.JSON).body(Agent.toString());
-		response=request.log().all().put("configuration/sup-agent-map/"+supervisor_id+"/?tenant-id=1");
+		response=request.log().all().auth().oauth2(token).put("configuration/sup-agent-map/"+supervisor_id+"/?tenant-id=1");
 		Assert.assertEquals(200, response.getStatusCode());
 	}
 	
@@ -254,7 +255,7 @@ public class AddAgent extends BaseClass{
 //
 //		jsonObj.put("Authorization", "Bearer " + TestCenter.getInstance().getKeycloakAccessToken());
 //		jsonObj.put("X-Username", username);
-
+		token=cs.getToken("default-admin");
 		loadURL("KEYCLOAK_PORT");
 		
 		HashMap<String, String> map = new HashMap<>();
@@ -264,6 +265,7 @@ public class AddAgent extends BaseClass{
 		map.put("username", username);
 //		map.put("password", ((username.equalsIgnoreCase("Super"))?"Uniphore@123":port.getProperty("password")));
 		map.put("password", superPassword(username));
+		map.put("client_secret", "58e85b73-aaaa-41a9-b3c3-5e1d81d01a33");
 		response=request.log().all().formParams(map).post("auth/realms/"+port.getProperty("realm")+"/protocol/openid-connect/token");
 		jsonPathEvaluator = response.jsonPath();
 		String access_token = jsonPathEvaluator.get("access_token");
@@ -271,8 +273,8 @@ public class AddAgent extends BaseClass{
 		TestCenter.getInstance().setAccessToken(access_token);
 		
 		loadURL("OCMS_PORT");
-		request.auth().oauth2(access_token);
-		response=request.log().all().post("configuration/sync-user");
+		request.auth().oauth2(token);
+		response=request.log().all().header("Authorization",access_token).post("configuration/sync-user");
 		user=response.jsonPath().getMap("user");
 		String startDate = String.valueOf(user.get("creation-date"));
 		String endDate = String.valueOf(user.get("modification-date"));
