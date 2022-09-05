@@ -13,7 +13,7 @@ test-setup:
 #    - mvn clean
 #    - mvn test
     - (/etc/apache-maven-3.8.4/bin/mvn clean)
-    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@envUS" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800")
+    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@envUS" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="us-eng-asr-streaming-gpu-api:2700")
 
 
 test-smoke: 
@@ -22,7 +22,7 @@ test-smoke:
     - aws-gitlab-runner
   image: maven:3.8-openjdk-8
   script:
-    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@US" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="18.119.154.56:2800" -Dcucumber.options="--plugin html:target/cucumber.html")
+    - (/etc/apache-maven-3.8.4/bin/mvn clean install -U -Dcucumber.filter.tags="@US" -Dbackend="3.13.70.184" -Dkeycloak="3.13.70.184" -Dplatform="3.13.70.184" -Dasrengine="us-eng-asr-streaming-gpu-api:2700" -Dcucumber.options="--plugin html:target/cucumber.html")
     
   artifacts:
     name: "$CI_COMMIT_REF_NAME"
