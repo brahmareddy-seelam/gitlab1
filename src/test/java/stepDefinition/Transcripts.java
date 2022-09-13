@@ -26,6 +26,7 @@ public class Transcripts extends BaseClass{
 	JSONArray responseTranscriptArray;
 	public static JSONArray jsonFileArr;
 	public static String token=null;
+	public static JSONObject jsonFileData;
 	
 	@Then("a transcript is generated for callId")
 	public void a_transcript_is_generated_for_callid() throws IOException, URISyntaxException {
@@ -82,7 +83,7 @@ public class Transcripts extends BaseClass{
 		String jsonFileString = new String(Files.readAllBytes(Paths.get(jsonFile.getAbsolutePath())));
 		System.out.println("jsonFileString "+jsonFileString);
 		JSONObject transcriptJsonFileObj = new JSONObject(jsonFileString);
-		JSONObject jsonFileData = (JSONObject) transcriptJsonFileObj.get("data");
+		jsonFileData = (JSONObject) transcriptJsonFileObj.get("data");
 		jsonFileArr = new JSONArray(jsonFileData.get("turns").toString());
 		System.out.println(jsonFileArr.length());
 //		Assert.assertEquals(responseTranscriptArr.length(), jsonFileArr.length());

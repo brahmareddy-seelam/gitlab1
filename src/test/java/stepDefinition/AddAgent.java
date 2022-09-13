@@ -18,6 +18,8 @@ import org.json.JSONObject;
 import org.junit.Assert;
 import com.uniphore.ri.main.e2e.BaseClass;
 import com.uniphore.ri.main.e2e.TestCenter;
+
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -113,7 +115,7 @@ public class AddAgent extends BaseClass{
 			map.put("username", username);
 			map.put("password", password);
 
-			response=request.formParams(map).post("auth/realms/master/protocol/openid-connect/token");
+			response=request.log().all().formParams(map).post("auth/realms/master/protocol/openid-connect/token");
 		
 			jsonPathEvaluator = response.jsonPath();
 		
@@ -146,6 +148,11 @@ public class AddAgent extends BaseClass{
 		JSONArray realmRoles = new JSONArray();
 		realmRoles.put("office_access");
 		realmRoles.put("uma_authorization");
+		
+		JSONArray defaultRoles = new JSONArray();
+		defaultRoles.put("manage-users");
+		defaultRoles.put("view-users");
+		
 
 		JSONObject userAgent = new JSONObject();
 		userAgent.put("username", agentName);
@@ -156,6 +163,9 @@ public class AddAgent extends BaseClass{
 		userAgent.put("groups", groups);
 		userAgent.put("realmRoles", realmRoles);
 		userAgent.put("enabled", "true");
+//		userAgent.put("clientRole", defaultRoles);
+		
+		
 		
 		TestCenter.getInstance().setAccessToken(TestCenter.getInstance().getKeycloakAccessToken());
 		
@@ -225,7 +235,7 @@ public class AddAgent extends BaseClass{
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Given("map agent {string} to supervisor {string}")
+	@And("map agent {string} to supervisor {string}")
 	public void map_agent_to_supervisor(String agent, String Supervisor) throws IOException, URISyntaxException {
 		token=cs.getToken("default-admin");
 		sync_user(Supervisor);
@@ -272,16 +282,19 @@ public class AddAgent extends BaseClass{
 		System.out.println(access_token);
 		TestCenter.getInstance().setAccessToken(access_token);
 		
+		token=cs.getToken("default-admin");
 		loadURL("OCMS_PORT");
 		request.auth().oauth2(token);
 		response=request.log().all().header("Authorization",access_token).post("configuration/sync-user");
 		user=response.jsonPath().getMap("user");
+		if(user!=null) {
 		String startDate = String.valueOf(user.get("creation-date"));
 		String endDate = String.valueOf(user.get("modification-date"));
 		Object id=   user.get("id");
 		cs.setUserId(id.toString());
 		cs.setStartDate(startDate);
 		cs.setEndDate(endDate);
+		}
 	}
 	
 	public String superPassword(String supervisor) {

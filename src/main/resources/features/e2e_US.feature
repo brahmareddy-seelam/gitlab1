@@ -109,9 +109,9 @@ Feature: Test Offline Audio file - US
     And a summary for callId has "Customer Wireless Number" <Customer Wireless Number>
     And a summary for callId has "Purchase Options Rule" <Purchase Options Rule>
     And a summary for callId has "Phone Opted" <Phone Opted>
-    #And a summary for callId has "Claim Amount Rule" <Claim Amount>
-    And a summary for callId has "Rule complex" <Rule complex>
 
+    #And a summary for callId has "Claim Amount Rule" <Claim Amount>
+    #And a summary for callId has "Rule complex" <Rule complex>
     Examples: 
       | intent                                | transcript-file                                            | description   | colorVR       | phoneupgrade             | Social Security Number | Purchase Option 1   | Purchase Option 2  | Time to deliver         | Customer Wireless Number | Phone Opted              | Purchase Options Rule                 | Rule complex |
       | "Phone Upgrade/Payment/EMI/24 Months" | "src/test/resources/transcript-jsons/USTranscriptASR.json" | "description" | "colorSample" | "wireless phone upgrade" | "1234"                 | "full retail value" | "monthly payments" | "7 to 10 business days" | "4085551212"             | "256 gigabyte iphone 12" | "full retail value, monthly payments" | "1237619628" |

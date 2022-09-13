@@ -1,18 +1,1 @@
-﻿Top of funnel
-Total agents who received at least 1 call,2
-Total contacts received at logger,7
-Total ghost contacts,0
-Contacts with transcripts,2
-Total contacts with on demand requests,2
-Total On Demand Requests,2
-Total contacts with at least 1 NLP/AI entity extracted,0
-Average ACW time (secs),0.0
-
-Features,End of call (ACW),On demand summary
-Total contacts with summaries generated,2,-1
-Total summaries generated,2,2
-Total default Summaries,2,2
-Total meaningful summaries,0,0
-Total contacts with summary failed,0,0
-Average accuracy (%),0.0,0.0
-Average summary latency (secs),0.008,0.083
+{"data":"","errors":[{"code":"1002","resource":"SummaryAggregationReport","resourceId":"","field":"","message":"Report is not available for given filters","errors":{}}]}

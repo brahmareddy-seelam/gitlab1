@@ -50,6 +50,7 @@ public class BaseClass {
 		prop.setProperty("Keycloak", System.getProperty("keycloak"));
 		prop.setProperty("Platform", System.getProperty("platform"));
 		prop.setProperty("ASREngine", System.getProperty("asrengine"));
+		prop.setProperty("ConnectionType", System.getProperty("connectionType"));
 		prop.store(out, null);
 		out.close(); 
 		port.load(portfis);
@@ -137,8 +138,8 @@ public class BaseClass {
 		return request;
 	}
 	
-	public static RequestSpecification loadQueryBasic() {
-		request.log().all().header("X-Username", port.getProperty("X-Username"));
+	public static RequestSpecification loadQueryBasic(String user) {
+		request.log().all().header("X-Username", user);
 		return request;
 	}
 	

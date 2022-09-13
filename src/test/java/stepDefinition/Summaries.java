@@ -32,6 +32,7 @@ public class Summaries extends BaseClass{
 	
 	@Then("a summary for callId exists") 
 	public void a_summary_for_callid_exists_with_intent()throws IOException, URISyntaxException, JSONException {
+		
 		loadURL("DATA_COLLECTOR_PORT");
 		request.log().all().header("Content-Type","application/json").header("Authorization", "Bearer "+TestCenter.accesstoken);
 	    response=request.log().all().get("summaries/" + CommonSteps.commonMap.get("callId") );
@@ -156,6 +157,7 @@ public class Summaries extends BaseClass{
 	
 	@Then("submit the edited summaries")
 	public void submit_edited_summaries() {
+		token=cs.getToken("apitesting");
 		StringBuilder bulletValue = new StringBuilder("[");
 	    for (String key : summariesMap.keySet()) {
 	    	bulletValue.append("\""+key + ": " + summariesMap.get(key) + "\", ");
@@ -168,7 +170,7 @@ public class Summaries extends BaseClass{
 	    String summary="[{\"requestId\":\""+requestId+"\",\"data\":{\"format\":\"bulletPoint\",\"bullet\": "+bulletValue+",\"paragraph\":null}}]";
 	    loadURL("BACKEND_PORT");loadQueryParams(params);
 	    request.contentType(ContentType.JSON).body(summary);
-	    response=request.put("acw/summaries");
+	    response=request.auth().oauth2(token).put("acw/summaries");
 	    Assert.assertEquals(200, response.getStatusCode());
 	}
 	
@@ -229,6 +231,7 @@ public class Summaries extends BaseClass{
 	
 	public JSONArray getEditedSummary(String callId) {
 //		JSONObject dateParams = new JSONObject();
+		token=cs.getToken("default-analyst");
 		HashMap<String, String> date=new HashMap<>();
 		date.put("startDate", startDate);
 		date.put("endDate", endDate);
@@ -236,10 +239,16 @@ public class Summaries extends BaseClass{
 		loadURL("BACKEND_PORT");
 		request.log().all().header("Authorization", "Bearer "+TestCenter.accesstoken).header("Content-Type","application/json")
 		.queryParams(date);
-		response=request.get("entities/summaries/compare");
+		response=request.auth().oauth2(token).get("entities/summaries/compare");
 		System.out.println(response.body().asString());
 		JSONObject editedSummary = new JSONObject(response.body().asString());
 		JSONArray summaryData = editedSummary.getJSONArray("data");
 		return summaryData;
+	}
+	
+	
+	
+	public void compareSummary() {
+		
 	}
 }

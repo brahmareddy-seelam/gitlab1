@@ -1,42 +1,34 @@
 package stepDefinition;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.TimeZone;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Assert;
 
-import com.aventstack.extentreports.GherkinKeyword;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.itextpdf.text.pdf.codec.Base64.InputStream;
-import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 import com.uniphore.ri.main.e2e.BaseClass;
 import com.uniphore.ri.main.e2e.Log;
@@ -46,9 +38,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
-import io.restassured.internal.util.IOUtils;
-import io.restassured.response.Response;
-import io.restassured.response.ResponseBodyData;
 
 public class CommonSteps extends BaseClass{
 	
@@ -61,6 +50,32 @@ public class CommonSteps extends BaseClass{
 	public static String startDate;
 	public static String endDate;
 	public static String token=null;
+	public static List<String> value;
+	public static Integer duration=0;
+	public static Map<String, Map<String, String>> oldValue;
+	public static Map<String, Map<String, String>> newValue;
+	
+	
+	public static String Total_agents_who_received_at_least_1_call = "Total agents who received at least 1 call";
+	public static String Total_contacts_received_at_logger = "Total contacts received at logger";
+	public static String Total_ghost_contacts = "Total ghost contacts";
+	public static String Contacts_with_transcripts = "Contacts with transcripts";
+	public static String Total_contacts_with_on_demand_requests = "Total contacts with on demand requests";
+	public static String Total_On_Demand_Requests = "Total On Demand Requests";
+	public static String Total_contacts_with_at_least_1_NLPAI_entity_extracted = "Total contacts with at least 1 NLP/AI entity extracted";
+	public static String Average_ACW_time = "Average ACW time (secs)";
+	public static String Count = "Count";
+	public static String Total_contacts_with_summaries_generated = "Total contacts with summaries generated";
+	public static String Total_summaries_generated = "Total summaries generated";
+	public static String Total_default_Summaries = "Total default Summaries";
+	public static String Total_meaningful_summaries = "Total meaningful summaries";
+	public static String Total_contacts_with_summary_failed = "Total contacts with summary failed";
+	public static String Average_accuracy = "Average accuracy (%)";
+	public static String Average_summary_latency = "Average summary latency (secs)";
+	public static String End_of_call = "End of call (ACW)";
+	public static String On_demand_summary = "On demand summary";
+	
+	
 	
 	@And("a {string} file exists")
 	  public void the_call19_wav_file_exists(String audioFile) throws IOException, ClassNotFoundException {
@@ -152,7 +167,7 @@ public class CommonSteps extends BaseClass{
 	  public void add_wait_for_call(String audioFile) throws InterruptedException, UnsupportedAudioFileException, IOException {
 		  File wavFile = TestCenter.getInstance().getFile(audioFile);
 		  AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(wavFile);
-		  Integer duration = (int) (((audioInputStream.getFrameLength()) / audioInputStream.getFormat().getFrameRate())) +10;  
+		  duration = (int) (((audioInputStream.getFrameLength()) / audioInputStream.getFormat().getFrameRate())) +10;  
 		  System.out.println("Total duration "+duration+" seconds");
 		  TimeUnit.SECONDS.sleep(duration);
 	  }
@@ -303,7 +318,7 @@ public class CommonSteps extends BaseClass{
 		concurrency++;
 		System.out.println(finalASR.toString());
 		loadURL("BACKEND_PORT");
-		loadQueryBasic();
+		loadQueryBasic("default-admin");
 		request.log().all().contentType(ContentType.JSON).body(finalASR.toString());
 		response=request.auth().oauth2(token).put("asr-instance");
 		Assert.assertEquals(200, response.getStatusCode());
@@ -316,7 +331,7 @@ public class CommonSteps extends BaseClass{
 		String backup = new String(Files.readAllBytes((Paths.get(System.getProperty("user.dir")+"/asr-engine.json").toAbsolutePath())));
 		JSONArray array=new JSONArray(backup);
 		JSONObject uniphore_us=array.getJSONObject(1).getJSONObject("UNIPHORE(en-us)");
-		JSONArray ws=uniphore_us.getJSONArray("ws");
+		JSONArray ws=uniphore_us.getJSONArray("wss");
 		ws.remove(0);ws.put(asr_engine); 
 		System.out.println(uniphore_us);
 		File f=new File(System.getProperty("user.dir")+"/asr-engine.json").getAbsoluteFile();
@@ -340,63 +355,111 @@ public class CommonSteps extends BaseClass{
 	
 	
 	@Then("I get summary report for {string}")
-	public void getReport(String summaryType) throws IOException, CsvException {
+	public void getReport(String filepath) throws IOException, CsvException, URISyntaxException, InterruptedException, UnsupportedAudioFileException {
+		oldValue = null;
+		oldValue=downloadReport(120);
+//		the_request_with_is_sent_to_the_audio_connector(filepath);
+//		add_wait_for_call(filepath);
+		newValue = null;
+		newValue = downloadReport(120);  
+		compareListforSummary("topOfFunnel");
+		  }
+	
+	
+	@SuppressWarnings("deprecation")
+	public Map<String, Map<String, String>> downloadReport(int time) throws IOException, CsvException {
+		token=getToken("default-analyst");
 		loadURL("BACKEND_PORT");
-		HashMap<String, String> data=new HashMap<>();
-//		map.put("startDate", getTime(120));
-//		map.put("endDate", getTime(0));
-		map.put("startDate", "2022-06-16 09:15:12");
-		map.put("endDate", "2022-06-17 09:15:12");
-		byte[] dowloadedFile = request.log().all().contentType("application/zip").params(map).get("/report/csv/aggregation/summary").then().extract().asByteArray();
+		map.put("startDate", getTime(time));
+		map.put("endDate", getTime(0));
+		byte[] dowloadedFile = request.log().all().auth().oauth2(token).contentType("application/zip").params(map).get("/report/csv/aggregation/summary").then().extract().asByteArray();
 		System.out.println("Download File Size : "+dowloadedFile.length);
 		FileOutputStream os = new FileOutputStream(new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Summary results\\results.csv"));
 		os.write(dowloadedFile);
 		os.close();
-		 try (CSVReader reader = new CSVReader(new FileReader(System.getProperty("user.dir")+"\\src\\test\\resources\\Summary results\\results.csv"))) {
-//			 String[] lineInArray;
-			 String [] nextLine;
-
-			  //Read one line at a time
-			  while ((nextLine = reader.readNext()) != null)
-			  {
-			    //Use the tokens as required
-				  List<String> value=new ArrayList<>();
-				  value.add(Arrays.toString(nextLine));
-			    System.out.println(Arrays.toString(nextLine));
-			  }
-			 
-			 List<List<String>> records = new ArrayList<>();
-			 List<String[]> r = reader.readAll();
-			 
-//			 for(int i=0;i<r.size();i++) {
-//				 data.put(Arrays.toString(r), summaryType)
-//			 }
-//		      r.forEach(x -> System.out.println(Arrays.asList(x)));
-		      r.forEach(x -> records.add(Arrays.asList(x)));
-		      
-		      
-//		      }
-			 
-//		      while ((lineInArray = reader.readNext()) != null) {
-//		          System.out.println(lineInArray[0] + lineInArray[1] + "etc...");
-//		      }
-//			 String[] nextLine;
-//		     while ((nextLine = reader.readNext()) != null)  
-//		     {  
-//		     for(String token : nextLine)  
-//		     {  
-//		     System.out.print(token);  
-//		     }  
-//		     System.out.print("\n");  
-//		     }  
-//			 List<String[]> r = reader.readAll();
-//			 for(int i=0;i<r.size();i++) {
-//				 data.put(Arrays.toString(r), summaryType)
-//			 }
-//		      r.forEach(x -> System.out.println(Arrays.toString(x)));
-		      System.out.println(records);
-		      }
+		String[] keyArr;
+		File file=new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Summary results\\results.csv");
+		byte[] bytes=FileUtils.readFileToByteArray(file);
+		String data=new String(bytes);
+		data=StringUtils.replaceAll(data, "\r", "");
+		String dataArray[]=data.split("\n");
+		String keys=dataArray[0];
+		String keys2=dataArray[1];
+		Map<String, Map<String, String>> outerMap= new HashMap<>();
+		List<String> keysFromFile = new ArrayList<>();
+		
+		keyArr=keys.split(",");
+		keysFromFile.addAll(Arrays.asList(keyArr));
+		if (keys.length()<keys2.length()) {
+			
+			keysFromFile.add("Count");
+		}	
+		
+		for(int k=1; k<dataArray.length;k++) {
+			Map<String, String> map=new HashMap<>();
+			List<String> row=new ArrayList<>();
+			String[] rowArr=dataArray[k].split(",");
+			row.addAll(Arrays.asList(rowArr));
+			if(!row.isEmpty()) {
+			String keyForTest=row.get(0);
+			boolean present=Arrays.asList(rowArr).contains(keyForTest);
+			if(present) {
+			for(int l=1;l<row.size();l++) {
+				if(row.size()>keysFromFile.size()) {
+					keysFromFile = new ArrayList<>();
+					keysFromFile.addAll(Arrays.asList(rowArr));	
+				}
+				map.put(keysFromFile.get(l).trim(),row.get(l).trim());
+			}
+			outerMap.put(keyForTest, map);
 		  }
+		 }
+		}
+		return outerMap;
+ }
+	
+	
+	public void compareListforSummary(String summary) {
+		switch(summary) {
+			case "topOfFunnel":
+				compareTopofFunnel();
+				break;
+			case "Features":
+				getCompareFeaturesSummary();
+				break;
+		}
+//		
+	}
+	
+	
+	public void compareTopofFunnel() {
+		getDifferenceSummary(Total_agents_who_received_at_least_1_call, Count, 1);
+		getDifferenceSummary(Total_contacts_received_at_logger, Count , 1);
+		getDifferenceSummary(Total_ghost_contacts, Count, 0);
+		getDifferenceSummary(Contacts_with_transcripts, Count, 1);
+		getDifferenceSummary(Total_contacts_with_on_demand_requests, Count, 0);
+		getDifferenceSummary(Total_On_Demand_Requests, Count, 0);
+		getDifferenceSummary(Total_contacts_with_at_least_1_NLPAI_entity_extracted, Count, 1);
+
+	}
+	
+	
+	public void getCompareFeaturesSummary() {
+		getDifferenceSummary(Total_contacts_with_summaries_generated, End_of_call, 1);
+		getDifferenceSummary(Total_summaries_generated, End_of_call, 2);
+		getDifferenceSummary(Total_default_Summaries, End_of_call, 1);
+		getDifferenceSummary(Total_meaningful_summaries, End_of_call, 1);
+		getDifferenceSummary(Total_contacts_with_summary_failed, End_of_call, 0);
+	}
+	
+	public void getDifferenceSummary(String parameter, String value, int diff) {
+		if(newValue.get(parameter).get(value).equals(oldValue.get(parameter).get(value))) {
+			Assert.assertEquals(diff,(Integer.parseInt(newValue.get(parameter).get(value)) - Integer.parseInt(oldValue.get(parameter).get(value))));
+		}
+	}
+	
+	
+	
 	}
 	
 	

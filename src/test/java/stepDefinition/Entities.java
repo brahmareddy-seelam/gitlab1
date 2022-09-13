@@ -238,7 +238,7 @@ public class Entities extends BaseClass{
 			value.put("version", "0");
 			finalCatlog.put("catalog",value);
 //			System.out.println(finalCatlog.toString());
-			loadURL("BACKEND_PORT");loadQueryBasic();
+			loadURL("BACKEND_PORT");loadQueryBasic("default-analyst");
 			request.log().all().contentType(ContentType.JSON).body(finalCatlog.toString());
 			response=request.auth().oauth2(token).post("entity-catalog");
 			int reponseCode=response.getStatusCode();

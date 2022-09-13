@@ -50,5 +50,30 @@ Feature: To set up system before any validation
       | "APITesting" | "UDS"    |
 
   @Time
-  Scenario: Check time
-    Then I get summary report for "test"
+  Scenario Outline: Check time
+    Then I get summary report for <audio-file>
+
+    Examples: 
+      | audio-file                       |
+      | "audio-files/USAudioFile/US.wav" |
+
+  @DB @Regression
+  Scenario Outline: Connect DB
+    #Then I connect to DB and check if collection "aggregationMetrics" has ""
+    #Then I connect to DB and check if collection "interactions" has "isIgnored" as "true"
+    #Then I connect to DB and check if collection "aggregationMetrics" has "isIgnored" as "true"
+    Given I update the gost-call-controller
+    And a <audio-file> file exists
+    And the request organization is <organization>
+    And the request category is <category>
+    And the request customerId is "8090909099"
+    And the request language is <language>
+    And the request agentId is <orgAgentName>
+    Then generate the callId
+    Then the request with file <audio-file> is sent to the audio-connector
+    And wait for <audio-file> to get loaded
+    Then I connect to DB and check if collection "interactions" has "isIgnored" as "true"
+
+    Examples: 
+      | organization | category | orgAgentName | language | audio-file                       |
+      | "APITesting" | "US"     | "APITesting" | "E"      | "audio-files/GhostCall/GhostCall.wav" |

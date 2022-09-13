@@ -9,7 +9,13 @@
             "keywordName": "equal monthly payment option",
             "isNew": true,
             "categoryId": 0
-        }],
+        },
+        {
+            "keywordName": "monthly payment",
+            "isNew": true,
+            "categoryId": 0
+        }
+        ],
         "fuzzyMatch": false,
         "keyPhraseMatchingChannel": ["Customer"]
     }]

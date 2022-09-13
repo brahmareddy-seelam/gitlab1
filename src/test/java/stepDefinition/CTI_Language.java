@@ -281,6 +281,10 @@ public class CTI_Language extends BaseClass {
 			language.put("cti","AUE");
 			language.put("iso","en-au");
 			break;
+		default:
+			language.put("cti","EUU");
+			language.put("iso","en-us");
+			break;
 		}
 		return language;
 		

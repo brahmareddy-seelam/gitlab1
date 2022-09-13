@@ -19,6 +19,7 @@ public class Dispositions extends BaseClass{
 	public static HashMap<String, String> orgMap=new HashMap<>();
 	
 	public static String data=null;
+	public static String token=null;
 	
 	public static StringBuilder finalValue=null;
 	public static String requestId=null;
@@ -26,6 +27,7 @@ public class Dispositions extends BaseClass{
 	@Then("disposition for callId has intent of {string}")
 	public void disposition_for_callid_has_intent_of(String intent)
 			throws IOException, URISyntaxException, JSONException {
+//		token=cs.getToken("default-analyst");
 		loadURL("DATA_COLLECTOR_PORT");
 		request.log().all().header("Content-Type","application/json").header("Authorization", "Bearer "+TestCenter.accesstoken);
 		response=request.get("dispositions/"+ CommonSteps.commonMap.get("callId"));
@@ -43,6 +45,7 @@ public class Dispositions extends BaseClass{
 	
 	@Then("edit and submit disposition intent {string} as {string}")
 	public void edit_disposition(String existing, String edited) throws StringIndexOutOfBoundsException {
+		token=cs.getToken("apitesting");
 		finalValue=new StringBuilder("[{\"requestId\":\""+requestId+"\",\"data\":[");
 		String new_data=data.replace(existing, edited);
 		boolean status=false;
@@ -81,7 +84,7 @@ public class Dispositions extends BaseClass{
 		data.put("sessionId", CommonSteps.commonMap.get("callId"));
 		data.put("userId", sm.getUserId());
 		loadURL("BACKEND_PORT");
-		request.log().all().header("Authorization", "Bearer "+TestCenter.accesstoken).header("Content-Type","application/json")
+		request.log().all().auth().oauth2(token).header("Authorization", "Bearer "+TestCenter.accesstoken).header("Content-Type","application/json")
 		.queryParams(data);
 		request.body(payload);
 		response=request.put("acw/dispositions");
@@ -122,12 +125,13 @@ public class Dispositions extends BaseClass{
 	
 	
 	public JSONArray getEditedDisposition() {
+		token=cs.getToken("default-analyst");
 		HashMap<String, String> date=new HashMap<>();
 		date.put("startDate", cs.getStartDate());
 		date.put("endDate", cs.getEndDate());
 		date.put("contactId", CommonSteps.commonMap.get("callId"));
 		loadURL("BACKEND_PORT");
-		request.log().all().header("Authorization", "Bearer "+TestCenter.accesstoken).header("Content-Type","application/json")
+		request.log().all().auth().oauth2(token).header("Authorization", "Bearer "+TestCenter.accesstoken).header("Content-Type","application/json")
 		.queryParams(date);
 		response=request.get("/category/disposition/compare");
 		JSONObject editedSummary = new JSONObject(response.body().asString());

@@ -176,6 +176,22 @@
       <version>5.3</version>
  </dependency>
 
+
+<!-- https://mvnrepository.com/artifact/org.mongodb/mongodb-driver-sync -->
+<dependency>
+    <groupId>org.mongodb</groupId>
+    <artifactId>mongodb-driver-sync</artifactId>
+    <version>4.7.1</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>2.0.0</version>
+</dependency>
+
+
 </dependencies>
 
 <build>
@@ -208,6 +224,7 @@
                        <Backend>${backend}</Backend>
                        <Platform>${platform}</Platform>
                        <ASREngine>${asrengine}</ASREngine>
+                       <ConnectionType>${connectionType}</ConnectionType>
            </systemPropertyVariables>
            <includes>
             <include>RunCucumberTest.java</include>
