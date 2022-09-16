@@ -1,0 +1,24 @@
+﻿Session Id,Event Type,Event Timestamp,Event Details,Code,Latency (Secs)
+16633301916184dgl8wa1w,start,00:10:08,call start,0,0
+16633301916184dgl8wa1w,transcriptFirstTurn,00:10:08,Transcript first turn,0,9
+16633301916184dgl8wa1w,aiEntity,00:10:17,Person : michelle : [2];Person : michelle : [1],0,0
+16633301916184dgl8wa1w,alerts,00:10:20,Customer Greeted,0,0
+16633301916184dgl8wa1w,nlpEntity,00:10:26,Phone Upgrade : wireless phone upgrade : [2],0,0
+16633301916184dgl8wa1w,nlpEntity,00:10:29,Customer Wireless Number : 4085551212 : [4],0,0
+16633301916184dgl8wa1w,nlpEntity,00:10:32,NIL,0,0
+16633301916184dgl8wa1w,nlpEntity,00:10:41,Phone Upgrade : eligible upgrade : [7];Social Security Number : 1234 : [6],0,0
+16633301916184dgl8wa1w,nlpEntity,00:10:47,Purchase Option 1 : full retail value : [7],0,0
+16633301916184dgl8wa1w,nlpEntity,00:10:53,Purchase Option 2 : monthly payments : [7],0,0
+16633301916184dgl8wa1w,alerts,00:11:08,Call for more than a minute,0,0
+16633301916184dgl8wa1w,nlpEntity,00:11:08,Phone Opted :  256 gigabyte iphone 12 : [10],0,0
+16633301916184dgl8wa1w,nlpEntity,00:11:38,Time to deliver : 7 to 10 business days : [15],0,0
+16633301916184dgl8wa1w,stop,00:11:50,call stop,0,0
+16633301916184dgl8wa1w,ready,00:11:50,call Ready,0,0
+16633301916184dgl8wa1w,transcriptLastTurn,00:11:53,Transcript last turn,0,102
+16633301916184dgl8wa1w,acwRequest,00:11:53,RequestId : 632467a0b88aa1cd239adcf9,0,0
+16633301916184dgl8wa1w,disposition,00:11:53,Phone Upgrade/Payment/EMI,0,0
+16633301916184dgl8wa1w,sentiment,00:11:53,NIL,1238,0
+16633301916184dgl8wa1w,summary,00:11:53,"[""Phone Upgrade: wireless phone upgrade"",""Purchase Option 2: monthly payments"",""Social Security Number: 1234"",""Time to deliver: 7 to 10 business days"",""Purchase Options Rule: full retail value, monthly payments"",""Customer Opted Rule:"",""Rule complex:"",""Purchase Option 1: full retail value"",""Customer Option:"",""Customer Wireless Number: 4085551212"",""Phone Opted:  256 gigabyte iphone 12"",""Complex_Name:"",""AI michelle"",""Default Default Text""]",0,0
+16633301916184dgl8wa1w,dispositionPush,00:11:53,disposition sent to UI,0,0
+16633301916184dgl8wa1w,rule,00:11:53,"Rule complex :  : [999999];Purchase Options Rule : full retail value, monthly payments : [999999];Customer Opted Rule :  : [999999]",0,0
+16633301916184dgl8wa1w,summaryPush,00:11:53,summary sent to UI,0,0

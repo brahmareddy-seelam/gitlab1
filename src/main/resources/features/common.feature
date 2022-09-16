@@ -51,11 +51,24 @@ Feature: To set up system before any validation
 
   @Time
   Scenario Outline: Check time
-    Then I get summary report for <audio-file>
+  #Given get keycloak accessToken with username "admin" and password "Welcome@123" and client id "admin-cli" and grant-type "password"
+    Given a <audio-file> file exists
+    And the request organization is <organization>
+    And the request category is <category>
+    And the request customerId is "8090909099"
+    And the request language is <language>
+    And the request agentId is <orgAgentName>
+    Then generate the callId
+    Then refresh all caches
+    #Then I get summary report for <audio-file> and <ghost-call>
+    #Then I get contact details report for <audio-file> and <ghost-call>
+    Then I get contact event report for <audio-file> and <ghost-call>
+    #Then I get summary details report for <audio-file> and <ghost-call>
+    #Then I get summary trend report for <audio-file> and <ghost-call>
 
     Examples: 
-      | audio-file                       |
-      | "audio-files/USAudioFile/US.wav" |
+      | audio-file                       |organization | category | orgAgentName | language | ghost-call |
+      | "audio-files/USAudioFile/US.wav" |"APITesting" | "US"     | "APITesting" | "E"      | "audio-files/GhostCall/GhostCall.wav" |
 
   @DB @Regression
   Scenario Outline: Connect DB

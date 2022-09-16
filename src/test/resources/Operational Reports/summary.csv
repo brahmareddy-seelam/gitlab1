@@ -1,0 +1,18 @@
+﻿Top of funnel
+Total agents who received at least 1 call,1
+Total contacts received at logger,1
+Total ghost contacts,1
+Contacts with transcripts,0
+Total contacts with on demand requests,0
+Total On Demand Requests,0
+Total contacts with at least 1 NLP/AI entity extracted,0
+Average ACW time (secs),0.0
+
+Features,End of call (ACW),On demand summary
+Total contacts with summaries generated,0,0
+Total summaries generated,0,0
+Total default Summaries,0,0
+Total meaningful summaries,0,0
+Total contacts with summary failed,0,0
+Average accuracy (%),0.0,0.0
+Average summary latency (secs),0.0,0.0

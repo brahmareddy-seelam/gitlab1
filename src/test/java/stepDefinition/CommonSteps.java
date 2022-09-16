@@ -1,6 +1,10 @@
 package stepDefinition;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -15,6 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -38,24 +44,29 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
+import net.lingala.zip4j.ZipFile;
 
 public class CommonSteps extends BaseClass{
 	
 
 	
-	public static HashMap<String, String>  commonMap=new HashMap<String, String>();
-	public static HashMap<String, String> orgMap=new HashMap<String, String>();
-	public static HashMap<String, String> map=new HashMap<>();
+	public static HashMap<String, String> commonMap = new HashMap<String, String>();
+	public static HashMap<String, String> orgMap = new HashMap<String, String>();
+	public static HashMap<String, String> map = new HashMap<>();
 	public static String userId;
 	public static String startDate;
 	public static String endDate;
-	public static String token=null;
+	public static String token = null;
 	public static List<String> value;
-	public static Integer duration=0;
+	public static Integer duration = 0;
 	public static Map<String, Map<String, String>> oldValue;
 	public static Map<String, Map<String, String>> newValue;
-	
-	
+	public static Map<String, Map<String, String>> reportData;
+	public static String startTime = null;
+	public static String endtime = null;
+	public static String data = null;
+	public static String[] keyArr;
+
 	public static String Total_agents_who_received_at_least_1_call = "Total agents who received at least 1 call";
 	public static String Total_contacts_received_at_logger = "Total contacts received at logger";
 	public static String Total_ghost_contacts = "Total ghost contacts";
@@ -74,7 +85,6 @@ public class CommonSteps extends BaseClass{
 	public static String Average_summary_latency = "Average summary latency (secs)";
 	public static String End_of_call = "End of call (ACW)";
 	public static String On_demand_summary = "On demand summary";
-	
 	
 	
 	@And("a {string} file exists")
@@ -339,123 +349,6 @@ public class CommonSteps extends BaseClass{
 		FileWriter file= new FileWriter(f);
 		file.write(array.toString());
 		file.flush();
-	}
-	
-	
-	@Then("I get time")
-	public String getTime(int timeInSeconds) throws IOException {
-		String time;
-		Instant instant = Instant.now();  
-		time = instant.minus(timeInSeconds, ChronoUnit.SECONDS).toString();  
-		time = time.replaceAll("[a-zA-Z]", " ");
-		System.out.println(time.split("\\.")[0]);
-		return (time.split("\\.")[0]);
-		
-	}
-	
-	
-	@Then("I get summary report for {string}")
-	public void getReport(String filepath) throws IOException, CsvException, URISyntaxException, InterruptedException, UnsupportedAudioFileException {
-		oldValue = null;
-		oldValue=downloadReport(120);
-//		the_request_with_is_sent_to_the_audio_connector(filepath);
-//		add_wait_for_call(filepath);
-		newValue = null;
-		newValue = downloadReport(120);  
-		compareListforSummary("topOfFunnel");
-		  }
-	
-	
-	@SuppressWarnings("deprecation")
-	public Map<String, Map<String, String>> downloadReport(int time) throws IOException, CsvException {
-		token=getToken("default-analyst");
-		loadURL("BACKEND_PORT");
-		map.put("startDate", getTime(time));
-		map.put("endDate", getTime(0));
-		byte[] dowloadedFile = request.log().all().auth().oauth2(token).contentType("application/zip").params(map).get("/report/csv/aggregation/summary").then().extract().asByteArray();
-		System.out.println("Download File Size : "+dowloadedFile.length);
-		FileOutputStream os = new FileOutputStream(new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Summary results\\results.csv"));
-		os.write(dowloadedFile);
-		os.close();
-		String[] keyArr;
-		File file=new File(System.getProperty("user.dir")+"\\src\\test\\resources\\Summary results\\results.csv");
-		byte[] bytes=FileUtils.readFileToByteArray(file);
-		String data=new String(bytes);
-		data=StringUtils.replaceAll(data, "\r", "");
-		String dataArray[]=data.split("\n");
-		String keys=dataArray[0];
-		String keys2=dataArray[1];
-		Map<String, Map<String, String>> outerMap= new HashMap<>();
-		List<String> keysFromFile = new ArrayList<>();
-		
-		keyArr=keys.split(",");
-		keysFromFile.addAll(Arrays.asList(keyArr));
-		if (keys.length()<keys2.length()) {
-			
-			keysFromFile.add("Count");
-		}	
-		
-		for(int k=1; k<dataArray.length;k++) {
-			Map<String, String> map=new HashMap<>();
-			List<String> row=new ArrayList<>();
-			String[] rowArr=dataArray[k].split(",");
-			row.addAll(Arrays.asList(rowArr));
-			if(!row.isEmpty()) {
-			String keyForTest=row.get(0);
-			boolean present=Arrays.asList(rowArr).contains(keyForTest);
-			if(present) {
-			for(int l=1;l<row.size();l++) {
-				if(row.size()>keysFromFile.size()) {
-					keysFromFile = new ArrayList<>();
-					keysFromFile.addAll(Arrays.asList(rowArr));	
-				}
-				map.put(keysFromFile.get(l).trim(),row.get(l).trim());
-			}
-			outerMap.put(keyForTest, map);
-		  }
-		 }
-		}
-		return outerMap;
- }
-	
-	
-	public void compareListforSummary(String summary) {
-		switch(summary) {
-			case "topOfFunnel":
-				compareTopofFunnel();
-				break;
-			case "Features":
-				getCompareFeaturesSummary();
-				break;
-		}
-//		
-	}
-	
-	
-	public void compareTopofFunnel() {
-		getDifferenceSummary(Total_agents_who_received_at_least_1_call, Count, 1);
-		getDifferenceSummary(Total_contacts_received_at_logger, Count , 1);
-		getDifferenceSummary(Total_ghost_contacts, Count, 0);
-		getDifferenceSummary(Contacts_with_transcripts, Count, 1);
-		getDifferenceSummary(Total_contacts_with_on_demand_requests, Count, 0);
-		getDifferenceSummary(Total_On_Demand_Requests, Count, 0);
-		getDifferenceSummary(Total_contacts_with_at_least_1_NLPAI_entity_extracted, Count, 1);
-
-	}
-	
-	
-	public void getCompareFeaturesSummary() {
-		getDifferenceSummary(Total_contacts_with_summaries_generated, End_of_call, 1);
-		getDifferenceSummary(Total_summaries_generated, End_of_call, 2);
-		getDifferenceSummary(Total_default_Summaries, End_of_call, 1);
-		getDifferenceSummary(Total_meaningful_summaries, End_of_call, 1);
-		getDifferenceSummary(Total_contacts_with_summary_failed, End_of_call, 0);
-	}
-	
-	public void getDifferenceSummary(String parameter, String value, int diff) {
-		if(newValue.get(parameter).get(value).equals(oldValue.get(parameter).get(value))) {
-			Assert.assertEquals(diff,(Integer.parseInt(newValue.get(parameter).get(value)) - Integer.parseInt(oldValue.get(parameter).get(value))));
-		}
 	}
 	
 	
